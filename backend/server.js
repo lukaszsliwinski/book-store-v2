@@ -2,7 +2,9 @@
 const path = require('path');
 const express = require('express');
 const bp = require('body-parser');
-const mongoose = require('mongoose');
+
+const dbConnect = require('./db/dbConnect');
+
 const app = express();
 
 // dotenv package
@@ -24,12 +26,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });
 
-// connect to db and run server
-mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://bookstorev2:jYAy3buifJzJkfvEwurT@127.0.0.1:27017/bookstoreDB', {useNewUrlParser: true, useUnifiedTopology: true})
-    .then((res) => {
-        app.listen(PORT, () => {
-            console.log(`connected to db\nserver listening on ${PORT}\nenv: ${NODE_ENV}`);
-        });
-    })
-    .catch(err => console.log(err))
+// execute database connection
+dbConnect();
+
+// run server
+app.listen(PORT, () => {
+    console.log(`server listening on ${PORT}\nenv: ${NODE_ENV}`);
+});
