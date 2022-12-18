@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const dbConnect = require('./db/dbConnect');
+const auth = require('./auth');
 const User = require('./db/userModel');
 
 const app = express();
@@ -24,6 +25,19 @@ app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '../frontend/build')));
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+  );
+  next();
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
