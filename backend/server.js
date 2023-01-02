@@ -10,8 +10,10 @@ const dbConnect = require('./config/db.config');
 const auth = require('./middleware/auth.middleware');
 
 // import controllers
+const home = require('./controllers/home.controller');
 const register = require('./controllers/register.controller');
 const login = require('./controllers/login.controller');
+const profile = require('./controllers/profile.controller');
 
 // create express app
 const app = express();
@@ -48,8 +50,10 @@ app.get('/', (req, res) => {
 });
 
 // endpoints
+app.get('/home', home);
 app.post('/register', register);
 app.post('/login', login);
+app.get('/profile', auth, profile);
 
 // execute database connection
 dbConnect();
