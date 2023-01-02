@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { ILoggedState } from './types';
 
-export default function Register() {
+export default function Register({ logged, setLogged }: ILoggedState) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // dodać przekierowanie jeśli użytkownik jest już zalogowany
+  if (logged) window.location.href = '/profile';
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();

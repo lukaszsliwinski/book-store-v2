@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import axios from 'axios'
 import Cookies from "universal-cookie";
+import { ILoggedState } from './types';
 
 const cookies = new Cookies();
 
-export default function Login() {
+export default function Login({ logged, setLogged }: ILoggedState) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // dodać przekierowanie jeśli użytkownik jest już zalogowany
+  if (logged) window.location.href = '/profile';
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const axiosConfig = {
+    const axiosLogConf = {
       method: 'post',
       url: '/login',
       data: {
@@ -21,11 +22,12 @@ export default function Login() {
       }
     };
 
-    axios(axiosConfig)
+    axios(axiosLogConf)
       .then((result) => {
         setUsername('');
         setPassword('');
         cookies.set('TOKEN', result.data.token, {path: '/'});
+        setLogged(true);
       })
       .catch((err) => {
         err = new Error();
