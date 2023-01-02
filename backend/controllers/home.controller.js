@@ -1,5 +1,5 @@
 const home = (req, res) => {
-  res.json({ message: 'home page' });
+  res.json({response: req.body.input})
 };
 
 module.exports = home;

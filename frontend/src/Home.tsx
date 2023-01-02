@@ -1,25 +1,47 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 export default function Home() {
-  const [message, setMessage] = useState('');
+  const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
 
+  // input ref
+  const inputElement = useRef<HTMLInputElement>(null);
+
+  // handle input change and set state
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+
+  // search book post request
   useEffect(() => {
-    const axiosConfig = {
-      method: 'get',
-      url: '/home'
-    };
+    // prevent from post request after every letter written in input field
+    setTimeout(() => {
+      if (inputElement.current && inputElement.current.value === input && input !== '') {
+        const axiosConfig = {
+          method: 'post',
+          url: '/home',
+          data: {
+            input: input
+          }
+        };
 
-    axios(axiosConfig)
-      .then((result) => setMessage(result.data.message))
-      .catch((err) => {
-        err = new Error();
-      });
-  }, []);
+        axios(axiosConfig)
+          .then((result) => {
+            setResponse(result.data.response);
+          })
+          .catch((err) => {
+            err = new Error();
+          });
+      }
+    }, 700)
+  }, [input])
 
   return (
-    <div>
-      <h4>{message}</h4>
-    </div>
-  )
-}
+    <>
+      <input type="text" ref={inputElement} onChange={(e) => handleChange(e)} />
+      <h4>{response}</h4>
+    </>
+  );
+};

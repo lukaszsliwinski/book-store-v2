@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 // });
 
 // endpoints
-app.get('/home', home);
+app.post('/home', home);
 app.post('/register', register);
 app.post('/login', login);
 app.get('/profile', auth, profile);
