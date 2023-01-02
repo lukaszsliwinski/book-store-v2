@@ -6,6 +6,7 @@ module.exports = async (req, res, next) => {
         const decodedToken = await jwt.verify(token, 'RANDOM-TOKEN');
         const user = await decodedToken;
         req.user = user;
+        res.locals.user = user;
         next();
     } catch (err) {
         res.status(401).json({
