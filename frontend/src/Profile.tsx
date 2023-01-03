@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function Profile({ user, token }: { user: string, token: string }) {
+export default function Profile({ username, token }: { username: string, token: string }) {
   const [password, setPassword] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
-  const username = user;
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();

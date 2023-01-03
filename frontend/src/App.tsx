@@ -13,7 +13,7 @@ const cookies = new Cookies();
 
 export default function App() {
   const [logged, setLogged] = useState(false);
-  const [user, setUser] = useState('');
+  const [username, setUsername] = useState('');
 
   const token = cookies.get('TOKEN');
 
@@ -31,7 +31,7 @@ export default function App() {
 
       axios(axiosGetUserConf)
         .then((result) => {
-          setUser(result.data.user.userName);
+          setUsername(result.data.user.username);
         })
         .catch((err) => {
           err = new Error();
@@ -55,7 +55,7 @@ export default function App() {
           </>
         ) : (
           <>
-            <span>logged as {user}</span>
+            <span>logged as {username}</span>
             <button onClick={() => logout()}>logout</button>
           </>
 
@@ -66,7 +66,7 @@ export default function App() {
       <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path="/profile" element={<ProtectedRoute component={<Profile user={user} token={token}/>} />} />
+        <Route path="/profile" element={<ProtectedRoute component={<Profile username={username} token={token}/>} />} />
       </Routes>
     </>
   );

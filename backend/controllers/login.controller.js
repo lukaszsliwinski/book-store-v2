@@ -21,7 +21,7 @@ const login = (req, res) => {
           const token = jwt.sign(
             {
               userId: user._id,
-              userName: user.username,
+              username: user.username,
             },
             'RANDOM-TOKEN',
             { expiresIn: '24h' }

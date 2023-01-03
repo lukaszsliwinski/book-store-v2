@@ -24,7 +24,7 @@ const changePassword = async (req, res) => {
       .then((hashedPassword) => {
         User
           .findOneAndUpdate(
-            {username: res.locals.user.userName},
+            {username: res.locals.user.username},
             {password: hashedPassword}
           )
           .then((result) => {
