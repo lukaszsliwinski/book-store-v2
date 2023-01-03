@@ -58,7 +58,11 @@ export default function Register({ logged, setLogged }: ILoggedState) {
           setPassword('');
         })
         .catch((err) => {
-          setUsernameAlert(err.response.data.message);
+          if (err.response.data.item === 'username') {
+            setUsernameAlert(err.response.data.message);
+          } else if (err.response.data.item === 'password') {
+            setPasswordAlert(err.response.data.message);
+          };
         });
     };
   };
@@ -92,6 +96,18 @@ export default function Register({ logged, setLogged }: ILoggedState) {
         <button type='submit' onClick={(e) => handleSubmit(e)}>register</button>
         <div>Already have an account? <a href="/login">login</a></div>
       </form>
+      <h6>Correct username:</h6>
+      <ul>
+        <li>should contain 3 - 30 characters</li>
+        <li>should not contain spaces</li>
+      </ul>
+      <h6>Correct password:</h6>
+      <ul>
+        <li>should contain 8 - 100 characters</li>
+        <li>should contain uppercase and lowercase letters</li>
+        <li>should contain at least 1 digit</li>
+        <li>should not contain spaces</li>
+      </ul>
     </>
   );
 };
