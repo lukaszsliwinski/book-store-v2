@@ -15,20 +15,27 @@ const register = (req, res) => {
         .save()
         .then((result) => {
           res.status(201).send({
-            message: 'user successfully created',
+            message: 'account successfully created',
             result
           });
         })
         .catch((err) => {
-          res.status(500).send({
-            message: 'error creating user',
-            err
-          });
+          if (err.code === 11000) {
+            res.status(422).send({
+              message: 'account already exist',
+              err
+            });
+          } else {
+            res.status(500).send({
+              message: 'error creating account',
+              err
+            });
+          };
         });
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'password was not hased successfully',
+        message: 'password was not hashed successfully',
         err
       });
     });

@@ -8,30 +8,48 @@ const cookies = new Cookies();
 export default function Login({ logged, setLogged }: ILoggedState) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [usernameAlert, setUsernameAlert] = useState('');
+  const [passwordAlert, setPasswordAlert] = useState('');
 
   if (logged) window.location.href = '/profile';
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const axiosLogConf = {
-      method: 'post',
-      url: '/login',
-      data: {
-        username,
-        password
-      }
-    };
 
-    axios(axiosLogConf)
-      .then((result) => {
-        setUsername('');
-        setPassword('');
-        cookies.set('TOKEN', result.data.token, {path: '/'});
-        setLogged(true);
-      })
-      .catch((err) => {
-        err = new Error();
-      });
+    setUsernameAlert('');
+    setPasswordAlert('');
+
+    if (username === '' || password === '') {
+      if (username === '') setUsernameAlert('provide an username');
+      if (password === '') setPasswordAlert('provide a password');
+    } else {
+      const axiosLogConf = {
+        method: 'post',
+        url: '/login',
+        data: {
+          username,
+          password
+        }
+      };
+
+      axios(axiosLogConf)
+        .then((result) => {
+          setUsername('');
+          setPassword('');
+          cookies.set('TOKEN', result.data.token, {path: '/'});
+          setLogged(true);
+        })
+        .catch((err) => {
+          const errMessage = err.response.data.message;
+          if (errMessage === 'user not found') {
+            setUsernameAlert(errMessage);
+          } else if (errMessage === 'wrong password') {
+            setPasswordAlert(errMessage);
+          } else {
+            err = new Error();
+          };
+        });
+    };
   };
 
   return (
@@ -48,6 +66,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
             placeholder="enter username"
           />
         </div>
+        {(usernameAlert != '' ? <div>{usernameAlert}</div> : '')}
         <div>
           <label>password: </label>
           <input
@@ -58,9 +77,10 @@ export default function Login({ logged, setLogged }: ILoggedState) {
             placeholder="enter password"
           />
         </div>
+        {(passwordAlert != '' ? <div>{passwordAlert}</div> : '')}
         <button type='submit' onClick={(e) => handleSubmit(e)}>login</button>
         <div>Don't have an account? <a href="/register">register</a></div>
       </form>
     </>
-  )
-}
+  );
+};

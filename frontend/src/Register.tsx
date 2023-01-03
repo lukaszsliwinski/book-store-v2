@@ -8,50 +8,60 @@ const cookies = new Cookies();
 export default function Register({ logged, setLogged }: ILoggedState) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [usernameAlert, setUsernameAlert] = useState('');
+  const [passwordAlert, setPasswordAlert] = useState('');
 
   if (logged) window.location.href = '/profile';
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const axiosRegConf = {
-      method: 'post',
-      url: '/register',
-      data: {
-        username,
-        password
-      }
-    };
 
-    const axiosLogConf = {
-      method: 'post',
-      url: '/login',
-      data: {
-        username,
-        password
-      }
-    };
+    setUsernameAlert('');
+    setPasswordAlert('');
 
-    axios(axiosRegConf)
-      .then(() => {
-        // login automatically after successful registration
-        axios(axiosLogConf)
-          .then((result) => {
-            setUsername('');
-            setPassword('');
-            cookies.set('TOKEN', result.data.token, {path: '/'});
-            setLogged(true);
-          })
-          .catch((err) => {
-            err = new Error();
-          });
-        setUsername('');
-        setPassword('');
-      })
-      .catch((err) => {
-        err = new Error();
-      });
+    if (username === '' || password === '') {
+      if (username === '') setUsernameAlert('provide an username');
+      if (password === '') setPasswordAlert('provide a password');
+    } else {
+      const axiosRegConf = {
+        method: 'post',
+        url: '/register',
+        data: {
+          username,
+          password
+        }
+      };
+
+      const axiosLogConf = {
+        method: 'post',
+        url: '/login',
+        data: {
+          username,
+          password
+        }
+      };
+
+      axios(axiosRegConf)
+        .then(() => {
+          // login automatically after successful registration
+          axios(axiosLogConf)
+            .then((result) => {
+              setUsername('');
+              setPassword('');
+              cookies.set('TOKEN', result.data.token, {path: '/'});
+              setLogged(true);
+            })
+            .catch((err) => {
+              err = new Error();
+            });
+          setUsername('');
+          setPassword('');
+        })
+        .catch((err) => {
+          setUsernameAlert(err.response.data.message);
+        });
+    };
   };
-
 
   return (
     <>
@@ -67,6 +77,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
             placeholder="enter username"
           />
         </div>
+        {(usernameAlert != '' ? <div>{usernameAlert}</div> : '')}
         <div>
           <label>password: </label>
           <input
@@ -74,11 +85,13 @@ export default function Register({ logged, setLogged }: ILoggedState) {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="enter password" />
+            placeholder="enter password"
+          />
         </div>
+        {(passwordAlert != '' ? <div>{passwordAlert}</div> : '')}
         <button type='submit' onClick={(e) => handleSubmit(e)}>register</button>
         <div>Already have an account? <a href="/login">login</a></div>
       </form>
     </>
-  )
-}
+  );
+};
