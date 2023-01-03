@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
+import Cookies from "universal-cookie";
 import { ILoggedState } from './types';
+
+const cookies = new Cookies();
 
 export default function Register({ logged, setLogged }: ILoggedState) {
   const [username, setUsername] = useState('');
@@ -19,8 +22,28 @@ export default function Register({ logged, setLogged }: ILoggedState) {
       }
     };
 
+    const axiosLogConf = {
+      method: 'post',
+      url: '/login',
+      data: {
+        username,
+        password
+      }
+    };
+
     axios(axiosRegConf)
       .then(() => {
+        // login automatically after successful registration
+        axios(axiosLogConf)
+          .then((result) => {
+            setUsername('');
+            setPassword('');
+            cookies.set('TOKEN', result.data.token, {path: '/'});
+            setLogged(true);
+          })
+          .catch((err) => {
+            err = new Error();
+          });
         setUsername('');
         setPassword('');
       })
@@ -54,6 +77,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
             placeholder="enter password" />
         </div>
         <button type='submit' onClick={(e) => handleSubmit(e)}>register</button>
+        <div>Already have an account? <a href="/login">login</a></div>
       </form>
     </>
   )
