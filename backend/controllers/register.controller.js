@@ -1,6 +1,8 @@
 const passwordValidator = require('password-validator');
 const bcrypt = require('bcrypt');
 
+const User = require('../models/user.model');
+
 const userSchema = new passwordValidator();
 userSchema
   .is().min(3)
@@ -16,11 +18,8 @@ passwordSchema
   .has().digits(1)
   .has().not().spaces()
 
-const User = require('../models/user.model');
-
 const register = (req, res) => {
   if (!userSchema.validate(req.body.username)) {
-    console.log('handle incorrect username format')
     res.status(400).send({
       item: 'username',
       message: 'incorrect username format'

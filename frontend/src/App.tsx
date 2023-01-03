@@ -66,7 +66,7 @@ export default function App() {
       <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path="/profile" element={<ProtectedRoute component={<Profile user={user}/>} />} />
+        <Route path="/profile" element={<ProtectedRoute component={<Profile user={user} token={token}/>} />} />
       </Routes>
     </>
   );
