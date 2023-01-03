@@ -27,9 +27,10 @@ export default function Profile({ username, token }: { username: string, token: 
       };
 
       axios(axiosChangePassConf)
-        .then(() => {
+        .then((result) => {
           setPassword('');
-          // password changed successfully
+          console.log(result.data.message);
+          setPasswordAlert(result.data.message);
         })
         .catch((err) => {
           setPasswordAlert(err.response.data.message);

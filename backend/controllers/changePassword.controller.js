@@ -15,7 +15,6 @@ passwordSchema
 const changePassword = async (req, res) => {
   if (!passwordSchema.validate(req.body.password)) {
     res.status(400).send({
-      item: 'password',
       message: 'incorrect password format'
     });
   } else {
