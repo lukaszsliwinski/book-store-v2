@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import Cookies from 'universal-cookie';
 
 import Home from './Home';
@@ -12,11 +13,30 @@ const cookies = new Cookies();
 
 export default function App() {
   const [logged, setLogged] = useState(false);
+  const [user, setUser] = useState('');
 
   const token = cookies.get('TOKEN');
 
   useEffect(() => {
-    if (token) setLogged(true);
+    if (token) {
+      setLogged(true);
+
+      const axiosGetUserConf = {
+        method: 'get',
+        url: '/get-user',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      };
+
+      axios(axiosGetUserConf)
+        .then((result) => {
+          setUser(result.data.user.userName);
+        })
+        .catch((err) => {
+          err = new Error();
+        });
+    };
   }, []);
 
   const logout = () => {
@@ -35,7 +55,7 @@ export default function App() {
           </>
         ) : (
           <>
-            <span>logged as 'UserName'</span>
+            <span>logged as {user}</span>
             <button onClick={() => logout()}>logout</button>
           </>
 
@@ -43,10 +63,10 @@ export default function App() {
         <a href="/profile">profile</a>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+      <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path="/profile" element={<ProtectedRoute component={<Profile />} />} />
+        <Route path="/profile" element={<ProtectedRoute component={<Profile user={user}/>} />} />
       </Routes>
     </>
   );

@@ -13,7 +13,7 @@ const auth = require('./middleware/auth.middleware');
 const home = require('./controllers/home.controller');
 const register = require('./controllers/register.controller');
 const login = require('./controllers/login.controller');
-const profile = require('./controllers/profile.controller');
+const getUser = require('./controllers/getUser.controller');
 
 // create express app
 const app = express();
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 app.post('/home', home);
 app.post('/register', register);
 app.post('/login', login);
-app.get('/profile', auth, profile);
+app.get('/get-user', auth, getUser);
 
 // execute database connection
 dbConnect();
