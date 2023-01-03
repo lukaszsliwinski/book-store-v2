@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from "universal-cookie";
 import { ILoggedState } from './types';
@@ -10,6 +10,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
   const [password, setPassword] = useState('');
   const [usernameAlert, setUsernameAlert] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   if (logged) window.location.href = '/profile';
 
@@ -85,12 +86,18 @@ export default function Register({ logged, setLogged }: ILoggedState) {
         <div>
           <label>password: </label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="enter password"
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "hide password" : "show password"}
+          </button>
         </div>
         {(passwordAlert != '' ? <div>{passwordAlert}</div> : '')}
         <button type='submit' onClick={(e) => handleSubmit(e)}>register</button>
