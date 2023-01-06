@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export default function Home() {
   const [input, setInput] = useState('');
-  const [response, setResponse] = useState('');
 
   // input ref
   const inputElement = useRef<HTMLInputElement>(null);
@@ -29,8 +28,7 @@ export default function Home() {
 
         axios(axiosConfig)
           .then((result) => {
-            // setResponse(result.data.response);
-            console.log(result.data.response);
+            (result.data.message === 'ok') ? console.log(result.data.response) : console.log(result.data.message);
           })
           .catch((err) => {
             err = new Error();
@@ -42,7 +40,6 @@ export default function Home() {
   return (
     <>
       <input type="text" ref={inputElement} onChange={(e) => handleChange(e)} />
-      <h4>{response}</h4>
     </>
   );
 };
