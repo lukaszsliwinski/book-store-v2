@@ -29,7 +29,8 @@ export default function Home() {
 
         axios(axiosConfig)
           .then((result) => {
-            setResponse(result.data.response);
+            // setResponse(result.data.response);
+            console.log(result.data.response);
           })
           .catch((err) => {
             err = new Error();
