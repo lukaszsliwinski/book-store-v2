@@ -20,19 +20,17 @@ const home = (req, res) => {
           publishedDate: (item.volumeInfo.publishedDate == undefined) ? '-' : item.volumeInfo.publishedDate,
           price: (item.saleInfo.listPrice == undefined) ? 14.99 : item.saleInfo.listPrice.amount,
           imgSrc: (item.volumeInfo.imageLinks == undefined) ? 'no-cover.png' : item.volumeInfo.imageLinks.thumbnail
-        })
-      })
+        });
+      });
 
       res.json({
-        message: 'ok',
         response: books
       });
     })
     .catch((err) => {
       res.json({
-        message: 'no results',
         response: books
-      })
+      });
     });
 };
 

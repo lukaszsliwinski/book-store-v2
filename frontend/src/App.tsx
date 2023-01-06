@@ -63,7 +63,7 @@ export default function App() {
         <a href="/profile">profile</a>
       </nav>
       <Routes>
-      <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
         <Route path="/profile" element={<ProtectedRoute component={<Profile username={username} token={token}/>} />} />
