@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function Profile({ username, token }: { username: string, token: string }) {
+export default function Profile({ token }: { token: string }) {
   const [password, setPassword] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +21,6 @@ export default function Profile({ username, token }: { username: string, token: 
           Authorization: `Bearer ${token}`,
         },
         data: {
-          username,
           password
         }
       };
