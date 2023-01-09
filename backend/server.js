@@ -16,6 +16,8 @@ const login = require('./controllers/login.controller');
 const getUser = require('./controllers/getUser.controller');
 const changePassword = require('./controllers/changePassword.controller');
 const bookDetails = require('./controllers/bookDetails.controller');
+const addToCart = require('./controllers/addToCart.controller');
+const showCart = require('./controllers/showCart.controller');
 
 // create express app
 const app = express();
@@ -58,6 +60,8 @@ app.post('/login', login);
 app.get('/get-user', auth, getUser);
 app.post('/change-password', auth, changePassword);
 app.post('/book-details', bookDetails);
+app.post('/add-to-cart', auth, addToCart);
+app.get('/show-cart', auth, showCart);
 
 // execute database connection
 dbConnect();

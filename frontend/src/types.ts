@@ -6,10 +6,17 @@ export interface ILoggedState {
 export interface IBookData {
   id: string,
   title: string,
-  authors: [],
+  authors: Array<string>,
   description: string,
   publisher: string,
   publishedDate: string,
   price: number,
   coverUrl: string
 };
+
+export interface IBookInCart {
+  title: string,
+  authors: Array<string>,
+  price: number,
+  amount: number
+}

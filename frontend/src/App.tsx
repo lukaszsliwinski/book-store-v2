@@ -9,6 +9,7 @@ import Register from './Register';
 import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 import BookDetails from './BookDetails';
+import Cart from './Cart';
 
 const cookies = new Cookies();
 
@@ -69,6 +70,7 @@ export default function App() {
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
         <Route path="/profile" element={<ProtectedRoute component={<Profile token={token}/>} />} />
         <Route path="/books/:id" element={<BookDetails />} />
+        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token}/>} />} />
       </Routes>
     </>
   );
