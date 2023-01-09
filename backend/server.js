@@ -10,11 +10,12 @@ const dbConnect = require('./config/db.config');
 const auth = require('./middleware/auth.middleware');
 
 // import controllers
-const home = require('./controllers/home.controller');
+const search = require('./controllers/search.controller');
 const register = require('./controllers/register.controller');
 const login = require('./controllers/login.controller');
 const getUser = require('./controllers/getUser.controller');
 const changePassword = require('./controllers/changePassword.controller');
+const bookDetails = require('./controllers/bookDetails.controller');
 
 // create express app
 const app = express();
@@ -51,11 +52,12 @@ app.use((req, res, next) => {
 // });
 
 // endpoints
-app.post('/home', home);
+app.post('/search', search);
 app.post('/register', register);
 app.post('/login', login);
 app.get('/get-user', auth, getUser);
 app.post('/change-password', auth, changePassword);
+app.post('/book-details', bookDetails);
 
 // execute database connection
 dbConnect();

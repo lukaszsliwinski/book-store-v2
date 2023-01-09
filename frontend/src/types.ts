@@ -11,5 +11,5 @@ export interface IBookData {
   publisher: string,
   publishedDate: string,
   price: number,
-  imgSrc: string
+  coverUrl: string
 };

@@ -1,10 +1,11 @@
 const axios = require('axios');
 
-const home = (req, res) => {
+const search = (req, res) => {
   let books = [];
   axios
     .get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.input}&key=${process.env.API_KEY}&maxResults=40`)
     .then((result) => {
+      console.log('handle success');
       result.data.items.map(item => {
         let authors = [];
         try {
@@ -12,14 +13,11 @@ const home = (req, res) => {
         } catch {};
 
         books.push({
-          id: item.etag,
+          id: item.id,
           title: item.volumeInfo.title,
           authors: authors,
-          description: (item.volumeInfo.description == undefined) ? '-' : item.volumeInfo.description,
-          publisher: (item.volumeInfo.publisher == undefined) ? '-' : item.volumeInfo.publisher,
-          publishedDate: (item.volumeInfo.publishedDate == undefined) ? '-' : item.volumeInfo.publishedDate,
           price: (item.saleInfo.listPrice == undefined) ? 14.99 : item.saleInfo.listPrice.amount,
-          imgSrc: (item.volumeInfo.imageLinks == undefined) ? 'no-cover.png' : item.volumeInfo.imageLinks.thumbnail
+          coverUrl: (item.volumeInfo.imageLinks == undefined) ? 'no-cover.png' : item.volumeInfo.imageLinks.thumbnail
         });
       });
 
@@ -28,10 +26,11 @@ const home = (req, res) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       res.json({
         response: books
       });
     });
 };
 
-module.exports = home;
+module.exports = search;

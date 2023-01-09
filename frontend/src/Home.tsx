@@ -22,15 +22,15 @@ export default function Home() {
     setTimeout(() => {
       if (input === '') setBooklist('');
       if (inputElement.current && inputElement.current.value === input && input !== '') {
-        const axiosConfig = {
+        const axiosSearchConfig = {
           method: 'post',
-          url: '/home',
+          url: '/search',
           data: {
             input: input
           }
         };
 
-        axios(axiosConfig)
+        axios(axiosSearchConfig)
           .then((result) => {
             console.log(result.data.response);
             const data = result.data.response;
@@ -58,7 +58,7 @@ export default function Home() {
             err = new Error();
           });
       };
-    }, 700)
+    }, 500)
   }, [input]);
 
   return (
