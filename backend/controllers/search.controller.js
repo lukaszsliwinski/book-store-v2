@@ -5,7 +5,6 @@ const search = (req, res) => {
   axios
     .get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.input}&key=${process.env.API_KEY}&maxResults=40`)
     .then((result) => {
-      console.log('handle success');
       result.data.items.map(item => {
         let authors = [];
         try {
@@ -13,7 +12,7 @@ const search = (req, res) => {
         } catch {};
 
         books.push({
-          id: item.id,
+          bookId: item.id,
           title: item.volumeInfo.title,
           authors: authors,
           price: (item.saleInfo.listPrice == undefined) ? 14.99 : item.saleInfo.listPrice.amount,

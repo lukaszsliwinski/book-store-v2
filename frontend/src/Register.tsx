@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import Cookies from "universal-cookie";
+import Cookies from 'universal-cookie';
 import { ILoggedState } from './types';
 
 const cookies = new Cookies();

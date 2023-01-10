@@ -32,7 +32,6 @@ export default function Home() {
 
         axios(axiosSearchConfig)
           .then((result) => {
-            console.log(result.data.response);
             const data = result.data.response;
 
             if (data.length === 0) {
@@ -42,7 +41,6 @@ export default function Home() {
               let components: JSX.Element[] = [];
 
               for (let i = 0; i < data.length; i++) {
-                console.log(result.data.response[i].title)
                 components.push(
                   <BookOnTheList
                     data={result.data.response[i]}

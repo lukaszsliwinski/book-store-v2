@@ -4,7 +4,7 @@ export interface ILoggedState {
 };
 
 export interface IBookData {
-  id: string,
+  bookId: string,
   title: string,
   authors: Array<string>,
   description: string,
@@ -15,6 +15,7 @@ export interface IBookData {
 };
 
 export interface IBookInCart {
+  bookId: string,
   title: string,
   authors: Array<string>,
   price: number,

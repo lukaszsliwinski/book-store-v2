@@ -43,6 +43,7 @@ export default function App() {
 
   const logout = () => {
     cookies.remove("TOKEN", { path: "/" });
+    // dodać czyszczenie pamięci podręcznej
     window.location.href = "/";
   }
 
@@ -59,6 +60,7 @@ export default function App() {
           <>
             <span>logged as {username}</span>
             <button onClick={() => logout()}>logout</button>
+            <a href="/cart">cart</a>
           </>
 
         )}
@@ -70,7 +72,7 @@ export default function App() {
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
         <Route path="/profile" element={<ProtectedRoute component={<Profile token={token}/>} />} />
         <Route path="/books/:id" element={<BookDetails />} />
-        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token}/>} />} />
+        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} />} />} />
       </Routes>
     </>
   );
