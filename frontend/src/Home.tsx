@@ -11,9 +11,9 @@ export default function Home() {
   const inputElement = useRef<HTMLInputElement>(null);
 
   // handle input change and set state
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setInput(e.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setInput(event.target.value);
   };
 
   // search book post request
@@ -52,8 +52,8 @@ export default function Home() {
               setBooklist(components);
             }
           })
-          .catch((err) => {
-            err = new Error();
+          .catch((error) => {
+            error = new Error();
           });
       };
     }, 500)

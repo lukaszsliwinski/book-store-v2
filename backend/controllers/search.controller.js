@@ -1,9 +1,9 @@
 const axios = require('axios');
 
-const search = (req, res) => {
+const search = (request, response) => {
   let books = [];
   axios
-    .get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.input}&key=${process.env.API_KEY}&maxResults=40`)
+    .get(`https://www.googleapis.com/books/v1/volumes?q=${request.body.input}&key=${process.env.API_KEY}&maxResults=40`)
     .then((result) => {
       result.data.items.map(item => {
         let authors = [];
@@ -20,13 +20,13 @@ const search = (req, res) => {
         });
       });
 
-      res.json({
+      response.json({
         response: books
       });
     })
-    .catch((err) => {
-      console.log(err);
-      res.json({
+    .catch((error) => {
+      console.log(error);
+      response.json({
         response: books
       });
     });

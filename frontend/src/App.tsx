@@ -35,8 +35,8 @@ export default function App() {
         .then((result) => {
           setUsername(result.data.user.username);
         })
-        .catch((err) => {
-          err = new Error();
+        .catch((error) => {
+          error = new Error();
         });
     };
   }, []);

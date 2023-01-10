@@ -28,11 +28,11 @@ export default function Profile({ token }: { token: string }) {
       axios(axiosChangePassConf)
         .then((result) => {
           setPassword('');
-          console.log(result.data.message);
+
           setPasswordAlert(result.data.message);
         })
-        .catch((err) => {
-          setPasswordAlert(err.response.data.message);
+        .catch((error) => {
+          setPasswordAlert(error.response.data.message);
         });
     };
   };
@@ -48,7 +48,7 @@ export default function Profile({ token }: { token: string }) {
             type={showPassword ? "text" : "password"}
             name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             placeholder="enter password"
           />
           <button

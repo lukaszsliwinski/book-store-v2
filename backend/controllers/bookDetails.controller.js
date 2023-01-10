@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-const bookDetails = (req, res) => {
+const bookDetails = (request, response) => {
   axios
-    .get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.id}&key=${process.env.API_KEY}&maxResults=1`)
+    .get(`https://www.googleapis.com/books/v1/volumes?q=${request.body.id}&key=${process.env.API_KEY}&maxResults=1`)
     .then((result) => {
       if (result.data.totalItems !== 0) {
         let authors = [];
@@ -10,7 +10,7 @@ const bookDetails = (req, res) => {
           result.data.items[0].volumeInfo.authors.map(author => authors.push(author));
         } catch {};
 
-        res.json({
+        response.json({
           title: result.data.items[0].volumeInfo.title,
           authors: authors,
           description: (result.data.items[0].volumeInfo.description == undefined) ? '-' : result.data.items[0].volumeInfo.description,
@@ -20,13 +20,13 @@ const bookDetails = (req, res) => {
           coverUrl: (result.data.items[0].volumeInfo.imageLinks == undefined) ? 'no-cover.png' : result.data.items[0].volumeInfo.imageLinks.thumbnail
         });
       } else {
-        res.json({
+        response.json({
           message: 'book not found'
         });
       };
     })
-    .catch((err) => {
-      res.json({
+    .catch((error) => {
+      response.json({
         message: 'book not found'
       });
     });

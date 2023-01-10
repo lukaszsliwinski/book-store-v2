@@ -4,17 +4,17 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 
 
-const login = (req, res) => {
+const login = (request, response) => {
   User
-    .findOne({ username: req.body.username })
+    .findOne({ username: request.body.username })
     .then((user) => {
       bcrypt
-        .compare(req.body.password, user.password)
+        .compare(request.body.password, user.password)
         .then((passwordCheck) => {
           if (!passwordCheck) {
-            return res.status(400).send({
+            return response.status(400).send({
               message: 'wrong password',
-              err
+              error
             });
           };
 
@@ -27,23 +27,23 @@ const login = (req, res) => {
             { expiresIn: '24h' }
           );
 
-          res.status(200).send({
+          response.status(200).send({
             message: "login successful",
             username: user.username,
             token,
           });
         })
-        .catch((err) => {
-          res.status(400).send({
+        .catch((error) => {
+          response.status(400).send({
             message: 'wrong password',
-            err
+            error
           });
         });
     })
-    .catch((err) => {
-      res.status(404).send({
+    .catch((error) => {
+      response.status(404).send({
         message: 'user not found',
-        err
+        error
       });
     });
 };

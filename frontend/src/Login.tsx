@@ -14,8 +14,8 @@ export default function Login({ logged, setLogged }: ILoggedState) {
 
   if (logged) window.location.href = '/profile';
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.SyntheticEvent) => {
+    event.preventDefault();
 
     setUsernameAlert('');
     setPasswordAlert('');
@@ -40,14 +40,14 @@ export default function Login({ logged, setLogged }: ILoggedState) {
           cookies.set('TOKEN', result.data.token, {path: '/'});
           setLogged(true);
         })
-        .catch((err) => {
-          const errMessage = err.response.data.message;
-          if (errMessage === 'user not found') {
-            setUsernameAlert(errMessage);
-          } else if (errMessage === 'wrong password') {
-            setPasswordAlert(errMessage);
+        .catch((error) => {
+          const errorMessage = error.response.data.message;
+          if (errorMessage === 'user not found') {
+            setUsernameAlert(errorMessage);
+          } else if (errorMessage === 'wrong password') {
+            setPasswordAlert(errorMessage);
           } else {
-            err = new Error();
+            error = new Error();
           };
         });
     };
@@ -63,7 +63,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
             type="text"
             name="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
             placeholder="enter username"
           />
         </div>
@@ -74,7 +74,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
             type={showPassword ? "text" : "password"}
             name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             placeholder="enter password"
           />
           <button
@@ -85,7 +85,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
           </button>
         </div>
         {(passwordAlert != '' ? <div>{passwordAlert}</div> : '')}
-        <button type='submit' onClick={(e) => handleSubmit(e)}>login</button>
+        <button type='submit' onClick={(event) => handleSubmit(event)}>login</button>
         <div>Don't have an account? <a href="/register">register</a></div>
       </form>
     </>

@@ -34,14 +34,10 @@ export default function BookDetails() {
           };
         };
       })
-      .catch((err) => {
-        err = new Error();
+      .catch((error) => {
+        error = new Error();
         console.log('404')
       });
-
-
-
-
   }, []);
 
 

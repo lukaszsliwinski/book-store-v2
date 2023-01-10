@@ -18,54 +18,54 @@ passwordSchema
   .has().digits(1)
   .has().not().spaces()
 
-const register = (req, res) => {
-  if (!userSchema.validate(req.body.username)) {
-    res.status(400).send({
+const register = (request, response) => {
+  if (!userSchema.validate(request.body.username)) {
+    response.status(400).send({
       item: 'username',
       message: 'incorrect username format'
     });
-  } else if (!passwordSchema.validate(req.body.password)) {
+  } else if (!passwordSchema.validate(request.body.password)) {
     console.log('handle incorrect password format')
-    res.status(400).send({
+    response.status(400).send({
       item: 'password',
       message: 'incorrect password format'
     });
   } else {
     bcrypt
-      .hash(req.body.password, 10)
+      .hash(request.body.password, 10)
       .then((hashedPassword) => {
         const user = new User({
-          username: req.body.username,
+          username: request.body.username,
           password: hashedPassword
         });
 
         user
           .save()
           .then((result) => {
-            res.status(201).send({
+            response.status(201).send({
               message: 'account successfully created',
               result
             });
           })
-          .catch((err) => {
-            if (err.code === 11000) {
-              res.status(422).send({
+          .catch((error) => {
+            if (error.code === 11000) {
+              response.status(422).send({
                 item: 'username',
                 message: 'account already exist',
-                err
+                error
               });
             } else {
-              res.status(500).send({
+              response.status(500).send({
                 message: 'error creating account',
-                err
+                error
               });
             };
           });
       })
-      .catch((err) => {
-        res.status(500).send({
+      .catch((error) => {
+        response.status(500).send({
           message: 'password was not hashed successfully',
-          err
+          error
         });
       });
   };

@@ -1,16 +1,16 @@
 const jwt = require("jsonwebtoken");
 
-module.exports = async (req, res, next) => {
+module.exports = async (request, response, next) => {
     try {
-        const token = await req.headers.authorization.split(' ')[1];
+        const token = await request.headers.authorization.split(' ')[1];
         const decodedToken = await jwt.verify(token, 'RANDOM-TOKEN');
         const user = await decodedToken;
-        req.user = user;
-        res.locals.user = user;
+        request.user = user;
+        response.locals.user = user;
         next();
-    } catch (err) {
-        res.status(401).json({
-            err: new Error("Invalid request!"),
+    } catch (error) {
+        response.status(401).json({
+            error: new Error("Invalid request!"),
         });
     }
 };

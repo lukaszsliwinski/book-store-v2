@@ -14,8 +14,8 @@ export default function Register({ logged, setLogged }: ILoggedState) {
 
   if (logged) window.location.href = '/profile';
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.SyntheticEvent) => {
+    event.preventDefault();
 
     setUsernameAlert('');
     setPasswordAlert('');
@@ -52,17 +52,17 @@ export default function Register({ logged, setLogged }: ILoggedState) {
               cookies.set('TOKEN', result.data.token, {path: '/'});
               setLogged(true);
             })
-            .catch((err) => {
-              err = new Error();
+            .catch((error) => {
+              error = new Error();
             });
           setUsername('');
           setPassword('');
         })
-        .catch((err) => {
-          if (err.response.data.item === 'username') {
-            setUsernameAlert(err.response.data.message);
-          } else if (err.response.data.item === 'password') {
-            setPasswordAlert(err.response.data.message);
+        .catch((error) => {
+          if (error.response.data.item === 'username') {
+            setUsernameAlert(error.response.data.message);
+          } else if (error.response.data.item === 'password') {
+            setPasswordAlert(error.response.data.message);
           };
         });
     };
@@ -78,7 +78,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
             type="text"
             name="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
             placeholder="enter username"
           />
         </div>
@@ -89,7 +89,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
             type={showPassword ? "text" : "password"}
             name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             placeholder="enter password"
           />
           <button
@@ -100,7 +100,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
           </button>
         </div>
         {(passwordAlert != '' ? <div>{passwordAlert}</div> : '')}
-        <button type='submit' onClick={(e) => handleSubmit(e)}>register</button>
+        <button type='submit' onClick={(event) => handleSubmit(event)}>register</button>
         <div>Already have an account? <a href="/login">login</a></div>
       </form>
       <h6>Correct username:</h6>

@@ -13,7 +13,7 @@ export default function Cart({ token }: { token: string }) { // token będzie po
 
   const minusOne = (bookId: string) => {
     const newCart = [...cart];
-    const book : IBookInCart = newCart.find((item: IBookInCart) => item.bookId === bookId) as IBookInCart;
+    const book: IBookInCart = newCart.find((item: IBookInCart) => item.bookId === bookId) as IBookInCart;
     if (book.amount > 1) {
       book.amount -= 1;
       newCart.map((item: IBookInCart) => {
@@ -29,7 +29,7 @@ export default function Cart({ token }: { token: string }) { // token będzie po
 
   const plusOne = (bookId: string) => {
     const newCart = [...cart];
-    const book : IBookInCart = newCart.find((item: IBookInCart) => item.bookId === bookId) as IBookInCart;
+    const book: IBookInCart = newCart.find((item: IBookInCart) => item.bookId === bookId) as IBookInCart;
     if (book.amount < 5) {
       book.amount += 1;
     };
