@@ -43,7 +43,7 @@ export default function App() {
 
   const logout = () => {
     cookies.remove("TOKEN", { path: "/" });
-    // dodać czyszczenie pamięci podręcznej
+    localStorage.clear();
     window.location.href = "/";
   }
 
