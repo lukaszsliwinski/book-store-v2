@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 
 import { IBookInCart } from './types';
 
-export default function Cart({ token }: { token: string }) { // token będzie potrzebny przy składaniu zamówienia (auth endpoint)
+export default function Cart({ token, setBadge }: { token: string, setBadge: React.Dispatch<React.SetStateAction<number>> }) { // token będzie potrzebny przy składaniu zamówienia (auth endpoint)
   const [cart, setCart] = useState<IBookInCart[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
   const [empty, setEmpty] = useState('');
 
   useEffect(() => {
     cart.length === 0 ? setEmpty('your cart is empty') : setEmpty('');
-    localStorage.setItem('cart', JSON.stringify(cart))
+    localStorage.setItem('cart', JSON.stringify(cart));
+    setBadge(cart.length);
   }, [cart]);
 
   const minusOne = (bookId: string) => {
@@ -21,7 +22,7 @@ export default function Cart({ token }: { token: string }) { // token będzie po
       });
     } else {
       for (let i = 0; i < newCart.length; i++) {
-        if ( newCart[i].bookId === bookId) newCart.splice(i, 1);
+        if (newCart[i].bookId === bookId) newCart.splice(i, 1);
       };
     };
     setCart(newCart);
@@ -63,3 +64,4 @@ export default function Cart({ token }: { token: string }) { // token będzie po
     </>
   );
 };
+
