@@ -16,6 +16,7 @@ const cookies = new Cookies();
 export default function App() {
   const [logged, setLogged] = useState(false);
   const [username, setUsername] = useState('');
+  const [badge, setBadge] = useState(JSON.parse(localStorage.getItem('cart') || '[]').length);
 
   const token = cookies.get('TOKEN');
 
@@ -38,6 +39,11 @@ export default function App() {
         .catch((error) => {
           error = new Error();
         });
+
+      window.addEventListener('storage', () => {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        setBadge(cart.length);
+      })
     };
   }, []);
 
@@ -60,7 +66,7 @@ export default function App() {
           <>
             <span>logged as {username}</span>
             <button onClick={() => logout()}>logout</button>
-            <a href="/cart">cart</a>
+            <a href="/cart">cart -{badge}-</a>
           </>
 
         )}
@@ -72,7 +78,7 @@ export default function App() {
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
         <Route path="/profile" element={<ProtectedRoute component={<Profile token={token}/>} />} />
         <Route path="/books/:id" element={<BookDetails />} />
-        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} />} />} />
+        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge}/>} />} />
       </Routes>
     </>
   );
