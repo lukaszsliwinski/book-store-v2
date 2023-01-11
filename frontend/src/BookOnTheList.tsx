@@ -44,7 +44,8 @@ export default function BookOnTheList({ data } : { data: IBookData }) {
       } else if (!book) {
         cart.push(dataToCart);
       };
-      localStorage.setItem('cart', JSON.stringify(cart))
+      localStorage.setItem('cart', JSON.stringify(cart));
+      window.dispatchEvent(new Event("storage"));
     } else {
       window.location.href = '/login';
     };
