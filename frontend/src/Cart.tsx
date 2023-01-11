@@ -1,15 +1,26 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { IBookInCart } from './types';
 
-export default function Cart({ token, setBadge }: { token: string, setBadge: React.Dispatch<React.SetStateAction<number>> }) { // token będzie potrzebny przy składaniu zamówienia (auth endpoint)
+export default function Cart({ token, setBadge }: { token: string, setBadge: React.Dispatch<React.SetStateAction<number>> }) {
   const [cart, setCart] = useState<IBookInCart[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
-  const [empty, setEmpty] = useState('');
+  const [total, setTotal] = useState<number>();
 
   useEffect(() => {
-    cart.length === 0 ? setEmpty('your cart is empty') : setEmpty('');
     localStorage.setItem('cart', JSON.stringify(cart));
     setBadge(cart.length);
+
+    if (cart.length !== 0) {
+      let sum = 0;
+      cart.map((item: IBookInCart) => {
+        sum += item.price * item.amount
+      });
+
+      // round sum to 2 decimals and set total state
+      sum = Math.round(sum * 100) / 100;
+      setTotal(sum);
+    };
   }, [cart]);
 
   const minusOne = (bookId: string) => {
@@ -45,6 +56,29 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
     setCart(newCart);
   };
 
+  const makeOrder = () => {
+    const axiosMakeOrderConfig = {
+      method: 'post',
+      url: '/order',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        cart: cart,
+        total: total
+      }
+    };
+
+    axios(axiosMakeOrderConfig)
+      .then((result) => {
+        console.log(result); // przekierowanie na stronę potwierdzającą złożenie zamówienia - przy tworzeniu frontu
+        setCart([]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <>
       {cart.map(item => {
@@ -60,8 +94,14 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
           </>
         );
       })}
-      <div>{empty}</div>
+      {cart.length === 0 ?
+        <div>your cart is empty</div> :
+        <>
+          <div>total: {total}</div>
+          <div>
+            <button onClick={() => makeOrder()}>order</button>
+          </div>
+        </>}
     </>
   );
 };
-

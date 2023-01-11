@@ -6,8 +6,8 @@ export default function Profile({ token }: { token: string }) {
   const [passwordAlert, setPasswordAlert] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.SyntheticEvent) => {
+    event.preventDefault();
 
     setPasswordAlert('');
 
@@ -40,7 +40,7 @@ export default function Profile({ token }: { token: string }) {
   return (
     <>
       <h3>Profile page</h3>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <h4>change password</h4>
         <div>
           <label>password: </label>
@@ -59,7 +59,7 @@ export default function Profile({ token }: { token: string }) {
           </button>
         </div>
         {(passwordAlert != '' ? <div>{passwordAlert}</div> : '')}
-        <button type='submit' onClick={(e) => handleSubmit(e)}>change</button>
+        <button type='submit' onClick={(event) => handleSubmit(event)}>change</button>
       </form>
       <h6>Correct password:</h6>
       <ul>

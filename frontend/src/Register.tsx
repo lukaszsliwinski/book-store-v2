@@ -70,7 +70,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <h4>register form</h4>
         <div>
           <label>username: </label>

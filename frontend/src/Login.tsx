@@ -55,7 +55,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <h4>login</h4>
         <div>
           <label>username: </label>

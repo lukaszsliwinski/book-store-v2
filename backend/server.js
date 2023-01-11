@@ -16,6 +16,7 @@ const login = require('./controllers/login.controller');
 const getUser = require('./controllers/getUser.controller');
 const changePassword = require('./controllers/changePassword.controller');
 const bookDetails = require('./controllers/bookDetails.controller');
+const order = require('./controllers/order.controller');
 
 // create express app
 const app = express();
@@ -58,6 +59,7 @@ app.post('/login', login);
 app.get('/get-user', auth, getUser);
 app.post('/change-password', auth, changePassword);
 app.post('/book-details', bookDetails);
+app.post('/order', auth, order);
 
 // execute database connection
 dbConnect();
