@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { IBookInCart } from './types';
+import { IBook } from './types';
 
 export default function Cart({ token, setBadge }: { token: string, setBadge: React.Dispatch<React.SetStateAction<number>> }) {
-  const [cart, setCart] = useState<IBookInCart[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
+  const [cart, setCart] = useState<IBook[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
   const [total, setTotal] = useState<number>();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
 
     if (cart.length !== 0) {
       let sum = 0;
-      cart.map((item: IBookInCart) => {
+      cart.map((item: IBook) => {
         sum += item.price * item.amount
       });
 
@@ -25,10 +25,10 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
 
   const minusOne = (bookId: string) => {
     const newCart = [...cart];
-    const book: IBookInCart = newCart.find((item: IBookInCart) => item.bookId === bookId) as IBookInCart;
+    const book: IBook = newCart.find((item: IBook) => item.bookId === bookId) as IBook;
     if (book.amount > 1) {
       book.amount -= 1;
-      newCart.map((item: IBookInCart) => {
+      newCart.map((item: IBook) => {
         return (item.bookId === book.bookId) ? book : item;
       });
     } else {
@@ -41,7 +41,7 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
 
   const plusOne = (bookId: string) => {
     const newCart = [...cart];
-    const book: IBookInCart = newCart.find((item: IBookInCart) => item.bookId === bookId) as IBookInCart;
+    const book: IBook = newCart.find((item: IBook) => item.bookId === bookId) as IBook;
     if (book.amount < 5) {
       book.amount += 1;
     };

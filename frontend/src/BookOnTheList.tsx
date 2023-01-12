@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { IBookData, IBookInCart } from './types';
+import { IBookDetails, IBook } from './types';
 import { addToCart } from './utils';
 
-export default function BookOnTheList({ data } : { data: IBookData }) {
-  const [dataToCart, setDataToCart] = useState<IBookInCart>();
+export default function BookOnTheList({ data } : { data: IBookDetails }) {
+  const [dataToCart, setDataToCart] = useState<IBook>();
   const [counter, setCounter] = useState(1);
   const navigate = useNavigate();
 

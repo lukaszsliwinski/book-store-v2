@@ -2,20 +2,20 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { IBookData, IBookInCart } from './types';
+import { IBookDetails, IBook } from './types';
 import { addToCart } from './utils';
 
 export default function BookDetails() {
-  const [bookData, setBookData] = useState<IBookData>();
+  const [bookData, setBookData] = useState<IBookDetails>();
   const [coverUrl, setCoverUrl] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [dataToCart, setDataToCart] = useState<IBookInCart>();
+  const [dataToCart, setDataToCart] = useState<IBook>();
   const [counter, setCounter] = useState(1);
 
   const params = useParams();
 
   useEffect(() => {
-    const axiosBookDetailsConf = {
+    const axiosBookDetailsConfig = {
       method: 'post',
       url: '/book-details',
       data: {
@@ -23,7 +23,7 @@ export default function BookDetails() {
       }
     };
 
-    axios(axiosBookDetailsConf)
+    axios(axiosBookDetailsConfig)
       .then((result) => {
         if (result.data.message === 'book not found') {
           setErrorMessage(result.data.message);

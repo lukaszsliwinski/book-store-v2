@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+import History from './History';
+
 export default function Profile({ token }: { token: string }) {
   const [password, setPassword] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
@@ -14,7 +16,7 @@ export default function Profile({ token }: { token: string }) {
     if (password === '') {
       setPasswordAlert('provide a password');
     } else {
-      const axiosChangePassConf = {
+      const axiosChangePasswordConfig = {
         method: 'post',
         url: '/change-password',
         headers: {
@@ -25,7 +27,7 @@ export default function Profile({ token }: { token: string }) {
         }
       };
 
-      axios(axiosChangePassConf)
+      axios(axiosChangePasswordConfig)
         .then((result) => {
           setPassword('');
 
@@ -68,7 +70,7 @@ export default function Profile({ token }: { token: string }) {
         <li>should contain at least 1 digit</li>
         <li>should not contain spaces</li>
       </ul>
+      <History token={token} />
     </>
-
   );
 };

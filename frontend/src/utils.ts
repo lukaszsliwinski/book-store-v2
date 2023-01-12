@@ -1,19 +1,19 @@
 import Cookies from 'universal-cookie';
 
-import { IBookInCart } from './types';
+import { IBook } from './types';
 
 const cookies = new Cookies();
 
-export const addToCart = (dataToCart: IBookInCart) => {
+export const addToCart = (dataToCart: IBook) => {
   const token = cookies.get('TOKEN');
 
   if (token) {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const book = cart.find((item: IBookInCart) => item.bookId === dataToCart.bookId)
+    const book = cart.find((item: IBook) => item.bookId === dataToCart.bookId)
     if (book && book.amount < 5) {
       book.amount += dataToCart.amount;
       if (book.amount > 5) book.amount = 5;
-      cart.map((item: IBookInCart) => {
+      cart.map((item: IBook) => {
         return (item.bookId === book.bookId) ? book : item;
       });
     } else if (!book) {

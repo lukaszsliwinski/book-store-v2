@@ -24,7 +24,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
       if (username === '') setUsernameAlert('provide an username');
       if (password === '') setPasswordAlert('provide a password');
     } else {
-      const axiosLogConf = {
+      const axiosLoginConfig = {
         method: 'post',
         url: '/login',
         data: {
@@ -33,7 +33,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
         }
       };
 
-      axios(axiosLogConf)
+      axios(axiosLoginConfig)
         .then((result) => {
           setUsername('');
           setPassword('');

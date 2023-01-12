@@ -24,7 +24,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
       if (username === '') setUsernameAlert('provide an username');
       if (password === '') setPasswordAlert('provide a password');
     } else {
-      const axiosRegConf = {
+      const axiosRegisterConfig = {
         method: 'post',
         url: '/register',
         data: {
@@ -33,7 +33,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
         }
       };
 
-      const axiosLogConf = {
+      const axiosLoginConfig = {
         method: 'post',
         url: '/login',
         data: {
@@ -42,10 +42,10 @@ export default function Register({ logged, setLogged }: ILoggedState) {
         }
       };
 
-      axios(axiosRegConf)
+      axios(axiosRegisterConfig)
         .then(() => {
           // login automatically after successful registration
-          axios(axiosLogConf)
+          axios(axiosLoginConfig)
             .then((result) => {
               setUsername('');
               setPassword('');

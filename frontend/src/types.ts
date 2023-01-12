@@ -3,7 +3,7 @@ export interface ILoggedState {
   setLogged: (logged: boolean) => void
 };
 
-export interface IBookData {
+export interface IBookDetails {
   bookId: string,
   title: string,
   authors: Array<string>,
@@ -14,7 +14,7 @@ export interface IBookData {
   coverUrl: string
 };
 
-export interface IBookInCart {
+export interface IBook {
   bookId: string,
   title: string,
   authors: Array<string>,

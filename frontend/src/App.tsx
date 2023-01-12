@@ -24,7 +24,7 @@ export default function App() {
     if (token) {
       setLogged(true);
 
-      const axiosGetUserConf = {
+      const axiosGetUserConfig = {
         method: 'get',
         url: '/get-user',
         headers: {
@@ -32,7 +32,7 @@ export default function App() {
         }
       };
 
-      axios(axiosGetUserConf)
+      axios(axiosGetUserConfig)
         .then((result) => {
           setUsername(result.data.user.username);
         })
@@ -73,12 +73,12 @@ export default function App() {
         <a href="/profile">profile</a>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path="/profile" element={<ProtectedRoute component={<Profile token={token}/>} />} />
+        <Route path="/profile" element={<ProtectedRoute component={<Profile token={token} />} />} />
         <Route path="/books/:id" element={<BookDetails />} />
-        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge}/>} />} />
+        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge} />} />} />
       </Routes>
     </>
   );
