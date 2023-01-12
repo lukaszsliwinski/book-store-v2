@@ -17,6 +17,7 @@ const getUser = require('./controllers/getUser.controller');
 const changePassword = require('./controllers/changePassword.controller');
 const bookDetails = require('./controllers/bookDetails.controller');
 const order = require('./controllers/order.controller');
+const history = require('./controllers/history.controller');
 
 // create express app
 const app = express();
@@ -60,6 +61,7 @@ app.get('/get-user', auth, getUser);
 app.post('/change-password', auth, changePassword);
 app.post('/book-details', bookDetails);
 app.post('/order', auth, order);
+app.get('/history', auth, history);
 
 // execute database connection
 dbConnect();
