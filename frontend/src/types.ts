@@ -20,4 +20,11 @@ export interface IBook {
   authors: Array<string>,
   price: number,
   amount: number
-}
+};
+
+export interface IOrder {
+  number: number,
+  date: string,
+  books: Array<IBook>,
+  total: number
+};
