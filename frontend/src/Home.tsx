@@ -24,7 +24,7 @@ export default function Home() {
       if (inputElement.current && inputElement.current.value === input && input !== '') {
         const axiosSearchConfig = {
           method: 'post',
-          url: '/search',
+          url: '/api/search',
           data: {
             input: input
           }

@@ -26,7 +26,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
     } else {
       const axiosLoginConfig = {
         method: 'post',
-        url: '/login',
+        url: '/api/login',
         data: {
           username,
           password

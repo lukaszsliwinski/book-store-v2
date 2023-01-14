@@ -18,7 +18,7 @@ export default function Profile({ token }: { token: string }) {
     } else {
       const axiosChangePasswordConfig = {
         method: 'post',
-        url: '/change-password',
+        url: '/api/change-password',
         headers: {
           Authorization: `Bearer ${token}`,
         },

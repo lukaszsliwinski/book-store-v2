@@ -59,7 +59,7 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
   const makeOrder = () => {
     const axiosMakeOrderConfig = {
       method: 'post',
-      url: '/order',
+      url: '/api/order',
       headers: {
         Authorization: `Bearer ${token}`,
       },

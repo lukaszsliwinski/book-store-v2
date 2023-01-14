@@ -26,7 +26,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
     } else {
       const axiosRegisterConfig = {
         method: 'post',
-        url: '/register',
+        url: '/api/register',
         data: {
           username,
           password
@@ -35,7 +35,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
 
       const axiosLoginConfig = {
         method: 'post',
-        url: '/login',
+        url: '/api/login',
         data: {
           username,
           password

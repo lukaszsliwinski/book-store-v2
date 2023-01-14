@@ -17,7 +17,7 @@ export default function BookDetails() {
   useEffect(() => {
     const axiosBookDetailsConfig = {
       method: 'post',
-      url: '/book-details',
+      url: '/api/book-details',
       data: {
         id: params.id
       }

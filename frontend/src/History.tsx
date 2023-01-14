@@ -9,7 +9,7 @@ export default function History({ token }: { token: string }) {
   useEffect(() => {
     const axiosHistoryConfig = {
       method: 'get',
-      url: '/history',
+      url: '/api/history',
       headers: {
         Authorization: `Bearer ${token}`,
       }

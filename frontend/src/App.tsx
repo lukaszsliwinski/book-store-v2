@@ -26,7 +26,7 @@ export default function App() {
 
       const axiosGetUserConfig = {
         method: 'get',
-        url: '/get-user',
+        url: '/api/get-user',
         headers: {
           Authorization: `Bearer ${token}`,
         }

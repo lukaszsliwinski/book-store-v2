@@ -49,19 +49,19 @@ app.use((request, response, next) => {
 });
 
 // render react app
-// app.get('/', (request, response) => {
-//   response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
-// });
+app.get('*', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+});
 
 // endpoints
-app.post('/search', search);
-app.post('/register', register);
-app.post('/login', login);
-app.get('/get-user', auth, getUser);
-app.post('/change-password', auth, changePassword);
-app.post('/book-details', bookDetails);
-app.post('/order', auth, order);
-app.get('/history', auth, history);
+app.post('/api/search', search);
+app.post('/api/register', register);
+app.post('/api/login', login);
+app.get('/api/get-user', auth, getUser);
+app.post('/api/change-password', auth, changePassword);
+app.post('/api/book-details', bookDetails);
+app.post('/api/order', auth, order);
+app.get('/api/history', auth, history);
 
 // execute database connection
 dbConnect();
