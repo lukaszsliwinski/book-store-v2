@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import BookOnTheList from './BookOnTheList';
 
-export default function Home() {
+export default function Search() {
   const [input, setInput] = useState('');
   const [bookList, setBooklist] = useState<JSX.Element[] | string>('');   // przy tworzeniu frontu usunąć typ string i przekazać komunikat 'no result' listę z jednym komponentem
 

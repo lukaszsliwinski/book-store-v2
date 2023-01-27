@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
-import Home from './Home';
+import Header from './Header';
+import Search from './Search';
 import Login from './Login';
 import Register from './Register';
 import Profile from './Profile';
@@ -47,33 +48,11 @@ export default function App() {
     };
   }, []);
 
-  const logout = () => {
-    cookies.remove("TOKEN", { path: "/" });
-    localStorage.clear();
-    window.location.href = "/";
-  }
-
   return (
     <>
-      <nav>
-        <a href="/">home</a>
-        {!logged ? (
-          <>
-            <a href="/login">login</a>
-            <a href="/register">create an account</a>
-          </>
-        ) : (
-          <>
-            <span>logged as {username}</span>
-            <button onClick={() => logout()}>logout</button>
-            <a href="/cart">cart -{badge}-</a>
-          </>
-
-        )}
-        <a href="/profile">profile</a>
-      </nav>
+      <Header logged={logged} username={username} badge={badge}/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Search />} />
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
         <Route path="/profile" element={<ProtectedRoute component={<Profile token={token} />} />} />
