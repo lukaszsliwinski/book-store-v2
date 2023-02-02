@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import './assets/global.css';
+import 'tw-elements';
 
 import Header from './Header';
 import Search from './Search';

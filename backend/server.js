@@ -49,9 +49,9 @@ app.use((request, response, next) => {
 });
 
 // render react app
-app.get('*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
-});
+// app.get('*', (request, response) => {
+//   response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+// });
 
 // endpoints
 app.post('/api/search', search);
