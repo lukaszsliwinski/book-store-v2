@@ -21,7 +21,10 @@ export default function Header({ logged, username, badge }: { logged: boolean, u
 
   return (
     <nav className='sticky top-0 flex justify-between items-center bg-[#363538] px-6 py-2'>
-      <a href='/' className='text-[#f6f6f6] font-semibold'><Book className='inline-block mr-2 w-3.5'/>BOOK STORE</a>
+      <a href='/' className='inline-flex text-[#f6f6f6] font-semibold'>
+        <div className='inline-flex items-center h-full'><Book className='inline-block mr-2 w-5'/></div>
+        <div className='inline-flex items-center h-full'>BOOK STORE</div>
+      </a>
       {!logged ? (
         <div>
           <Btn href='/login' label='login' icon={<Login className='inline-block ml-2 w-3' />} />
@@ -37,20 +40,28 @@ export default function Header({ logged, username, badge }: { logged: boolean, u
             <button
               className='dropdown-toggle px-6 py-2.5 bg-transparent text-[#f6f6f6] font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 active:bg-[#f6f6f6]/10 transition duration-150 ease-in-out flex whitespace-nowrap'
               data-bs-toggle="dropdown"
-            >{username}<Arrow className='ml-1 w-2'/>
+            >
+              <div className='flex items-center'>{username}</div>
+              <div className='flex items-center'><Arrow className='ml-1 w-2'/></div>
             </button>
             <ul className='dropdown-menu min-w-full absolute hidden bg-[#363538] z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none'>
               <li>
                 <a
-                  className='dropdown-item text-xs py-2 px-4 font-normal flex items-center w-full whitespace-nowrap bg-transparent text-[#f6f6f6] hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 active:bg-[#f6f6f6]/10'
+                  className='dropdown-item text-xs py-2 px-4 font-normal inline-flex w-full whitespace-nowrap bg-transparent text-[#f6f6f6] hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 active:bg-[#f6f6f6]/10'
                   href='/profie'
-                ><span>PROFILE</span><Profile className='inline-block ml-4 w-3'/></a>
+                >
+                  <div className='flex items-center h-full'>PROFILE</div>
+                  <div className='flex items-center h-full'><Profile className='inline-block ml-4 w-3.5'/></div>
+                </a>
               </li>
               <li>
                 <a
-                  className='dropdown-item text-xs py-2 px-4 font-normal items-center w-full whitespace-nowrap bg-transparent text-[#f6f6f6] hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 active:bg-[#f6f6f6]/10 cursor-pointer'
+                  className='dropdown-item text-xs py-2 px-4 font-normal inline-flex w-full whitespace-nowrap bg-transparent text-[#f6f6f6] hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 active:bg-[#f6f6f6]/10 cursor-pointer'
                   onClick={() => logout()}
-                  ><span>LOGOUT</span><Logout className='inline-block ml-4 w-3'/></a>
+                  >
+                    <div className='flex items-center h-full'>LOGOUT</div>
+                    <div className='flex items-center h-full'><Logout className='inline-block ml-4 w-3.5'/></div>
+                  </a>
               </li>
             </ul>
           </div>
