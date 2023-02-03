@@ -60,11 +60,21 @@ export default function Search() {
   }, [input]);
 
   return (
-    <>
-      <input type="text" ref={inputElement} onChange={(e) => handleChange(e)} />
+    <div className='bg-[#f6f6f6]'>
+      <div className='flex justify-center'>
+        <div className='my-3 xl:w-[32rem]'>
+          <input
+            ref={inputElement}
+            type='text'
+            className='form-control block w-full px-6 py-3 text-lg font-normal text-[#363538] bg-white bg-clip-padding border-2 border-solid border-transparent rounded-full transition ease-in-out m-0 focus:ring-0 focus:border-[#408697] focus:outline-none'
+            onChange={(e) => handleChange(e)}
+            placeholder='Text input'
+          />
+        </div>
+      </div>
       <div>
         {bookList}
       </div>
-    </>
+    </div>
   );
 };

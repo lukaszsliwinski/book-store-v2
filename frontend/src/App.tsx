@@ -51,7 +51,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <div className='h-screen-mobile bg-[#f6f6f6]'>
       <Header logged={logged} username={username} badge={badge}/>
       <Routes>
         <Route path="/" element={<Search />} />
@@ -61,6 +61,6 @@ export default function App() {
         <Route path="/books/:id" element={<BookDetails />} />
         <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge} />} />} />
       </Routes>
-    </>
+    </div>
   );
 }
