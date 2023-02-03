@@ -4,11 +4,11 @@ import { ReactComponent as Book } from './assets/book.svg';
 import { ReactComponent as Login } from './assets/login.svg';
 import { ReactComponent as Register } from './assets/register.svg';
 import { ReactComponent as Cart } from './assets/cart.svg';
-import { ReactComponent as Arrow } from './assets/arrow.svg';
+import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
 import { ReactComponent as Profile } from './assets/profile.svg';
 import { ReactComponent as Logout } from './assets/logout.svg';
 
-import Btn from './Btn';
+import Link from './Link';
 
 const cookies = new Cookies();
 
@@ -27,8 +27,8 @@ export default function Header({ logged, username, badge }: { logged: boolean, u
       </a>
       {!logged ? (
         <div>
-          <Btn href='/login' label='login' icon={<Login className='inline-block ml-2 w-3' />} />
-          <Btn href='/register' label='register' icon={<Register className='inline-block ml-2 w-2.5' />}/>
+          <Link href='/login' label='login' icon={<Login className='inline-block ml-2 w-3' />} />
+          <Link href='/register' label='register' icon={<Register className='inline-block ml-2 w-2.5' />}/>
         </div>
       ) : (
         <div className='flex items-center'>
@@ -42,7 +42,7 @@ export default function Header({ logged, username, badge }: { logged: boolean, u
               data-bs-toggle="dropdown"
             >
               <div className='flex items-center'>{username}</div>
-              <div className='flex items-center'><Arrow className='ml-1 w-2'/></div>
+              <div className='flex items-center'><ArrowDown className='ml-1 w-2'/></div>
             </button>
             <ul className='dropdown-menu min-w-full absolute hidden bg-[#363538] z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none'>
               <li>
@@ -55,13 +55,13 @@ export default function Header({ logged, username, badge }: { logged: boolean, u
                 </a>
               </li>
               <li>
-                <a
+                <button
                   className='dropdown-item text-xs py-2 px-4 font-normal inline-flex w-full whitespace-nowrap bg-transparent text-[#f6f6f6] hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 active:bg-[#f6f6f6]/10 cursor-pointer'
                   onClick={() => logout()}
-                  >
-                    <div className='flex items-center h-full'>LOGOUT</div>
-                    <div className='flex items-center h-full'><Logout className='inline-block ml-4 w-3.5'/></div>
-                  </a>
+                >
+                  <div className='flex items-center h-full'>LOGOUT</div>
+                  <div className='flex items-center h-full'><Logout className='inline-block ml-4 w-3.5'/></div>
+                </button>
               </li>
             </ul>
           </div>

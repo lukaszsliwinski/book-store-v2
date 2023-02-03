@@ -60,7 +60,7 @@ export default function Search() {
   }, [input]);
 
   return (
-    <div className='bg-[#f6f6f6]'>
+    <div className='flex flex-col items-center bg-[#f6f6f6]'>
       <div className='flex justify-center'>
         <div className='my-3 xl:w-[32rem]'>
           <input
@@ -72,7 +72,7 @@ export default function Search() {
           />
         </div>
       </div>
-      <div>
+      <div className='grid grid-cols-3 gap-6 mb-6'>
         {bookList}
       </div>
     </div>
