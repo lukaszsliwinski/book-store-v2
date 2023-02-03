@@ -42,13 +42,13 @@ export default function BookOnTheList({ data } : { data: IBookDetails }) {
         <div className='p-4 flex flex-col justify-start'>
           <a href={`/books/${data.bookId}`} className='text-sm font-bold hover:underline'>{data.title}</a>
           <div className='flex text-xs'>{authors}</div>
-          <p className='my-4 text-xl font-bold text-[#408697]'>{data.price} $</p>
+          <div className='my-4 text-xl font-bold text-[#408697]'>{data.price} $</div>
           <div className='flex items-center'>
             <div className='flex items-center border px-2'>
               <div className='font-medium text-lg'>{counter}</div>
               <div className='inline-flex flex-col ml-2'>
-                <button onClick={() => { if (counter < 5) setCounter(counter + 1) }}><ArrowUp className='w-2'/></button>
-                <button onClick={() => { if (counter > 1) setCounter(counter - 1) }}><ArrowDown className='w-2'/></button>
+                <button onClick={() => {if (counter < 5) setCounter(counter + 1)}}><ArrowUp className='w-2'/></button>
+                <button onClick={() => {if (counter > 1) setCounter(counter - 1)}}><ArrowDown className='w-2'/></button>
               </div>
             </div>
             <Btn onclick={() => {if (dataToCart) addToCart(dataToCart)}} label='buy' icon={undefined} />
