@@ -11,6 +11,7 @@ import { addToCart } from './utils';
 export default function BookDetails() {
   const [bookData, setBookData] = useState<IBookDetails>();
   const [coverUrl, setCoverUrl] = useState('');
+  const [authors, setAuthors] = useState<JSX.Element[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [dataToCart, setDataToCart] = useState<IBook>();
   const [counter, setCounter] = useState(1);
@@ -47,6 +48,22 @@ export default function BookDetails() {
             price: result.data.price,
             amount: counter
           });
+
+          if (bookData) {
+            let components: JSX.Element[] = [];
+
+            for (let i = 0; i < bookData.authors.length; i++) {
+              components.push(
+                <span>
+                  {bookData.authors[i]}
+                  {(i !== bookData.authors.length-1) ? ',' : ''}
+                  &nbsp;
+                </span>
+              );
+            };
+
+            setAuthors(components);
+          };
         };
       })
       .catch((error) => {
@@ -74,7 +91,7 @@ export default function BookDetails() {
         <img className='h-96 md:ml-12 md:my-4 rounded-t-lg md:rounded-none' src={coverUrl} alt='book cover' />
         <div className='p-8 flex flex-col justify-start'>
           <h5 className='text-sm font-bold hover:underline'>{bookData.title}</h5>
-          <div className='flex text-xs mb-2'>{bookData.authors}</div>
+          <div className='flex text-xs mb-2'>{authors}</div>
           <div className='flex text-xs mb-2 text-justify'>{bookData.description.replace(/<\/?[^>]+(>|$)/g, ' ')}</div>
           <div className='flex text-xs mb-2'><span className='font-semibold'>publisher:</span>&nbsp;{bookData.publisher}</div>
           <div className='flex text-xs'><span className='font-semibold'>published date:</span>&nbsp;{bookData.publishedDate}</div>
