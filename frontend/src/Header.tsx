@@ -48,7 +48,7 @@ export default function Header({ logged, username, badge }: { logged: boolean, u
               <li>
                 <a
                   className='dropdown-item text-xs py-2 px-4 font-normal inline-flex w-full whitespace-nowrap bg-transparent text-[#f6f6f6] hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 active:bg-[#f6f6f6]/10'
-                  href='/profie'
+                  href='/profile'
                 >
                   <div className='flex items-center h-full'>PROFILE</div>
                   <div className='flex items-center h-full'><Profile className='inline-block ml-4 w-3.5'/></div>

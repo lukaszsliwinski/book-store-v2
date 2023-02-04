@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { ReactComponent as ArrowUp } from './assets/arrowup.svg';
+import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
+import { ReactComponent as Bin } from './assets/bin.svg';
+import Btn from './Btn';
 import { IBook } from './types';
 
 export default function Cart({ token, setBadge }: { token: string, setBadge: React.Dispatch<React.SetStateAction<number>> }) {
@@ -80,28 +84,34 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
   }
 
   return (
-    <>
+    <div className='block p-6 rounded-lg shadow-lg bg-white mx-auto my-4 md:max-w-[600px]'>
       {cart.map(item => {
         return (
-          <>
-            <div>{item.title}</div>
-            <div>{item.authors}</div>
-            <div>{item.price}</div>
-            <div>{item.amount}</div>
-            <button onClick={() => minusOne(item.bookId)}>minus</button>
-            <button onClick={() => plusOne(item.bookId)}>plus</button>
-            <button onClick={() => removeFromCart(item.bookId)}>remove</button>
-          </>
+          <div className='flex items-center justify-between my-1.5'>
+            <div className='font-bold text-sm'>{item.title}</div>
+            <div className='flex items-center'>
+              <div className='flex items-center border mx-1 px-2'>
+                <div className='font-medium text-lg'>{item.amount}</div>
+                <div className='inline-flex flex-col ml-2'>
+                  <button onClick={() => plusOne(item.bookId)}><ArrowUp className='w-2'/></button>
+                  <button onClick={() => minusOne(item.bookId)}><ArrowDown className='w-2'/></button>
+                </div>
+              </div>
+              <div className='mx-1 w-[6rem]'>&ensp;x&ensp;<span className='font-bold'>{item.price} $</span></div>
+              <button
+                className='relative inline-block mx-1 p-2 bg-[#408697] text-[#f6f6f6] font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
+                onClick={() => removeFromCart(item.bookId)}
+              ><Bin className='w-3.5'/></button>
+            </div>
+          </div>
         );
       })}
       {cart.length === 0 ?
         <div>your cart is empty</div> :
-        <>
-          <div>total: {total}</div>
-          <div>
-            <button onClick={() => makeOrder()}>order</button>
-          </div>
-        </>}
-    </>
+        <div className='flex flex-col justify-center items-center mt-6'>
+          <div className='font-bold'>total: {total} $</div>
+          <Btn onclick={() => makeOrder()} label='order' icon={undefined} />
+        </div>}
+    </div>
   );
 };
