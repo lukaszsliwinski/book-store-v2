@@ -102,9 +102,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
         <div className='grid grid-cols-12'>
           {(passwordAlert != '' ? <div className='col-start-2 col-span-10 text-xs ml-2 text-red-800'>{passwordAlert}</div> : '')}
         </div>
-
-
-
+        
         <div className='text-center mt-10'>
           <Btn onclick={(event) => handleSubmit(event)} label='login' icon={undefined} />
           <div className='text-xs mt-2'>Don't have an account? <a href='/register' className='font-bold underline underline-offset-2 text-[#363538] hover:text-[#408697]'>register</a></div>
