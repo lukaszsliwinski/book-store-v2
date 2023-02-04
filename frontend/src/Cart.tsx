@@ -107,7 +107,7 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
         );
       })}
       {cart.length === 0 ?
-        <div>your cart is empty</div> :
+        <div className='text-xs font-semibold'>YOUR CART IS EMPTY</div> :
         <div className='flex flex-col justify-center items-center mt-6'>
           <div className='font-bold'>total: {total} $</div>
           <Btn onclick={() => makeOrder()} label='order' icon={undefined} />
