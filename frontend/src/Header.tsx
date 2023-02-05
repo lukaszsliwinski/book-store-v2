@@ -21,7 +21,7 @@ export default function Header({darkMode, setDarkMode, logged, username, badge }
   };
 
   return (
-    <nav className='sticky top-0 flex justify-between items-center bg-custom-black px-6 py-2'>
+    <nav className='fixed top-0 flex justify-between items-center w-full bg-custom-black px-6 py-2'>
       <a href='/' className='inline-flex text-custom-white font-semibold'>
         <div className='inline-flex items-center h-full'><Book className='inline-block mr-2 w-5'/></div>
         <div className='inline-flex items-center h-full'>BOOK STORE</div>

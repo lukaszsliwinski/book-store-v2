@@ -62,7 +62,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className='h-screen-mobile bg-custom-white dark:bg-custom-gray'>
+    <div className='h-screen-mobile pt-12 bg-custom-white dark:bg-custom-gray'>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} logged={logged} username={username} badge={badge}/>
       <Routes>
         <Route path="/" element={<Search />} />

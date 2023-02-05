@@ -41,7 +41,7 @@ export default function Login({ logged, setLogged }: ILoggedState) {
         .then((result) => {
           setUsername('');
           setPassword('');
-          localStorage.clear();
+          localStorage.removeItem('cart');
           cookies.set('TOKEN', result.data.token, {path: '/'});
           setLogged(true);
         })
