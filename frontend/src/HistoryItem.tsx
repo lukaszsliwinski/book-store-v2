@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
 import { IOrder } from "./types";
 
 export default function HistoryItem({ order }: { order: IOrder }) {
@@ -10,10 +11,9 @@ export default function HistoryItem({ order }: { order: IOrder }) {
 
     for (let i = 0; i < order.books.length; i++) {
       components.push(
-        <div>
-          <small>{i+1}. </small>
-          <small>{order.books[i].authors} - {order.books[i].title} </small>
-          <small>{order.books[i].amount} x {order.books[i].price}</small>
+        <div className='flex justify-between text-xs'>
+          <span>{i+1}. {order.books[i].title} </span>
+          <span>{order.books[i].amount} x {order.books[i].price} $</span>
         </div>
       );
     };
@@ -22,10 +22,22 @@ export default function HistoryItem({ order }: { order: IOrder }) {
   }, []);
 
   return (
-    <div>
-      <h6>order no: {order.number} --- {order.date}</h6>
-      {booksOnOrder}
-      <small>total: {order.total}</small>
+    <div className='m-2 p-2 rounded-lg shadow-lg bg-white'>
+
+      <div className='flex justify-between items-center text-xs'>
+        <span>order {order.number}</span>
+        <span>{order.date.substring(0,10)}</span>
+        <span>{order.total} $</span>
+        <button
+          className='p-1 hover:text-[#408697]'
+          type='button' data-bs-toggle='collapse' data-bs-target={`#collapse${order.number}`} aria-expanded='false' aria-controls={`collapse${order.number}`}>
+          <ArrowDown className='ml-1 w-2'/>
+        </button>
+      </div>
+
+      <div className='collapse border-t' id={`collapse${order.number}`}>
+        <div className='p-2'>{booksOnOrder}</div>
+      </div>
     </div>
   );
 };

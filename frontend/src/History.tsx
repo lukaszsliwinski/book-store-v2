@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import HistoryItem from './HistoryItem';
+import { IOrder } from './types'
 
 export default function History({ token }: { token: string }) {
   const [ordersHistory, setOrdersHistory] = useState<JSX.Element[]>([]);
@@ -22,7 +23,8 @@ export default function History({ token }: { token: string }) {
         if (orders.length === 0) {
           // komunikat o braku zamówień
         } else {
-          // create list of components
+          // sort orders descending and create list of components
+          orders.sort((a: IOrder, b: IOrder) => b.number - a.number);
           let components: JSX.Element[] = [];
 
           for (let i = 0; i < orders.length; i++) {
@@ -39,9 +41,9 @@ export default function History({ token }: { token: string }) {
   }, []);
 
   return (
-    <>
-      <h4>Orders history</h4>
+    <div className='w-[400px]'>
+      <h4 className='mt-6 text-xs font-semibold'>latest orders</h4>
       <div>{ordersHistory}</div>
-    </>
+    </div>
   );
 };

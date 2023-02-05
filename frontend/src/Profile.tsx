@@ -66,7 +66,7 @@ export default function Profile({ token, username }: { token: string, username: 
                     className='mt-8 ml-2 text-[#363538]'
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? <EyeSlash className='w-[22px] hover:text-[#408697]'/> : <Eye className='w-5 hover:text-[#408697]'/>}
+                    {showPassword ? <EyeSlash className='w-5 hover:text-[#408697]'/> : <Eye className='w-5 hover:text-[#408697]'/>}
                 </button>
               </div>
               <div className='grid grid-cols-12'>
@@ -91,7 +91,7 @@ export default function Profile({ token, username }: { token: string, username: 
           </div>
 
         </div>
-        <div>
+        <div className='flex justify-center'>
           <History token={token} />
         </div>
       </div>
