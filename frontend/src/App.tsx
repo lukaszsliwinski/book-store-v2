@@ -17,11 +17,22 @@ import Cart from './Cart';
 const cookies = new Cookies();
 
 export default function App() {
+  // state
+  const [darkMode, setDarkMode] = useState(false);
   const [logged, setLogged] = useState(false);
   const [username, setUsername] = useState('');
   const [badge, setBadge] = useState(JSON.parse(localStorage.getItem('cart') || '[]').length);
 
   const token = cookies.get('TOKEN');
+
+  // ref to html element
+  const html = document.documentElement;
+
+  // handle dark mode switch and add class to html element
+  useEffect(() => {
+    darkMode ? html.classList.add('dark') : html.classList.remove('dark');
+    console.log('darkMode state:', darkMode);
+  }, [darkMode, html.classList]);
 
   useEffect(() => {
     if (token) {
@@ -52,7 +63,7 @@ export default function App() {
 
   return (
     <div className='h-screen-mobile bg-[#f6f6f6]'>
-      <Header logged={logged} username={username} badge={badge}/>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} logged={logged} username={username} badge={badge}/>
       <Routes>
         <Route path="/" element={<Search />} />
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
