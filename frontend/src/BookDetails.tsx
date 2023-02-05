@@ -87,7 +87,7 @@ export default function BookDetails() {
   return (
     <>
       {bookData ?
-      <div className='flex flex-col md:flex-row mx-auto my-4 md:w-3/4 rounded-lg bg-white text-[#363538] shadow-lg'>
+      <div className='flex flex-col md:flex-row mx-auto my-4 md:w-3/4 rounded-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-lg'>
         <img className='h-96 md:ml-12 md:my-4 rounded-t-lg md:rounded-none' src={coverUrl} alt='book cover' />
         <div className='p-8 flex flex-col justify-start'>
           <h5 className='text-sm font-bold hover:underline'>{bookData.title}</h5>
@@ -95,13 +95,13 @@ export default function BookDetails() {
           <div className='flex text-xs mb-2 text-justify'>{bookData.description.replace(/<\/?[^>]+(>|$)/g, ' ')}</div>
           <div className='flex text-xs mb-2'><span className='font-semibold'>publisher:</span>&nbsp;{bookData.publisher}</div>
           <div className='flex text-xs'><span className='font-semibold'>published date:</span>&nbsp;{bookData.publishedDate}</div>
-          <div className='my-4 text-xl font-bold text-[#408697]'>{bookData.price} $</div>
+          <div className='my-4 text-xl font-bold text-custom-main'>{bookData.price} $</div>
           <div className='flex items-center'>
-            <div className='flex items-center border px-2'>
+            <div className='flex items-center border px-2 text-custom-black dark:bg-custom-white'>
               <div className='font-medium text-lg'>{counter}</div>
               <div className='inline-flex flex-col ml-2'>
-                <button onClick={() => {if (counter < 5) setCounter(counter + 1)}}><ArrowUp className='w-2'/></button>
-                <button onClick={() => {if (counter > 1) setCounter(counter - 1)}}><ArrowDown className='w-2'/></button>
+                <button onClick={() => {if (counter < 5) setCounter(counter + 1)}}><ArrowUp className='w-2 hover:text-custom-main'/></button>
+                <button onClick={() => {if (counter > 1) setCounter(counter - 1)}}><ArrowDown className='w-2 hover:text-custom-main'/></button>
               </div>
             </div>
             <Btn onclick={() => {if (dataToCart) addToCart(dataToCart)}} label='buy' icon={undefined} />

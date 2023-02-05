@@ -22,14 +22,14 @@ export default function HistoryItem({ order }: { order: IOrder }) {
   }, []);
 
   return (
-    <div className='m-2 p-2 rounded-lg shadow-lg bg-white'>
+    <div className='m-2 p-2 rounded-lg shadow-lg bg-white dark:bg-custom-gray'>
 
       <div className='flex justify-between items-center text-xs'>
         <span>order {order.number}</span>
         <span>{order.date.substring(0,10)}</span>
         <span>{order.total} $</span>
         <button
-          className='p-1 hover:text-[#408697]'
+          className='p-1 hover:text-custom-main'
           type='button' data-bs-toggle='collapse' data-bs-target={`#collapse${order.number}`} aria-expanded='false' aria-controls={`collapse${order.number}`}>
           <ArrowDown className='ml-1 w-2'/>
         </button>

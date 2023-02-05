@@ -5,8 +5,8 @@ import BookOnTheList from './BookOnTheList';
 
 export default function Search() {
   const [input, setInput] = useState('');
-  const [bookList, setBooklist] = useState<JSX.Element[] | string>('');   // przy tworzeniu frontu usunąć typ string i przekazać komunikat 'no result' listę z jednym komponentem
-
+  const [bookList, setBooklist] = useState<JSX.Element[]>([]);
+  
   // input ref
   const inputElement = useRef<HTMLInputElement>(null);
 
@@ -20,7 +20,7 @@ export default function Search() {
   useEffect(() => {
     // prevent from post request after every letter written in input field
     setTimeout(() => {
-      if (input === '') setBooklist('');
+      if (input === '') setBooklist([]);
       if (inputElement.current && inputElement.current.value === input && input !== '') {
         const axiosSearchConfig = {
           method: 'post',
@@ -35,7 +35,9 @@ export default function Search() {
             const data = result.data.response;
 
             if (data.length === 0) {
-              setBooklist('no result');
+              setBooklist([
+                <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>NO RESULTS</div>
+              ]);
             } else {
               // create list of components
               let components: JSX.Element[] = [];
@@ -60,15 +62,15 @@ export default function Search() {
   }, [input]);
 
   return (
-    <div className='flex flex-col items-center bg-[#f6f6f6]'>
+    <div className='flex flex-col items-center bg-custom-white dark:bg-custom-gray'>
       <div className='flex justify-center'>
         <div className='my-3 xl:w-[32rem]'>
           <input
             ref={inputElement}
             type='text'
-            className='form-control block w-full px-6 py-3 text-lg font-normal text-[#363538] bg-white bg-clip-padding border-2 border-solid border-transparent rounded-full transition ease-in-out m-0 focus:ring-0 focus:border-[#408697] focus:outline-none'
+            className='form-control block w-full px-6 py-3 text-lg font-normal text-custom-black bg-white dark:bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded-full transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
             onChange={(e) => handleChange(e)}
-            placeholder='Text input'
+            placeholder='Title, authors, ...'
           />
         </div>
       </div>

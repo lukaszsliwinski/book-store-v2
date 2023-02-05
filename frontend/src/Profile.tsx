@@ -43,34 +43,34 @@ export default function Profile({ token, username }: { token: string, username: 
   };
 
   return (
-    <div className='mx-auto my-4 md:w-3/4 p-6 rounded-lg bg-white text-[#363538] shadow-lg'>
-      <h4 className='text-center font-bold text-[#408697] uppercase'>{username} - profile</h4>
+    <div className='mx-auto my-4 md:w-3/4 p-6 rounded-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-lg'>
+      <h4 className='text-center font-bold text-custom-main uppercase'>{username} - profile</h4>
       <div className='grid grid-cols-2'>
         <div className='flex justify-center'>
           <div>
             <form onSubmit={(event) => handleSubmit(event)}>
               <div className='grid grid-cols-12 form-group mt-6'>
                 <div className='col-span-11'>
-                  <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold text-[#363538]'>change password</label>
+                  <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold '>change password</label>
                   <input
                     type={showPassword ? 'text' : 'password'}
                     name='password'
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
-                    className='form-control block w-full px-3 py-1.5 text-base font-normal text-[#363538] bg-[#f6f6f6] bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-[#408697] focus:outline-none'
+                    className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
                     placeholder='ender password'
                   />
                 </div>
                 <button
                     type='button'
-                    className='mt-8 ml-2 text-[#363538]'
+                    className='mt-8 ml-2'
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? <EyeSlash className='w-5 hover:text-[#408697]'/> : <Eye className='w-5 hover:text-[#408697]'/>}
+                    {showPassword ? <EyeSlash className='w-5 hover:text-custom-main'/> : <Eye className='w-5 hover:text-custom-main'/>}
                 </button>
               </div>
-              <div className='grid grid-cols-12'>
-                {(passwordAlert != '' ? <div className='col-start-2 col-span-10 text-xs ml-2 text-red-800'>{passwordAlert}</div> : '')}
+              <div>
+                {(passwordAlert != '' ? <div className='text-xs ml-2 text-red-600'>{passwordAlert}</div> : '')}
               </div>
 
               <div className='text-center mt-6'>

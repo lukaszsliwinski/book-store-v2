@@ -41,8 +41,8 @@ export default function History({ token }: { token: string }) {
   }, []);
 
   return (
-    <div className='w-[400px]'>
-      <h4 className='mt-6 text-xs font-semibold'>latest orders</h4>
+    <div className='mt-6 w-[400px]'>
+      <label className='ml-4 text-xs font-semibold'>latest orders</label>
       <div>{ordersHistory}</div>
     </div>
   );

@@ -73,53 +73,53 @@ export default function Register({ logged, setLogged }: ILoggedState) {
   };
 
   return (
-    <div className='block p-6 rounded-lg shadow-lg bg-white mx-auto my-4 sm:max-w-[400px]'>
+    <div className='block p-6 rounded-lg shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 sm:max-w-[400px]'>
       <form onSubmit={(event) => handleSubmit(event)}>
-        <h4 className='text-center font-bold text-[#408697]'>REGISTER</h4>
+        <h4 className='text-center font-bold text-custom-main'>REGISTER</h4>
         <div className='grid grid-cols-12 form-group'>
           <div className='col-start-2 col-span-10'>
-            <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold text-[#363538]'>username</label>
+            <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold'>username</label>
             <input
               type='text'
               name='username'
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-[#363538] bg-[#f6f6f6] bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-[#408697] focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='enter username'
             />
           </div>
         </div>
         <div className='grid grid-cols-12'>
-          {(usernameAlert != '' ? <div className='col-start-2 col-span-10 ml-2 text-xs text-red-800'>{usernameAlert}</div> : '')}
+          {(usernameAlert != '' ? <div className='col-start-2 col-span-10 ml-2 text-xs text-red-600'>{usernameAlert}</div> : '')}
         </div>
 
         <div className='grid grid-cols-12 form-group mt-6'>
           <div className='col-start-2 col-span-10'>
-            <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold text-[#363538]'>password</label>
+            <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold'>password</label>
             <input
               type={showPassword ? 'text' : 'password'}
               name='password'
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-[#363538] bg-[#f6f6f6] bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-[#408697] focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='ender password'
             />
           </div>
           <button
               type='button'
-              className='mt-8 ml-2 text-[#363538]'
+              className='mt-8 ml-2'
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <EyeSlash className='w-[22px] hover:text-[#408697]'/> : <Eye className='w-5 hover:text-[#408697]'/>}
+              {showPassword ? <EyeSlash className='w-[22px] hover:text-custom-main'/> : <Eye className='w-5 hover:text-custom-main'/>}
           </button>
         </div>
         <div className='grid grid-cols-12'>
-          {(passwordAlert != '' ? <div className='col-start-2 col-span-10 text-xs ml-2 text-red-800'>{passwordAlert}</div> : '')}
+          {(passwordAlert != '' ? <div className='col-start-2 col-span-10 text-xs ml-2 text-red-600'>{passwordAlert}</div> : '')}
         </div>
 
         <div className='text-center mt-10'>
           <Btn onclick={(event) => handleSubmit(event)} label='register' icon={undefined} />
-          <div className='text-xs mt-2'>Already have an account? <a href='/login' className='font-bold underline underline-offset-2 text-[#363538] hover:text-[#408697]'>login</a></div>
+          <div className='text-xs mt-2'>Already have an account? <a href='/login' className='font-bold underline underline-offset-2 hover:text-custom-main'>login</a></div>
         </div>
       </form>
 

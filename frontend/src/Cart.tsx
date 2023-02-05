@@ -84,22 +84,23 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
   }
 
   return (
-    <div className='block p-6 rounded-lg shadow-lg bg-white mx-auto my-4 md:max-w-[600px]'>
+    <div className='block p-6 rounded-lg shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:max-w-[600px]'>
+      <h4 className='text-center font-bold text-custom-main'>SHOPPING CART</h4>
       {cart.map(item => {
         return (
-          <div className='flex items-center justify-between my-1.5'>
+          <div className='flex items-center justify-between my-2'>
             <div className='font-bold text-sm'>{item.title}</div>
             <div className='flex items-center'>
-              <div className='flex items-center border mx-1 px-2'>
+              <div className='flex items-center border mx-1 px-2 text-custom-black dark:bg-custom-white'>
                 <div className='font-medium text-lg'>{item.amount}</div>
                 <div className='inline-flex flex-col ml-2'>
-                  <button onClick={() => plusOne(item.bookId)}><ArrowUp className='w-2'/></button>
-                  <button onClick={() => minusOne(item.bookId)}><ArrowDown className='w-2'/></button>
+                  <button onClick={() => plusOne(item.bookId)}><ArrowUp className='w-2 hover:text-custom-main'/></button>
+                  <button onClick={() => minusOne(item.bookId)}><ArrowDown className='w-2 hover:text-custom-main'/></button>
                 </div>
               </div>
               <div className='mx-1 w-[6rem]'>&ensp;x&ensp;<span className='font-bold'>{item.price} $</span></div>
               <button
-                className='relative inline-block mx-1 p-2 bg-[#408697] text-[#f6f6f6] font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-[#408697] hover:bg-[#f6f6f6]/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
+                className='relative inline-block mx-1 p-2 bg-custom-main text-custom-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-custom-main hover:bg-custom-white/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
                 onClick={() => removeFromCart(item.bookId)}
               ><Bin className='w-3.5'/></button>
             </div>
