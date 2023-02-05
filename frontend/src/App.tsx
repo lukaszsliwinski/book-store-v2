@@ -57,7 +57,7 @@ export default function App() {
         <Route path="/" element={<Search />} />
         <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path="/profile" element={<ProtectedRoute component={<Profile token={token} />} />} />
+        <Route path="/profile" element={<ProtectedRoute component={<Profile token={token} username={username} />} />} />
         <Route path="/books/:id" element={<BookDetails />} />
         <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge} />} />} />
       </Routes>
