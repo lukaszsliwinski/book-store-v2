@@ -75,7 +75,7 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
 
     axios(axiosMakeOrderConfig)
       .then((result) => {
-        console.log(result); // przekierowanie na stronę potwierdzającą złożenie zamówienia - przy tworzeniu frontu
+        console.log(result); // snackbar potwierdzający złożenie zamówienia
         setCart([]);
       })
       .catch((error) => {

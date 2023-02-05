@@ -19,7 +19,6 @@ export default function History({ token }: { token: string }) {
     axios(axiosHistoryConfig)
       .then((result) => {
         const orders = result.data.history;
-        console.log(result.data.history);
         if (orders.length === 0) {
           // komunikat o braku zamówień
         } else {

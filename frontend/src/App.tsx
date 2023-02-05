@@ -30,8 +30,8 @@ export default function App() {
 
   // handle dark mode switch and add class to html element
   useEffect(() => {
+    localStorage.getItem('mode') === 'dark' ? setDarkMode(true) : setDarkMode(false);
     darkMode ? html.classList.add('dark') : html.classList.remove('dark');
-    console.log('darkMode state:', darkMode);
   }, [darkMode, html.classList]);
 
   useEffect(() => {

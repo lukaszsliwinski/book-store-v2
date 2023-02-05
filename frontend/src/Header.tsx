@@ -16,7 +16,7 @@ const cookies = new Cookies();
 export default function Header({darkMode, setDarkMode, logged, username, badge }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, logged: boolean, username: string, badge: string }) {
   const logout = () => {
     cookies.remove('TOKEN', { path: '/' });
-    localStorage.clear();
+    localStorage.removeItem('cart');
     window.location.href = '/';
   };
 
