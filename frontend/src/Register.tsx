@@ -84,7 +84,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
               name='username'
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-[#363538] bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-[#363538] bg-[#f6f6f6] bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-[#408697] focus:outline-none'
               placeholder='enter username'
             />
           </div>
@@ -101,7 +101,7 @@ export default function Register({ logged, setLogged }: ILoggedState) {
               name='password'
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-[#363538] bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-[#363538] bg-[#f6f6f6] bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-[#408697] focus:outline-none'
               placeholder='ender password'
             />
           </div>
