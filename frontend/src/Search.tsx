@@ -75,7 +75,7 @@ export default function Search() {
           <input
             ref={inputElement}
             type='text'
-            className='form-control block w-full pl-6 pr-36 py-3 text-lg font-normal text-custom-black bg-white dark:bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded-lg transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+            className='form-control block w-full pl-6 pr-36 py-3 text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-lg transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
             onChange={(event) => handleChange(event)}
             onKeyDown={(event) => handleEnter(event)}
             placeholder='Title, authors, ...'
