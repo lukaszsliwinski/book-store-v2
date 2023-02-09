@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { ReactComponent as SearchIcon } from './assets/search.svg';
@@ -6,16 +7,25 @@ import Btn from './Btn';
 import BookOnTheList from './BookOnTheList';
 
 export default function Search() {
-  const [input, setInput] = useState('');
+  // search params
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // state
+  const [query, setQuery] = useState(searchParams.get('query') || '');
   const [bookList, setBooklist] = useState<JSX.Element[]>([]);
 
   // input ref
   const inputElement = useRef<HTMLInputElement>(null);
 
+  // call search function on render if there are search params
+  useEffect(() => {
+    search();
+  }, [])
+
   // handle input change and set state
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    setInput(event.target.value);
+    setQuery(event.target.value);
   };
 
   // handle enter press
@@ -28,13 +38,14 @@ export default function Search() {
 
   // search book post request
   const search = () => {
-    if (input === '') setBooklist([]);
-    if (inputElement.current && inputElement.current.value === input && input !== '') {
+    if (query === '') setBooklist([]);
+    if (inputElement.current && inputElement.current.value === query && query !== '') {
+      setSearchParams({ query })
       const axiosSearchConfig = {
         method: 'post',
         url: '/api/search',
         data: {
-          input: input
+          input: query
         }
       };
 
@@ -75,6 +86,7 @@ export default function Search() {
           <input
             ref={inputElement}
             type='text'
+            value={query}
             className='form-control block w-full pl-6 pr-36 py-3 text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-lg transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
             onChange={(event) => handleChange(event)}
             onKeyDown={(event) => handleEnter(event)}

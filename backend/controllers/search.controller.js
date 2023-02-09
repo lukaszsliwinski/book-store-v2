@@ -3,7 +3,7 @@ const axios = require('axios');
 const search = (request, response) => {
   let books = [];
   axios
-    .get(`https://www.googleapis.com/books/v1/volumes?q=${request.body.input}&key=${process.env.API_KEY}&maxResults=40`)
+    .get(`https://www.googleapis.com/books/v1/volumes?q=${request.body.query}&key=${process.env.API_KEY}&maxResults=40`)
     .then((result) => {
       result.data.items.map(item => {
         let authors = [];
