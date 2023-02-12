@@ -25,3 +25,24 @@ export const addToCart = (dataToCart: IBook) => {
     window.location.href = '/login';
   };
 };
+
+
+export const handleChangeCounter = ({ event, setCounter }: {
+  event: React.ChangeEvent<HTMLInputElement>,
+  setCounter: (counter: number) => void
+}) => {
+  event.preventDefault();
+  setCounter(event.target.valueAsNumber);
+};
+
+
+export const validateCounter = ({ counter, setCounter }: {
+  counter: number,
+  setCounter: (counter: number) => void
+}) => {
+  if (counter > 5) {
+    setCounter(5);
+  } else if (counter < 1) {
+    setCounter(1);
+  };
+};

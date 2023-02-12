@@ -4,7 +4,7 @@ import { ReactComponent as ArrowUp } from './assets/arrowup.svg';
 import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
 import Btn from './Btn';
 import { IBookDetails, IBook } from './types';
-import { addToCart } from './utils';
+import { addToCart, handleChangeCounter, validateCounter } from './utils';
 
 export default function BookOnTheList({ data } : { data: IBookDetails }) {
   const [dataToCart, setDataToCart] = useState<IBook>();
@@ -44,8 +44,14 @@ export default function BookOnTheList({ data } : { data: IBookDetails }) {
           <div className='flex text-xs'>{authors}</div>
           <div className='my-4 text-xl font-bold text-custom-main'>{data.price} $</div>
           <div className='flex items-center'>
-            <div className='flex items-center border px-2 text-custom-black dark:bg-custom-white'>
-              <div className='font-medium text-lg'>{counter}</div>
+          <div className='flex items-center border pr-2 text-custom-black dark:bg-custom-white'>
+              <input
+                type='number'
+                value={counter}
+                className='font-medium text-lg w-8 pl-2 bg-transparent focus:ring-0 focus:outline-none'
+                onChange={(event) => handleChangeCounter({ event, setCounter })}
+                onBlur={() => validateCounter({ counter, setCounter })}
+              />
               <div className='inline-flex flex-col ml-2'>
                 <button onClick={() => {if (counter < 5) setCounter(counter + 1)}}><ArrowUp className='w-2 hover:text-custom-main'/></button>
                 <button onClick={() => {if (counter > 1) setCounter(counter - 1)}}><ArrowDown className='w-2 hover:text-custom-main'/></button>
