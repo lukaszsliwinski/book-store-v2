@@ -1,11 +1,23 @@
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function Alert({ showAlert, setShowAlert, alertMessage }: { showAlert: boolean, setShowAlert: (showAlert: boolean) => void, alertMessage: string }) {
+import { IRootState } from './store';
+import { alertActions } from './store/alertSlice';
+
+export default function Alert() {
+  // assign state to values
+  const showAlert = useSelector((state: IRootState) => state.alert.showAlert);
+  const alertMessage = useSelector((state: IRootState) => state.alert.alertMessage);
+
+  const dispatch = useDispatch();
+
+  // dispatch functions from alert slice
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+
   useEffect(() => {
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 5000);
-  })
+    const timer = setTimeout(() => setShowAlert(false), 5000);
+    return () => clearTimeout(timer);
+  }, [showAlert])
 
   return (
     <div className='fixed bottom-0 z-10 flex w-full justify-center mb-3'>
