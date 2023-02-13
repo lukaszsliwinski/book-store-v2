@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 
 import alertSlice from './alertSlice';
 import badgeSlice from './badgeSlice';
+import modeSlice from './modeSlice';
 
 const persistConfig = {
   key: 'root',
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   alert: alertSlice.reducer,
-  badge: badgeSlice.reducer
+  badge: badgeSlice.reducer,
+  mode: modeSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

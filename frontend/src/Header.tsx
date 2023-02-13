@@ -16,8 +16,8 @@ import { alertActions } from './store/alertSlice';
 
 const cookies = new Cookies();
 
-export default function Header({darkMode, setDarkMode, logged, username }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, logged: boolean, username: string }) {
-  // assign state to value
+export default function Header({ logged, username }: { logged: boolean, username: string }) {
+  // global state
   const badge = useSelector((state: IRootState) => state.badge.badge);
 
   // dispatch functions from alert slice
@@ -82,7 +82,7 @@ export default function Header({darkMode, setDarkMode, logged, username }: { dar
             </div>
           </div>
         )}
-        <DarkModeSwitch darkMode={darkMode} setDarkMode={setDarkMode} />
+        <DarkModeSwitch />
       </div>
     </nav>
   );

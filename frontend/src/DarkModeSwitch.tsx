@@ -1,11 +1,18 @@
-import Cookies from 'universal-cookie';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { ReactComponent as Moon } from './assets/moon.svg';
 import { ReactComponent as Sun } from './assets/sun.svg';
+import { IRootState } from './store';
+import { modeActions } from './store/modeSlice';
 
-const cookies = new Cookies();
+function DarkModeSwitch() {
+  // global state
+  const darkMode = useSelector((state: IRootState) => state.mode.darkMode);
 
-function DarkModeSwitch({ darkMode, setDarkMode }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>> }) {
+  // dispatch function from mode slice
+  const dispatch = useDispatch();
+  const setDarkMode = (value: boolean) => dispatch(modeActions.setDarkMode(value));
+
   const toggleMode = () => {
     setDarkMode(!darkMode);
     localStorage.getItem('mode') === 'dark' ? localStorage.setItem('mode', 'light') : localStorage.setItem('mode', 'dark');
