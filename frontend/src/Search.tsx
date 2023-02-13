@@ -45,7 +45,7 @@ export default function Search() {
         method: 'post',
         url: '/api/search',
         data: {
-          input: query
+          query: query
         }
       };
 
