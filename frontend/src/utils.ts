@@ -2,14 +2,18 @@ import Cookies from 'universal-cookie';
 
 import { IBook } from './types';
 
-const cookies = new Cookies();
+export const getToken = () => {
+  const cookies = new Cookies();
+  return cookies.get('TOKEN');
+};
+
 
 export const addToCart = ({dataToCart, setShowAlert, setAlertMessage }: {
   dataToCart: IBook,
   setShowAlert: (value: boolean) => void,
   setAlertMessage: (value: string) => void
 }) => {
-  const token = cookies.get('TOKEN');
+  const token = getToken();
 
   if (token) {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');

@@ -9,8 +9,9 @@ import Btn from './Btn';
 import { IBook } from './types';
 import { alertActions } from './store/alertSlice';
 import { badgeActions } from './store/badgeSlice';
+import { getToken } from './utils';
 
-export default function Cart({ token }: { token: string }) {
+export default function Cart() {
   // state
   const [cart, setCart] = useState<IBook[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
   const [total, setTotal] = useState<number>();
@@ -20,6 +21,8 @@ export default function Cart({ token }: { token: string }) {
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
+
+  const token = getToken();
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));

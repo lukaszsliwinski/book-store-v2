@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 import './assets/global.css';
 import 'tw-elements';
 
@@ -17,8 +16,7 @@ import Cart from './Cart';
 import Alert from './Alert';
 import { IRootState } from './store';
 import { badgeActions } from './store/badgeSlice';
-
-const cookies = new Cookies();
+import { getToken } from './utils';
 
 export default function App() {
   // local state
@@ -28,7 +26,7 @@ export default function App() {
   // global state
   const darkMode = useSelector((state: IRootState) => state.mode.darkMode);
 
-  const token = cookies.get('TOKEN');
+  const token = getToken();
 
   // dispatch function from alert slice
   const dispatch = useDispatch();
@@ -76,9 +74,9 @@ export default function App() {
         <Route path='/' element={<Search />} />
         <Route path='/login' element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path='/register' element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path='/profile' element={<ProtectedRoute component={<Profile token={token} username={username} />} />} />
+        <Route path='/profile' element={<ProtectedRoute component={<Profile username={username} />} />} />
         <Route path='/books/:id' element={<BookDetails />} />
-        <Route path='/cart' element={<ProtectedRoute component={<Cart token={token} />} />} />
+        <Route path='/cart' element={<ProtectedRoute component={<Cart />} />} />
       </Routes>
       <Alert />
     </div>

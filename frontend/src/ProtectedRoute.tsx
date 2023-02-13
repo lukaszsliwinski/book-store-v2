@@ -1,10 +1,9 @@
 import { Navigate } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 
-const cookies = new Cookies();
+import { getToken } from './utils';
 
 export default function ProtectedRoute({ component }: { component: JSX.Element }) {
-  const token = cookies.get('TOKEN');
+  const token = getToken();
 
   if (token) {
     return component;

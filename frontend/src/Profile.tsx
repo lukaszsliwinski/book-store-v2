@@ -7,8 +7,9 @@ import { ReactComponent as EyeSlash } from './assets/eyeslash.svg';
 import Btn from './Btn';
 import History from './History';
 import { alertActions } from './store/alertSlice';
+import { getToken } from './utils';
 
-export default function Profile({ token, username }: { token: string, username: string }) {
+export default function Profile({ username }: { username: string }) {
   // state
   const [password, setPassword] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
@@ -18,6 +19,8 @@ export default function Profile({ token, username }: { token: string, username: 
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+
+  const token = getToken();
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
