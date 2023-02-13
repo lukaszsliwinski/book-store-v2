@@ -28,7 +28,7 @@ const login = (request, response) => {
           );
 
           response.status(200).send({
-            message: "login successful",
+            message: "Successfully logged in!",
             username: user.username,
             token,
           });

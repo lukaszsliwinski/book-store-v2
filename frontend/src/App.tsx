@@ -13,6 +13,7 @@ import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 import BookDetails from './BookDetails';
 import Cart from './Cart';
+import Alert from './Alert';
 
 const cookies = new Cookies();
 
@@ -65,13 +66,14 @@ export default function App() {
     <div className='h-screen-mobile pt-12 bg-custom-white dark:bg-custom-gray'>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} logged={logged} username={username} badge={badge}/>
       <Routes>
-        <Route path="/" element={<Search />} />
-        <Route path="/login" element={<Login logged={logged} setLogged={setLogged} />} />
-        <Route path="/register" element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path="/profile" element={<ProtectedRoute component={<Profile token={token} username={username} />} />} />
-        <Route path="/books/:id" element={<BookDetails />} />
-        <Route path="/cart" element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge} />} />} />
+        <Route path='/' element={<Search />} />
+        <Route path='/login' element={<Login logged={logged} setLogged={setLogged} />} />
+        <Route path='/register' element={<Register logged={logged} setLogged={setLogged} />} />
+        <Route path='/profile' element={<ProtectedRoute component={<Profile token={token} username={username} />} />} />
+        <Route path='/books/:id' element={<BookDetails />} />
+        <Route path='/cart' element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge} />} />} />
       </Routes>
+      <Alert />
     </div>
   );
 }

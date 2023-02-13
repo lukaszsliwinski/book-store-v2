@@ -4,21 +4,42 @@ import { IBook } from './types';
 
 const cookies = new Cookies();
 
-export const addToCart = (dataToCart: IBook) => {
+export const addToCart = ({dataToCart, setShowAlert, setAlertMessage }: {
+  dataToCart: IBook,
+  setShowAlert: (value: boolean) => void,
+  setAlertMessage: (value: string) => void
+}) => {
   const token = cookies.get('TOKEN');
 
   if (token) {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const book = cart.find((item: IBook) => item.bookId === dataToCart.bookId)
+    const book = cart.find((item: IBook) => item.bookId === dataToCart.bookId);
+
     if (book && book.amount < 5) {
       book.amount += dataToCart.amount;
-      if (book.amount > 5) book.amount = 5;
+      if (book.amount > 5) {
+        book.amount = 5;
+        setAlertMessage('You can add to cart only 5 of the same books!');
+      } else {
+        setAlertMessage('Book added to cart!');
+      };
+      setShowAlert(true);
+
       cart.map((item: IBook) => {
         return (item.bookId === book.bookId) ? book : item;
       });
+
+    } else if (book && book.amount >= 5) {
+      setAlertMessage('You can add to cart only 5 of the same books!');
+      setShowAlert(true);
+
     } else if (!book) {
       cart.push(dataToCart);
+      setAlertMessage('Book added to cart!');
+      setShowAlert(true);
+
     };
+
     localStorage.setItem('cart', JSON.stringify(cart));
     window.dispatchEvent(new Event("storage"));
   } else {

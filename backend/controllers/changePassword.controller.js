@@ -28,7 +28,7 @@ const changePassword = async (request, response) => {
           )
           .then((result) => {
             response.status(201).send({
-              message: 'password successfully changed',
+              message: 'Password successfully changed!',
               result
             });
           })

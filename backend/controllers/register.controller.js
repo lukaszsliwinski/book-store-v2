@@ -43,7 +43,7 @@ const register = (request, response) => {
           .save()
           .then((result) => {
             response.status(201).send({
-              message: 'account successfully created',
+              message: 'Account successfully created!',
               result
             });
           })

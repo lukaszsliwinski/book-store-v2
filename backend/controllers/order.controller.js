@@ -21,7 +21,7 @@ const order = (request, response) => {
         .save()
         .then((result) => {
           response.status(200).send({
-            message: 'books ordered successfully',
+            message: 'Book(s) successfully ordered!',
             result
           });
         })

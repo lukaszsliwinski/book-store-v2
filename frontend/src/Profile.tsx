@@ -1,15 +1,23 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { ReactComponent as Eye } from './assets/eye.svg';
 import { ReactComponent as EyeSlash } from './assets/eyeslash.svg';
 import Btn from './Btn';
 import History from './History';
+import { alertActions } from './store/alertSlice';
 
 export default function Profile({ token, username }: { token: string, username: string }) {
+  // state
   const [password, setPassword] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  // dispatch functions from alert slice
+  const dispatch = useDispatch();
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -33,8 +41,8 @@ export default function Profile({ token, username }: { token: string, username: 
       axios(axiosChangePasswordConfig)
         .then((result) => {
           setPassword('');
-
-          setPasswordAlert(result.data.message);
+          setAlertMessage(result.data.message);
+          setShowAlert(true);
         })
         .catch((error) => {
           setPasswordAlert(error.response.data.message);

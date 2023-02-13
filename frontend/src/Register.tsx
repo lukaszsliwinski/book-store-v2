@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { ILoggedState } from './types';
@@ -6,16 +7,24 @@ import { ILoggedState } from './types';
 import { ReactComponent as Eye } from './assets/eye.svg';
 import { ReactComponent as EyeSlash } from './assets/eyeslash.svg';
 import Btn from './Btn';
+import { alertActions } from './store/alertSlice';
 
 const cookies = new Cookies();
 
 export default function Register({ logged, setLogged }: ILoggedState) {
+  // state
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameAlert, setUsernameAlert] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  // dispatch functions from alert slice
+  const dispatch = useDispatch();
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+
+  // redirect to profile page if user is logged in
   if (logged) window.location.href = '/profile';
 
   const handleSubmit = (event: React.SyntheticEvent) => {
@@ -47,7 +56,10 @@ export default function Register({ logged, setLogged }: ILoggedState) {
       };
 
       axios(axiosRegisterConfig)
-        .then(() => {
+        .then((result) => {
+          setAlertMessage(result.data.message);
+          setShowAlert(true);
+
           // login automatically after successful registration
           axios(axiosLoginConfig)
             .then((result) => {

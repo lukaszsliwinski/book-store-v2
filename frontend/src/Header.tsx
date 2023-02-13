@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import Cookies from 'universal-cookie';
 
 import { ReactComponent as Book } from './assets/book.svg';
@@ -10,18 +11,26 @@ import { ReactComponent as Logout } from './assets/logout.svg';
 
 import Link from './Link';
 import DarkModeSwitch from './DarkModeSwitch';
+import { alertActions } from './store/alertSlice';
 
 const cookies = new Cookies();
 
 export default function Header({darkMode, setDarkMode, logged, username, badge }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, logged: boolean, username: string, badge: string }) {
+  // dispatch functions from alert slice
+  const dispatch = useDispatch();
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+
   const logout = () => {
     cookies.remove('TOKEN', { path: '/' });
     localStorage.removeItem('cart');
     window.location.href = '/';
+    setAlertMessage('Succesfully logged out!');
+    setShowAlert(true);
   };
 
   return (
-    <nav className='fixed top-0 flex justify-between items-center w-full bg-custom-black px-6 py-2'>
+    <nav className='fixed z-20 top-0 flex justify-between items-center w-full bg-custom-black px-6 py-2'>
       <a href='/' className='inline-flex text-custom-white font-semibold'>
         <div className='inline-flex items-center h-full'><Book className='inline-block mr-2 w-5'/></div>
         <div className='inline-flex items-center h-full'>BOOK STORE</div>

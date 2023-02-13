@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { ReactComponent as ArrowUp } from './assets/arrowup.svg';
 import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
 import Btn from './Btn';
+import { alertActions } from './store/alertSlice';
 import { IBookDetails, IBook } from './types';
 import { addToCart, handleChangeCounter, validateCounter } from './utils';
 
@@ -17,6 +19,11 @@ export default function BookDetails() {
   const [counter, setCounter] = useState(1);
 
   const params = useParams();
+
+  // dispatch functions from alert slice
+  const dispatch = useDispatch();
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
 
   useEffect(() => {
     const axiosBookDetailsConfig = {
@@ -110,7 +117,7 @@ export default function BookDetails() {
                 <button onClick={() => {if (counter > 1) setCounter(counter - 1)}}><ArrowDown className='w-2 hover:text-custom-main'/></button>
               </div>
             </div>
-            <Btn onclick={() => {if (dataToCart) addToCart(dataToCart)}} label='buy' icon={undefined} />
+            <Btn onclick={() => {if (dataToCart) addToCart({ dataToCart, setShowAlert, setAlertMessage })}} label='buy' icon={undefined} />
           </div>
         </div>
       </div> :

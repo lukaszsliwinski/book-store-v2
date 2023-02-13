@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { ReactComponent as ArrowUp } from './assets/arrowup.svg';
@@ -6,10 +7,17 @@ import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
 import { ReactComponent as Bin } from './assets/bin.svg';
 import Btn from './Btn';
 import { IBook } from './types';
+import { alertActions } from './store/alertSlice';
 
 export default function Cart({ token, setBadge }: { token: string, setBadge: React.Dispatch<React.SetStateAction<number>> }) {
+  // state
   const [cart, setCart] = useState<IBook[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
   const [total, setTotal] = useState<number>();
+
+  // dispatch functions from alert slice
+  const dispatch = useDispatch();
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -75,7 +83,8 @@ export default function Cart({ token, setBadge }: { token: string, setBadge: Rea
 
     axios(axiosMakeOrderConfig)
       .then((result) => {
-        console.log(result); // snackbar potwierdzający złożenie zamówienia
+        setAlertMessage(result.data.message);
+        setShowAlert(true);
         setCart([]);
       })
       .catch((error) => {
