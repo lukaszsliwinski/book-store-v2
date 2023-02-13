@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -14,6 +15,7 @@ import ProtectedRoute from './ProtectedRoute';
 import BookDetails from './BookDetails';
 import Cart from './Cart';
 import Alert from './Alert';
+import { badgeActions } from './store/badgeSlice';
 
 const cookies = new Cookies();
 
@@ -22,9 +24,13 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [logged, setLogged] = useState(false);
   const [username, setUsername] = useState('');
-  const [badge, setBadge] = useState(JSON.parse(localStorage.getItem('cart') || '[]').length);
+  // const [badge, setBadge] = useState(JSON.parse(localStorage.getItem('cart') || '[]').length);
 
   const token = cookies.get('TOKEN');
+
+  // dispatch functions from alert slice
+  const dispatch = useDispatch();
+  const setBadge = (value: boolean) => dispatch(badgeActions.setBadge(value));
 
   // ref to html element
   const html = document.documentElement;
@@ -64,14 +70,14 @@ export default function App() {
 
   return (
     <div className='h-screen-mobile pt-12 bg-custom-white dark:bg-custom-gray'>
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} logged={logged} username={username} badge={badge}/>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} logged={logged} username={username} />
       <Routes>
         <Route path='/' element={<Search />} />
         <Route path='/login' element={<Login logged={logged} setLogged={setLogged} />} />
         <Route path='/register' element={<Register logged={logged} setLogged={setLogged} />} />
         <Route path='/profile' element={<ProtectedRoute component={<Profile token={token} username={username} />} />} />
         <Route path='/books/:id' element={<BookDetails />} />
-        <Route path='/cart' element={<ProtectedRoute component={<Cart token={token} setBadge={setBadge} />} />} />
+        <Route path='/cart' element={<ProtectedRoute component={<Cart token={token} />} />} />
       </Routes>
       <Alert />
     </div>

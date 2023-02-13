@@ -4,6 +4,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import alertSlice from './alertSlice';
+import badgeSlice from './badgeSlice';
 
 const persistConfig = {
   key: 'root',
@@ -11,7 +12,8 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  alert: alertSlice.reducer
+  alert: alertSlice.reducer,
+  badge: badgeSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

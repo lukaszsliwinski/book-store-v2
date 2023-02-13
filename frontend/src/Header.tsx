@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'universal-cookie';
 
 import { ReactComponent as Book } from './assets/book.svg';
@@ -11,11 +11,15 @@ import { ReactComponent as Logout } from './assets/logout.svg';
 
 import Link from './Link';
 import DarkModeSwitch from './DarkModeSwitch';
+import { IRootState } from './store';
 import { alertActions } from './store/alertSlice';
 
 const cookies = new Cookies();
 
-export default function Header({darkMode, setDarkMode, logged, username, badge }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, logged: boolean, username: string, badge: string }) {
+export default function Header({darkMode, setDarkMode, logged, username }: { darkMode: boolean, setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, logged: boolean, username: string }) {
+  // assign state to value
+  const badge = useSelector((state: IRootState) => state.badge.badge);
+
   // dispatch functions from alert slice
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));

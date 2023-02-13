@@ -8,16 +8,18 @@ import { ReactComponent as Bin } from './assets/bin.svg';
 import Btn from './Btn';
 import { IBook } from './types';
 import { alertActions } from './store/alertSlice';
+import { badgeActions } from './store/badgeSlice';
 
-export default function Cart({ token, setBadge }: { token: string, setBadge: React.Dispatch<React.SetStateAction<number>> }) {
+export default function Cart({ token }: { token: string }) {
   // state
   const [cart, setCart] = useState<IBook[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
   const [total, setTotal] = useState<number>();
 
-  // dispatch functions from alert slice
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));

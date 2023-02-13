@@ -9,7 +9,7 @@ export default function Alert() {
   const showAlert = useSelector((state: IRootState) => state.alert.showAlert);
   const alertMessage = useSelector((state: IRootState) => state.alert.alertMessage);
 
-  // dispatch functions from alert slice
+  // dispatch function from alert slice
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
