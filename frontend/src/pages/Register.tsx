@@ -97,7 +97,7 @@ export default function Register() {
   };
 
   return (
-    <div className='block p-6 rounded-sm shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 sm:max-w-[400px]'>
+    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 sm:max-w-[400px]'>
       <form onSubmit={(event) => handleSubmit(event)}>
         <h4 className='text-center font-bold text-custom-main'>REGISTER</h4>
         <div className='grid grid-cols-12 form-group'>

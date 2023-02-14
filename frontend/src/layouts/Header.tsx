@@ -66,7 +66,7 @@ export default function Header() {
                 <div className='flex items-center'>{username}</div>
                 <div className='flex items-center'><ArrowDown className='ml-1 w-2'/></div>
               </button>
-              <ul className='dropdown-menu min-w-full absolute hidden bg-custom-black z-50 float-left py-2 list-none text-left rounded-sm shadow-lg mt-1 m-0 bg-clip-padding border-none'>
+              <ul className='dropdown-menu min-w-full absolute hidden bg-custom-black z-50 float-left py-2 list-none text-left rounded-sm shadow-md mt-1 m-0 bg-clip-padding border-none'>
                 <li>
                   <a
                     className='dropdown-item text-xs py-2 px-4 font-normal inline-flex w-full whitespace-nowrap bg-transparent text-custom-white hover:text-custom-main hover:bg-custom-white/10 focus:bg-custom-white/10 focus:outline-none focus:ring-0 active:bg-custom-white/10'

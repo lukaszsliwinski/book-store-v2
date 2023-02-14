@@ -76,7 +76,7 @@ export default function BookDetails() {
   return (
     <>
       {bookData ?
-      <div className='flex flex-col md:flex-row mx-auto my-4 md:w-3/4 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-lg'>
+      <div className='flex flex-col md:flex-row mx-auto my-4 md:w-3/4 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
         <img className='h-96 md:ml-12 md:my-4 rounded-t-sm md:rounded-none' src={coverUrl} alt='book cover' />
         <div className='p-8 flex flex-col justify-start'>
           <h5 className='text-sm font-bold hover:underline'>{bookData.title}</h5>

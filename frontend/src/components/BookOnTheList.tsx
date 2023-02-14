@@ -29,7 +29,7 @@ export default function BookOnTheList({ data } : { data: IBookDetails }) {
   }, [counter]);
 
   return (
-    <div className='flex flex-col md:flex-row md:max-w-sm h-64 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-lg'>
+    <div className='flex flex-col md:flex-row md:max-w-sm h-64 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
       <img className='w-full h-96 md:h-auto object-cover md:w-32 rounded-t-sm md:rounded-none md:rounded-l-sm' src={data.coverUrl} alt='book cover' />
       <div className='p-4 flex flex-col justify-start'>
         <a href={`/books/${data.bookId}`} className='text-sm font-bold hover:underline'>{data.title}</a>

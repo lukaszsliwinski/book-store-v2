@@ -65,7 +65,7 @@ export default function Profile() {
   };
 
   return (
-    <div className='mx-auto my-4 md:w-3/4 p-6 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-lg'>
+    <div className='mx-auto my-4 md:w-3/4 p-6 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
       <h4 className='text-center font-bold text-custom-main uppercase'>{username} - profile</h4>
       <div className='grid grid-cols-2'>
         <div className='flex justify-center'>

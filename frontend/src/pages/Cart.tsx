@@ -101,7 +101,7 @@ export default function Cart() {
   }
 
   return (
-    <div className='block p-6 rounded-sm shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:max-w-[600px]'>
+    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:max-w-[600px]'>
       <h4 className='text-center font-bold text-custom-main'>SHOPPING CART</h4>
       {cart.map(item => {
         return (
