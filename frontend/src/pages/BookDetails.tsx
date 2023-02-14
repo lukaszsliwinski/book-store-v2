@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { ReactComponent as ArrowUp } from './assets/arrowup.svg';
-import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
-import Btn from './Btn';
-import { alertActions } from './store/alertSlice';
-import { IBookDetails, IBook } from './types';
-import { addToCart, handleChangeCounter, validateCounter } from './utils';
+import { ReactComponent as ArrowUp } from '../assets/svg/arrowup.svg';
+import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
+import { alertActions } from '../store/alertSlice';
+import Btn from '../components/Btn';
+import { IBookDetails, IBook } from '../types';
+import { addToCart, handleChangeCounter, validateCounter } from '../utils';
 
 export default function BookDetails() {
   // local state

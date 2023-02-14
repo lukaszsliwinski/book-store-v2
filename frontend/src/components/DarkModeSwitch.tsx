@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ReactComponent as Moon } from './assets/moon.svg';
-import { ReactComponent as Sun } from './assets/sun.svg';
-import { IRootState } from './store';
-import { modeActions } from './store/modeSlice';
+import { ReactComponent as Moon } from '../assets/svg/moon.svg';
+import { ReactComponent as Sun } from '../assets/svg/sun.svg';
+import { IRootState } from '../store';
+import { modeActions } from '../store/modeSlice';
 
 function DarkModeSwitch() {
   // global state

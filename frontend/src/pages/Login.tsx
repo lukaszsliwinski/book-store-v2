@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+import axios from 'axios'
 import Cookies from 'universal-cookie';
 
-import { ReactComponent as Eye } from './assets/eye.svg';
-import { ReactComponent as EyeSlash } from './assets/eyeslash.svg';
-import Btn from './Btn';
-import { IRootState } from './store';
-import { alertActions } from './store/alertSlice';
-import { authActions } from './store/authSlice';
+import { ReactComponent as Eye } from '../assets/svg/eye.svg';
+import { ReactComponent as EyeSlash } from '../assets/svg/eyeslash.svg';
+import { IRootState } from '../store';
+import { alertActions } from '../store/alertSlice';
+import { authActions } from '../store/authSlice';
+import Btn from '../components/Btn';
 
 const cookies = new Cookies();
 
-export default function Register() {
+export default function Login() {
   // local state
   const [usernameInput, setUsernameInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -43,15 +43,6 @@ export default function Register() {
       if (usernameInput === '') setUsernameAlert('provide an username');
       if (passwordInput === '') setPasswordAlert('provide a password');
     } else {
-      const axiosRegisterConfig = {
-        method: 'post',
-        url: '/api/register',
-        data: {
-          usernameInput,
-          passwordInput
-        }
-      };
-
       const axiosLoginConfig = {
         method: 'post',
         url: '/api/login',
@@ -61,32 +52,22 @@ export default function Register() {
         }
       };
 
-      axios(axiosRegisterConfig)
+      axios(axiosLoginConfig)
         .then((result) => {
-          setAlertMessage(result.data.message);
-          setShowAlert(true);
-
-          // login automatically after successful registration
-          axios(axiosLoginConfig)
-            .then((result) => {
-              setUsernameInput('');
-              setPasswordInput('');
-              cookies.set('TOKEN', result.data.token, {path: '/'});
-              setLogged(true);
-            })
-            .catch(() => {
-              setError(true);
-              setAlertMessage('Authentication error - please try again later!');
-              setShowAlert(true);
-            });
           setUsernameInput('');
           setPasswordInput('');
+          localStorage.removeItem('cart');
+          cookies.set('TOKEN', result.data.token, {path: '/'});
+          setLogged(true);
+          setAlertMessage(result.data.message);
+          setShowAlert(true);
         })
         .catch((error) => {
-          if (error.response.data.item === 'username') {
-            setUsernameAlert(error.response.data.message);
-          } else if (error.response.data.item === 'password') {
-            setPasswordAlert(error.response.data.message);
+          const errorMessage = error.response.data.message;
+          if (errorMessage === 'user not found') {
+            setUsernameAlert(errorMessage);
+          } else if (errorMessage === 'wrong password') {
+            setPasswordAlert(errorMessage);
           } else {
             setError(true);
             setAlertMessage('Authentication error - please try again later!');
@@ -99,7 +80,7 @@ export default function Register() {
   return (
     <div className='block p-6 rounded-sm shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 sm:max-w-[400px]'>
       <form onSubmit={(event) => handleSubmit(event)}>
-        <h4 className='text-center font-bold text-custom-main'>REGISTER</h4>
+        <h4 className='text-center font-bold text-custom-main'>LOGIN</h4>
         <div className='grid grid-cols-12 form-group'>
           <div className='col-start-2 col-span-10'>
             <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold'>username</label>
@@ -140,25 +121,10 @@ export default function Register() {
         </div>
 
         <div className='text-center mt-10'>
-          <Btn onclick={(event) => handleSubmit(event)} label='register' icon={undefined} />
-          <div className='text-xs mt-2'>Already have an account? <a href='/login' className='font-bold underline underline-offset-2 hover:text-custom-main'>login</a></div>
+          <Btn onclick={(event) => handleSubmit(event)} label='login' icon={undefined} />
+          <div className='text-xs mt-2'>Don't have an account? <a href='/register' className='font-bold underline underline-offset-2 hover:text-custom-main'>register</a></div>
         </div>
       </form>
-
-      <div className='mt-10 text-xs'>
-        <h6 className='font-semibold'>Correct username:</h6>
-        <ul>
-          <li>should contain 3 - 30 characters</li>
-          <li>should not contain spaces</li>
-        </ul>
-        <h6 className='mt-2 font-semibold'>Correct password:</h6>
-        <ul>
-          <li>should contain 8 - 100 characters</li>
-          <li>should contain uppercase and lowercase letters</li>
-          <li>should contain at least 1 digit</li>
-          <li>should not contain spaces</li>
-        </ul>
-      </div>
     </div>
   );
 };

@@ -5,15 +5,15 @@ import axios from 'axios';
 import './assets/global.css';
 import 'tw-elements';
 
-import Header from './Header';
-import Search from './Search';
-import Login from './Login';
-import Register from './Register';
-import Profile from './Profile';
-import ProtectedRoute from './ProtectedRoute';
-import BookDetails from './BookDetails';
-import Cart from './Cart';
-import Alert from './Alert';
+import Header from './layouts/Header';
+import Search from './layouts/Search';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+import ProtectedRoute from './context/ProtectedRoute';
+import BookDetails from './pages/BookDetails';
+import Cart from './pages/Cart';
+import Alert from './components/Alert';
 import { IRootState } from './store';
 import { alertActions } from './store/alertSlice';
 import { badgeActions } from './store/badgeSlice';
@@ -31,6 +31,7 @@ export default function App() {
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setBadge = (value: boolean) => dispatch(badgeActions.setBadge(value));
+  const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
   const setUsername = (value: string) => dispatch(authActions.setUsername(value));
 
   // ref to html element
@@ -44,29 +45,33 @@ export default function App() {
   useEffect(() => {
     if (logged) {
       const token = getToken();
+      
+      if (!token) {
+        setLogged(false);
+      } else {
+        const axiosGetUserConfig = {
+          method: 'get',
+          url: '/api/get-user',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        };
 
-      const axiosGetUserConfig = {
-        method: 'get',
-        url: '/api/get-user',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      };
+        axios(axiosGetUserConfig)
+          .then((result) => {
+            setUsername(result.data.user.username);
+          })
+          .catch(() => {
+            setError(true);
+            setAlertMessage('Authentication error - please try again later!');
+            setShowAlert(true);
+          });
 
-      axios(axiosGetUserConfig)
-        .then((result) => {
-          setUsername(result.data.user.username);
-        })
-        .catch(() => {
-          setError(true);
-          setAlertMessage('Authentication error - please try again later!');
-          setShowAlert(true);
+        window.addEventListener('storage', () => {
+          const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          setBadge(cart.length);
         });
-
-      window.addEventListener('storage', () => {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        setBadge(cart.length);
-      })
+      };
     };
   }, []);
 

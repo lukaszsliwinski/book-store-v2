@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { ReactComponent as SearchIcon } from './assets/search.svg';
-import Btn from './Btn';
-import Loader from './Loader';
-import BookOnTheList from './BookOnTheList';
-import { alertActions } from './store/alertSlice';
+import { ReactComponent as SearchIcon } from '../assets/svg/search.svg';
+import { alertActions } from '../store/alertSlice';
+import Btn from '../components/Btn';
+import Loader from '../components/Loader';
+import BookOnTheList from '../components/BookOnTheList';
 
 export default function Search() {
   // search params

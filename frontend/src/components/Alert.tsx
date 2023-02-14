@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { IRootState } from './store';
-import { alertActions } from './store/alertSlice';
+import { IRootState } from '../store';
+import { alertActions } from '../store/alertSlice';
 
 export default function Alert() {
   // global state

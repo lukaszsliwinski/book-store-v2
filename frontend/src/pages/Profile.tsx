@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { ReactComponent as Eye } from './assets/eye.svg';
-import { ReactComponent as EyeSlash } from './assets/eyeslash.svg';
-import Btn from './Btn';
-import History from './History';
-import { IRootState } from './store';
-import { alertActions } from './store/alertSlice';
-import { getToken } from './utils';
+import { ReactComponent as Eye } from '../assets/svg/eye.svg';
+import { ReactComponent as EyeSlash } from '../assets/svg/eyeslash.svg';
+import { IRootState } from '../store';
+import { alertActions } from '../store/alertSlice';
+import Btn from '../components/Btn';
+import History from '../components/History';
+import { getToken } from '../utils';
 
 export default function Profile() {
   // local state

@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
+import { alertActions } from '../store/alertSlice';
 import HistoryItem from './HistoryItem';
-import { alertActions } from './store/alertSlice';
-import { IOrder } from './types'
-import { getToken } from './utils';
+import { IOrder } from '../types'
+import { getToken } from '../utils';
 
 export default function History() {
   // local state

@@ -1,20 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'universal-cookie';
 
-import { ReactComponent as Book } from './assets/book.svg';
-import { ReactComponent as Login } from './assets/login.svg';
-import { ReactComponent as Register } from './assets/register.svg';
-import { ReactComponent as Cart } from './assets/cart.svg';
-import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
-import { ReactComponent as Profile } from './assets/profile.svg';
-import { ReactComponent as Logout } from './assets/logout.svg';
-
-import Link from './Link';
-import DarkModeSwitch from './DarkModeSwitch';
-import { IRootState } from './store';
-import { alertActions } from './store/alertSlice';
-import { badgeActions } from './store/badgeSlice';
-import { authActions } from './store/authSlice';
+import { ReactComponent as Book } from '../assets/svg/book.svg';
+import { ReactComponent as Login } from '../assets/svg/login.svg';
+import { ReactComponent as Register } from '../assets/svg/register.svg';
+import { ReactComponent as Cart } from '../assets/svg/cart.svg';
+import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
+import { ReactComponent as Profile } from '../assets/svg/profile.svg';
+import { ReactComponent as Logout } from '../assets/svg/logout.svg';
+import { IRootState } from '../store';
+import { alertActions } from '../store/alertSlice';
+import { badgeActions } from '../store/badgeSlice';
+import { authActions } from '../store/authSlice';
+import Link from '../components/Link';
+import DarkModeSwitch from '../components/DarkModeSwitch';
 
 const cookies = new Cookies();
 

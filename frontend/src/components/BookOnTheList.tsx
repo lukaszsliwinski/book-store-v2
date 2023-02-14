@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ReactComponent as ArrowUp } from './assets/arrowup.svg';
-import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
+import { ReactComponent as ArrowUp } from '../assets/svg/arrowup.svg';
+import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
+import { alertActions } from '../store/alertSlice';
 import Btn from './Btn';
-import { alertActions } from './store/alertSlice';
-import { IBookDetails, IBook } from './types';
-import { addToCart, handleChangeCounter, validateCounter } from './utils';
+import { IBookDetails, IBook } from '../types';
+import { addToCart, handleChangeCounter, validateCounter } from '../utils';
 
 export default function BookOnTheList({ data } : { data: IBookDetails }) {
   // local state

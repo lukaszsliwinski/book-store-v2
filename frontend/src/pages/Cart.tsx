@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { ReactComponent as ArrowUp } from './assets/arrowup.svg';
-import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
-import { ReactComponent as Bin } from './assets/bin.svg';
-import Btn from './Btn';
-import { IBook } from './types';
-import { alertActions } from './store/alertSlice';
-import { badgeActions } from './store/badgeSlice';
-import { getToken } from './utils';
+import { ReactComponent as ArrowUp } from '../assets/svg/arrowup.svg';
+import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
+import { ReactComponent as Bin } from '../assets/svg/bin.svg';
+import { alertActions } from '../store/alertSlice';
+import { badgeActions } from '../store/badgeSlice';
+import Btn from '../components/Btn';
+import { IBook } from '../types';
+import { getToken } from '../utils';
 
 export default function Cart() {
   // local state
