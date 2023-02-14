@@ -27,9 +27,9 @@ const search = (request, response) => {
       });
     })
     .catch((error) => {
-      console.log(error);
       response.json({
-        response: books
+        response: books,
+        error
       });
     });
 };

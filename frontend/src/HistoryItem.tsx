@@ -1,5 +1,5 @@
 import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
-import { IOrder } from "./types";
+import { IOrder } from './types';
 
 export default function HistoryItem({ order }: { order: IOrder }) {
   return (

@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 module.exports = async (request, response, next) => {
     try {
@@ -10,7 +10,7 @@ module.exports = async (request, response, next) => {
         next();
     } catch (error) {
         response.status(401).json({
-            error: new Error("Invalid request!"),
+            error: new Error('Invalid request!'),
         });
     }
 };

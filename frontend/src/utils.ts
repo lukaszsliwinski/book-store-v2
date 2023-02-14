@@ -45,7 +45,7 @@ export const addToCart = ({dataToCart, setShowAlert, setAlertMessage }: {
     };
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    window.dispatchEvent(new Event("storage"));
+    window.dispatchEvent(new Event('storage'));
   } else {
     window.location.href = '/login';
   };
