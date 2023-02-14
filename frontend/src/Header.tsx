@@ -13,22 +13,30 @@ import Link from './Link';
 import DarkModeSwitch from './DarkModeSwitch';
 import { IRootState } from './store';
 import { alertActions } from './store/alertSlice';
+import { badgeActions } from './store/badgeSlice';
+import { authActions } from './store/authSlice';
 
 const cookies = new Cookies();
 
-export default function Header({ logged, username }: { logged: boolean, username: string }) {
+export default function Header() {
   // global state
   const badge = useSelector((state: IRootState) => state.badge.badge);
+  const logged = useSelector((state: IRootState) => state.auth.logged);
+  const username = useSelector((state: IRootState) => state.auth.username);
 
-  // dispatch functions from alert slice
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
+  const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
 
   const logout = () => {
     cookies.remove('TOKEN', { path: '/' });
     localStorage.removeItem('cart');
+    setBadge(0);
     window.location.href = '/';
+    setLogged(false);
     setAlertMessage('Succesfully logged out!');
     setShowAlert(true);
   };

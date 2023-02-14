@@ -6,10 +6,10 @@ const User = require('../models/user.model');
 
 const login = (request, response) => {
   User
-    .findOne({ username: request.body.username })
+    .findOne({ username: request.body.usernameInput })
     .then((user) => {
       bcrypt
-        .compare(request.body.password, user.password)
+        .compare(request.body.passwordInput, user.password)
         .then((passwordCheck) => {
           if (!passwordCheck) {
             return response.status(400).send({

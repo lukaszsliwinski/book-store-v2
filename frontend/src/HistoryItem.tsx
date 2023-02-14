@@ -4,6 +4,7 @@ import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
 import { IOrder } from "./types";
 
 export default function HistoryItem({ order }: { order: IOrder }) {
+  // local state
   const [booksOnOrder, setBooksOnOrder] = useState<JSX.Element[]>([]);
 
   useEffect(() => {

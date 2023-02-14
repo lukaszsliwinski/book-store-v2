@@ -3,11 +3,15 @@ import axios from 'axios';
 
 import HistoryItem from './HistoryItem';
 import { IOrder } from './types'
+import { getToken } from './utils';
 
-export default function History({ token }: { token: string }) {
+export default function History() {
+  // local state
   const [ordersHistory, setOrdersHistory] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
+    const token = getToken();
+
     const axiosHistoryConfig = {
       method: 'get',
       url: '/api/history',

@@ -1,28 +1,33 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
 import Cookies from 'universal-cookie';
-import { ILoggedState } from './types';
 
 import { ReactComponent as Eye } from './assets/eye.svg';
 import { ReactComponent as EyeSlash } from './assets/eyeslash.svg';
 import Btn from './Btn';
+import { IRootState } from './store';
 import { alertActions } from './store/alertSlice';
+import { authActions } from './store/authSlice';
 
 const cookies = new Cookies();
 
-export default function Login({ logged, setLogged }: ILoggedState) {
-  // state
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+export default function Login() {
+  // local state
+  const [usernameInput, setUsernameInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
   const [usernameAlert, setUsernameAlert] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  // dispatch functions from alert slice
+  // global state
+  const logged = useSelector((state: IRootState) => state.auth.logged);
+
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
 
   // redirect to profile page if user is logged in
   if (logged) window.location.href = '/profile';
@@ -33,23 +38,23 @@ export default function Login({ logged, setLogged }: ILoggedState) {
     setUsernameAlert('');
     setPasswordAlert('');
 
-    if (username === '' || password === '') {
-      if (username === '') setUsernameAlert('provide an username');
-      if (password === '') setPasswordAlert('provide a password');
+    if (usernameInput === '' || passwordInput === '') {
+      if (usernameInput === '') setUsernameAlert('provide an username');
+      if (passwordInput === '') setPasswordAlert('provide a password');
     } else {
       const axiosLoginConfig = {
         method: 'post',
         url: '/api/login',
         data: {
-          username,
-          password
+          usernameInput,
+          passwordInput
         }
       };
 
       axios(axiosLoginConfig)
         .then((result) => {
-          setUsername('');
-          setPassword('');
+          setUsernameInput('');
+          setPasswordInput('');
           localStorage.removeItem('cart');
           cookies.set('TOKEN', result.data.token, {path: '/'});
           setLogged(true);
@@ -78,9 +83,8 @@ export default function Login({ logged, setLogged }: ILoggedState) {
             <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold'>username</label>
             <input
               type='text'
-              name='username'
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              value={usernameInput}
+              onChange={(event) => setUsernameInput(event.target.value)}
               className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='enter username'
             />
@@ -95,9 +99,8 @@ export default function Login({ logged, setLogged }: ILoggedState) {
             <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold'>password</label>
             <input
               type={showPassword ? 'text' : 'password'}
-              name='password'
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              value={passwordInput}
+              onChange={(event) => setPasswordInput(event.target.value)}
               className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='ender password'
             />

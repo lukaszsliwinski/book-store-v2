@@ -10,7 +10,7 @@ export default function Search() {
   // search params
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // state
+  // local state
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const [bookList, setBooklist] = useState<JSX.Element[]>([]);
 

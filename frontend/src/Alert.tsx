@@ -5,11 +5,11 @@ import { IRootState } from './store';
 import { alertActions } from './store/alertSlice';
 
 export default function Alert() {
-  // assign state to values
+  // global state
   const showAlert = useSelector((state: IRootState) => state.alert.showAlert);
   const alertMessage = useSelector((state: IRootState) => state.alert.alertMessage);
 
-  // dispatch function from alert slice
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 

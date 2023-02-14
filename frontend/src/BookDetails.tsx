@@ -11,6 +11,7 @@ import { IBookDetails, IBook } from './types';
 import { addToCart, handleChangeCounter, validateCounter } from './utils';
 
 export default function BookDetails() {
+  // local state
   const [bookData, setBookData] = useState<IBookDetails>();
   const [coverUrl, setCoverUrl] = useState('');
   const [authors, setAuthors] = useState<JSX.Element[]>([]);
@@ -20,7 +21,7 @@ export default function BookDetails() {
 
   const params = useParams();
 
-  // dispatch functions from alert slice
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));

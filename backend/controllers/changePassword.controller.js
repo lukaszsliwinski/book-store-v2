@@ -13,13 +13,13 @@ passwordSchema
   .has().not().spaces()
 
 const changePassword = async (request, response) => {
-  if (!passwordSchema.validate(request.body.password)) {
+  if (!passwordSchema.validate(request.body.passwordInput)) {
     response.status(400).send({
       message: 'incorrect password format'
     });
   } else {
     bcrypt
-      .hash(request.body.password, 10)
+      .hash(request.body.passwordInput, 10)
       .then((hashedPassword) => {
         User
           .findOneAndUpdate(

@@ -1,35 +1,39 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { ReactComponent as Eye } from './assets/eye.svg';
 import { ReactComponent as EyeSlash } from './assets/eyeslash.svg';
 import Btn from './Btn';
 import History from './History';
+import { IRootState } from './store';
 import { alertActions } from './store/alertSlice';
 import { getToken } from './utils';
 
-export default function Profile({ username }: { username: string }) {
-  // state
-  const [password, setPassword] = useState('');
+export default function Profile() {
+  // local state
+  const [passwordInput, setPasswordInput] = useState('');
   const [passwordAlert, setPasswordAlert] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  // dispatch functions from alert slice
+  // global state
+  const username = useSelector((state: IRootState) => state.auth.username);
+
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
-
-  const token = getToken();
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
     setPasswordAlert('');
 
-    if (password === '') {
+    if (passwordInput === '') {
       setPasswordAlert('provide a password');
     } else {
+      const token = getToken();
+
       const axiosChangePasswordConfig = {
         method: 'post',
         url: '/api/change-password',
@@ -37,13 +41,13 @@ export default function Profile({ username }: { username: string }) {
           Authorization: `Bearer ${token}`,
         },
         data: {
-          password
+          passwordInput
         }
       };
 
       axios(axiosChangePasswordConfig)
         .then((result) => {
-          setPassword('');
+          setPasswordInput('');
           setAlertMessage(result.data.message);
           setShowAlert(true);
         })
@@ -65,9 +69,8 @@ export default function Profile({ username }: { username: string }) {
                   <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold '>change password</label>
                   <input
                     type={showPassword ? 'text' : 'password'}
-                    name='password'
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
+                    value={passwordInput}
+                    onChange={(event) => setPasswordInput(event.target.value)}
                     className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
                     placeholder='ender password'
                   />
@@ -103,7 +106,7 @@ export default function Profile({ username }: { username: string }) {
 
         </div>
         <div className='flex justify-center'>
-          <History token={token} />
+          <History />
         </div>
       </div>
     </div>

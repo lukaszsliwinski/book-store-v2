@@ -12,7 +12,7 @@ import { badgeActions } from './store/badgeSlice';
 import { getToken } from './utils';
 
 export default function Cart() {
-  // state
+  // local state
   const [cart, setCart] = useState<IBook[]>(JSON.parse(localStorage.getItem('cart') || '[]'));
   const [total, setTotal] = useState<number>();
 
@@ -21,8 +21,6 @@ export default function Cart() {
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
-
-  const token = getToken();
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -74,6 +72,8 @@ export default function Cart() {
   };
 
   const makeOrder = () => {
+    const token = getToken();
+
     const axiosMakeOrderConfig = {
       method: 'post',
       url: '/api/order',

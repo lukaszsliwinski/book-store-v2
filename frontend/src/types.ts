@@ -1,8 +1,3 @@
-export interface ILoggedState {
-  logged: boolean,
-  setLogged: (logged: boolean) => void
-};
-
 export interface IBookDetails {
   bookId: string,
   title: string,

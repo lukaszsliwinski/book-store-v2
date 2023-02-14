@@ -19,12 +19,12 @@ passwordSchema
   .has().not().spaces()
 
 const register = (request, response) => {
-  if (!userSchema.validate(request.body.username)) {
+  if (!userSchema.validate(request.body.usernameInput)) {
     response.status(400).send({
       item: 'username',
       message: 'incorrect username format'
     });
-  } else if (!passwordSchema.validate(request.body.password)) {
+  } else if (!passwordSchema.validate(request.body.passwordInput)) {
     console.log('handle incorrect password format')
     response.status(400).send({
       item: 'password',
@@ -32,10 +32,10 @@ const register = (request, response) => {
     });
   } else {
     bcrypt
-      .hash(request.body.password, 10)
+      .hash(request.body.passwordInput, 10)
       .then((hashedPassword) => {
         const user = new User({
-          username: request.body.username,
+          username: request.body.usernameInput,
           password: hashedPassword
         });
 

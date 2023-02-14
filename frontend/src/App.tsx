@@ -16,21 +16,18 @@ import Cart from './Cart';
 import Alert from './Alert';
 import { IRootState } from './store';
 import { badgeActions } from './store/badgeSlice';
+import { authActions } from './store/authSlice';
 import { getToken } from './utils';
 
 export default function App() {
-  // local state
-  const [logged, setLogged] = useState(false);
-  const [username, setUsername] = useState('');
-
   // global state
   const darkMode = useSelector((state: IRootState) => state.mode.darkMode);
+  const logged = useSelector((state: IRootState) => state.auth.logged);
 
-  const token = getToken();
-
-  // dispatch function from alert slice
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setBadge = (value: boolean) => dispatch(badgeActions.setBadge(value));
+  const setUsername = (value: string) => dispatch(authActions.setUsername(value));
 
   // ref to html element
   const html = document.documentElement;
@@ -41,8 +38,8 @@ export default function App() {
   }, [darkMode, html.classList]);
 
   useEffect(() => {
-    if (token) {
-      setLogged(true);
+    if (logged) {
+      const token = getToken();
 
       const axiosGetUserConfig = {
         method: 'get',
@@ -69,12 +66,12 @@ export default function App() {
 
   return (
     <div className='h-screen-mobile pt-12 bg-custom-white dark:bg-custom-gray'>
-      <Header logged={logged} username={username} />
+      <Header />
       <Routes>
         <Route path='/' element={<Search />} />
-        <Route path='/login' element={<Login logged={logged} setLogged={setLogged} />} />
-        <Route path='/register' element={<Register logged={logged} setLogged={setLogged} />} />
-        <Route path='/profile' element={<ProtectedRoute component={<Profile username={username} />} />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/profile' element={<ProtectedRoute component={<Profile />} />} />
         <Route path='/books/:id' element={<BookDetails />} />
         <Route path='/cart' element={<ProtectedRoute component={<Cart />} />} />
       </Routes>

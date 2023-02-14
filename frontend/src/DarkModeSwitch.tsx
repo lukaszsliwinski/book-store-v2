@@ -9,7 +9,7 @@ function DarkModeSwitch() {
   // global state
   const darkMode = useSelector((state: IRootState) => state.mode.darkMode);
 
-  // dispatch function from mode slice
+  // dispatch functions from slices
   const dispatch = useDispatch();
   const setDarkMode = (value: boolean) => dispatch(modeActions.setDarkMode(value));
 
