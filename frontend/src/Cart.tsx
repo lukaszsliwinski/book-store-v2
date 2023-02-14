@@ -101,7 +101,7 @@ export default function Cart() {
   }
 
   return (
-    <div className='block p-6 rounded-lg shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:max-w-[600px]'>
+    <div className='block p-6 rounded-sm shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:max-w-[600px]'>
       <h4 className='text-center font-bold text-custom-main'>SHOPPING CART</h4>
       {cart.map(item => {
         return (
@@ -117,7 +117,7 @@ export default function Cart() {
               </div>
               <div className='mx-1 w-[6rem]'>&ensp;x&ensp;<span className='font-bold'>{item.price} $</span></div>
               <button
-                className='relative inline-block mx-1 p-2 bg-custom-main text-custom-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-custom-main hover:bg-custom-white/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
+                className='relative inline-block mx-1 p-2 bg-custom-main text-custom-white font-medium text-xs leading-tight uppercase rounded-sm shadow-md hover:text-custom-main hover:bg-custom-white/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
                 onClick={() => removeFromCart(item.bookId)}
               ><Bin className='w-3.5'/></button>
             </div>

@@ -33,7 +33,7 @@ export default function Alert() {
       <div
         role='alert'
         className={`
-          alert rounded-lg py-5 px-6 text-base text-custom-white inline-flex items-center alert-dismissible fade
+          alert rounded-sm py-5 px-6 text-base text-custom-white inline-flex items-center alert-dismissible fade
           ${error ? 'bg-red-600' : 'bg-custom-main'}
           ${showAlert ? 'show' : ''}
         `}

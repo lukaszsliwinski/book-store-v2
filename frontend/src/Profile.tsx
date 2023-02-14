@@ -65,7 +65,7 @@ export default function Profile() {
   };
 
   return (
-    <div className='mx-auto my-4 md:w-3/4 p-6 rounded-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-lg'>
+    <div className='mx-auto my-4 md:w-3/4 p-6 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-lg'>
       <h4 className='text-center font-bold text-custom-main uppercase'>{username} - profile</h4>
       <div className='grid grid-cols-2'>
         <div className='flex justify-center'>
@@ -78,7 +78,7 @@ export default function Profile() {
                     type={showPassword ? 'text' : 'password'}
                     value={passwordInput}
                     onChange={(event) => setPasswordInput(event.target.value)}
-                    className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+                    className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
                     placeholder='ender password'
                   />
                 </div>

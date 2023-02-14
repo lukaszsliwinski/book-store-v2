@@ -78,7 +78,7 @@ export default function Login() {
   };
 
   return (
-    <div className='block p-6 rounded-lg shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 sm:max-w-[400px]'>
+    <div className='block p-6 rounded-sm shadow-lg bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 sm:max-w-[400px]'>
       <form onSubmit={(event) => handleSubmit(event)}>
         <h4 className='text-center font-bold text-custom-main'>LOGIN</h4>
         <div className='grid grid-cols-12 form-group'>
@@ -88,7 +88,7 @@ export default function Login() {
               type='text'
               value={usernameInput}
               onChange={(event) => setUsernameInput(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='enter username'
             />
           </div>
@@ -104,7 +104,7 @@ export default function Login() {
               type={showPassword ? 'text' : 'password'}
               value={passwordInput}
               onChange={(event) => setPasswordInput(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='ender password'
             />
           </div>
