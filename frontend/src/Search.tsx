@@ -12,10 +12,11 @@ export default function Search() {
 
   // local state
   const [query, setQuery] = useState(searchParams.get('query') || '');
-  const [bookList, setBooklist] = useState<JSX.Element[]>([]);
+  const [bookList, setBookList] = useState([]);
+  const [noResults, setNoResults] = useState(false);
 
   // input ref
-  const inputElement = useRef<HTMLInputElement>(null);
+  const searchInput = useRef<HTMLInputElement>(null);
 
   // call search function on render if there are search params
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function Search() {
 
   // handle input change and set state
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNoResults(false);
     event.preventDefault();
     setQuery(event.target.value);
   };
@@ -38,9 +40,10 @@ export default function Search() {
 
   // search book post request
   const search = () => {
-    if (query === '') setBooklist([]);
-    if (inputElement.current && inputElement.current.value === query && query !== '') {
-      setSearchParams({ query })
+    setNoResults(true);
+    if (query === '') setBookList([]);
+    if (searchInput.current && searchInput.current.value === query && query !== '') {
+      setSearchParams({ query });
       const axiosSearchConfig = {
         method: 'post',
         url: '/api/search',
@@ -52,26 +55,7 @@ export default function Search() {
       axios(axiosSearchConfig)
         .then((result) => {
           const data = result.data.response;
-
-          if (data.length === 0) {
-            setBooklist([
-              <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>NO RESULTS</div>
-            ]);
-          } else {
-            // create list of components
-            let components: JSX.Element[] = [];
-
-            for (let i = 0; i < data.length; i++) {
-              components.push(
-                <BookOnTheList
-                  data={result.data.response[i]}
-                />
-              );
-            };
-
-            // render list of books
-            setBooklist(components);
-          }
+          if (data.length !== 0) setBookList(data);
         })
         .catch((error) => {
           error = new Error();
@@ -84,7 +68,7 @@ export default function Search() {
       <div className='flex justify-center'>
         <div className='relative my-3 xl:w-[32rem]'>
           <input
-            ref={inputElement}
+            ref={searchInput}
             type='text'
             value={query}
             className='form-control block w-full pl-6 pr-36 py-3 text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-lg transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
@@ -98,7 +82,10 @@ export default function Search() {
         </div>
       </div>
       <div className='grid grid-cols-3 gap-6 mb-6'>
-        {bookList}
+        {bookList.length === 0 ?
+          noResults && query !== '' ? <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>NO RESULTS</div> : <></> :
+          bookList.map(book => <BookOnTheList data={book} />)
+        }
       </div>
     </div>
   );

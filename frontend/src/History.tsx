@@ -7,7 +7,7 @@ import { getToken } from './utils';
 
 export default function History() {
   // local state
-  const [ordersHistory, setOrdersHistory] = useState<JSX.Element[]>([]);
+  const [ordersHistory, setOrdersHistory] = useState<IOrder[]>([]);
 
   useEffect(() => {
     const token = getToken();
@@ -23,20 +23,7 @@ export default function History() {
     axios(axiosHistoryConfig)
       .then((result) => {
         const orders = result.data.history;
-        if (orders.length === 0) {
-          // komunikat o braku zamówień
-        } else {
-          // sort orders descending and create list of components
-          orders.sort((a: IOrder, b: IOrder) => b.number - a.number);
-          let components: JSX.Element[] = [];
-
-          for (let i = 0; i < orders.length; i++) {
-            components.push(
-              <HistoryItem order={orders[i]} />
-            );
-          };
-          setOrdersHistory(components)
-        };
+        if (orders.length !== 0) setOrdersHistory(orders);
       })
       .catch((error) => {
         error = new Error;
@@ -46,7 +33,12 @@ export default function History() {
   return (
     <div className='mt-6 w-[400px]'>
       <label className='ml-4 text-xs font-semibold'>latest orders</label>
-      <div>{ordersHistory}</div>
+      <div>
+        {ordersHistory.length === 0 ?
+          <div className='text-xs font-semibold'>your orders history is empty</div> :
+          ordersHistory.map(order => <HistoryItem order={order} />)
+        }
+      </div>
     </div>
   );
 };

@@ -1,30 +1,9 @@
-import { useState, useEffect } from "react";
-
 import { ReactComponent as ArrowDown } from './assets/arrowdown.svg';
 import { IOrder } from "./types";
 
 export default function HistoryItem({ order }: { order: IOrder }) {
-  // local state
-  const [booksOnOrder, setBooksOnOrder] = useState<JSX.Element[]>([]);
-
-  useEffect(() => {
-    let components: JSX.Element[] = [];
-
-    for (let i = 0; i < order.books.length; i++) {
-      components.push(
-        <div className='flex justify-between text-xs'>
-          <span>{i+1}. {order.books[i].title} </span>
-          <span>{order.books[i].amount} x {order.books[i].price} $</span>
-        </div>
-      );
-    };
-
-    setBooksOnOrder(components);
-  }, []);
-
   return (
     <div className='m-2 p-2 rounded-lg shadow-lg bg-white dark:bg-custom-gray'>
-
       <div className='flex justify-between items-center text-xs'>
         <span>order {order.number}</span>
         <span>{order.date.substring(0,10)}</span>
@@ -37,7 +16,16 @@ export default function HistoryItem({ order }: { order: IOrder }) {
       </div>
 
       <div className='collapse border-t' id={`collapse${order.number}`}>
-        <div className='p-2'>{booksOnOrder}</div>
+        <div className='p-2'>
+          {order.books.map((book, i) => {
+            return (
+              <div className='flex justify-between text-xs'>
+                <span>{i+1}. {book.title} </span>
+                <span>{book.amount} x {book.price} $</span>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   );
