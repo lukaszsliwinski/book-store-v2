@@ -26,8 +26,8 @@ export default function Header() {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
-  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
   const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
 

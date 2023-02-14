@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -15,6 +15,7 @@ import BookDetails from './BookDetails';
 import Cart from './Cart';
 import Alert from './Alert';
 import { IRootState } from './store';
+import { alertActions } from './store/alertSlice';
 import { badgeActions } from './store/badgeSlice';
 import { authActions } from './store/authSlice';
 import { getToken } from './utils';
@@ -26,6 +27,9 @@ export default function App() {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
+  const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setBadge = (value: boolean) => dispatch(badgeActions.setBadge(value));
   const setUsername = (value: string) => dispatch(authActions.setUsername(value));
 
@@ -53,8 +57,10 @@ export default function App() {
         .then((result) => {
           setUsername(result.data.user.username);
         })
-        .catch((error) => {
-          error = new Error();
+        .catch(() => {
+          setError(true);
+          setAlertMessage('Authentication error - please try again later!');
+          setShowAlert(true);
         });
 
       window.addEventListener('storage', () => {

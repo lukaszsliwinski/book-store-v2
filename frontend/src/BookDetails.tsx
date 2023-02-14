@@ -22,8 +22,9 @@ export default function BookDetails() {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
-  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
   useEffect(() => {
     const axiosBookDetailsConfig = {
@@ -36,8 +37,10 @@ export default function BookDetails() {
 
     axios(axiosBookDetailsConfig)
       .then((result) => {
-        if (result.data.message === 'book not found') {
-          setErrorMessage(result.data.message);
+        if (result.data.message === 'Book not found!') {
+          setError(true);
+          setAlertMessage(result.data.message);
+          setShowAlert(true);
         } else {
           setErrorMessage('');
           setBookData(result.data);
@@ -51,9 +54,10 @@ export default function BookDetails() {
           });
         };
       })
-      .catch((error) => {
-        error = new Error();
-        console.log('404')
+      .catch(() => {
+        setError(true);
+        setAlertMessage('Database connection error - please try again later!');
+        setShowAlert(true);
       });
   }, []);
 

@@ -15,8 +15,8 @@ export default function BookOnTheList({ data } : { data: IBookDetails }) {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
-  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
   useEffect(() => {
     setDataToCart({

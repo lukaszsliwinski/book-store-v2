@@ -25,8 +25,9 @@ export default function Login() {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
-  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
 
   // redirect to profile page if user is logged in
@@ -68,7 +69,9 @@ export default function Login() {
           } else if (errorMessage === 'wrong password') {
             setPasswordAlert(errorMessage);
           } else {
-            error = new Error();
+            setError(true);
+            setAlertMessage('Authentication error - please try again later!');
+            setShowAlert(true);
           };
         });
     };

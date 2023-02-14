@@ -6,16 +6,21 @@ import { alertActions } from './store/alertSlice';
 
 export default function Alert() {
   // global state
-  const showAlert = useSelector((state: IRootState) => state.alert.showAlert);
+  const error = useSelector((state: IRootState) => state.alert.error);
   const alertMessage = useSelector((state: IRootState) => state.alert.alertMessage);
+  const showAlert = useSelector((state: IRootState) => state.alert.showAlert);
 
   // dispatch functions from slices
   const dispatch = useDispatch();
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
   useEffect(() => {
     if (showAlert !== false) {
-      const timer = setTimeout(() => setShowAlert(false), 3000);
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+        setError(false);
+      }, 4000);
       return () => clearTimeout(timer);
     };
   }, [showAlert]);
@@ -28,11 +33,12 @@ export default function Alert() {
       <div
         role='alert'
         className={`
-          alert bg-custom-main rounded-lg py-5 px-6 text-base text-custom-white inline-flex items-center alert-dismissible fade
+          alert rounded-lg py-5 px-6 text-base text-custom-white inline-flex items-center alert-dismissible fade
+          ${error ? 'bg-red-600' : 'bg-custom-main'}
           ${showAlert ? 'show' : ''}
         `}
       >
-        <div className='font-bold mr-4'>{alertMessage}</div>
+        <strong>{alertMessage}</strong>
       </div>
     </div>
   );

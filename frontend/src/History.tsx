@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import HistoryItem from './HistoryItem';
+import { alertActions } from './store/alertSlice';
 import { IOrder } from './types'
 import { getToken } from './utils';
 
 export default function History() {
   // local state
   const [ordersHistory, setOrdersHistory] = useState<IOrder[]>([]);
+
+  // dispatch functions from slices
+  const dispatch = useDispatch();
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
+  const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
   useEffect(() => {
     const token = getToken();
@@ -25,8 +33,10 @@ export default function History() {
         const orders = result.data.history;
         if (orders.length !== 0) setOrdersHistory(orders);
       })
-      .catch((error) => {
-        error = new Error;
+      .catch(() => {
+        setError(true);
+        setAlertMessage('Database connection error - please try again later!');
+        setShowAlert(true);
       });
   }, []);
 

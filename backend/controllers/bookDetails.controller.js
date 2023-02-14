@@ -20,9 +20,9 @@ const bookDetails = (request, response) => {
         coverUrl: (result.data.volumeInfo.imageLinks == undefined) ? 'no-cover.png' : result.data.volumeInfo.imageLinks.thumbnail
       });
     })
-    .catch((error) => {
+    .catch(() => {
       response.json({
-        message: 'book not found'
+        message: 'Book not found!'
       });
     });
 };

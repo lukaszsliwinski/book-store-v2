@@ -25,8 +25,9 @@ export default function Register() {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
-  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
 
   // redirect to profile page if user is logged in
@@ -73,8 +74,10 @@ export default function Register() {
               cookies.set('TOKEN', result.data.token, {path: '/'});
               setLogged(true);
             })
-            .catch((error) => {
-              error = new Error();
+            .catch(() => {
+              setError(true);
+              setAlertMessage('Authentication error - please try again later!');
+              setShowAlert(true);
             });
           setUsernameInput('');
           setPasswordInput('');
@@ -84,6 +87,10 @@ export default function Register() {
             setUsernameAlert(error.response.data.message);
           } else if (error.response.data.item === 'password') {
             setPasswordAlert(error.response.data.message);
+          } else {
+            setError(true);
+            setAlertMessage('Authentication error - please try again later!');
+            setShowAlert(true);
           };
         });
     };

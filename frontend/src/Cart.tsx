@@ -18,8 +18,9 @@ export default function Cart() {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
-  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
 
   useEffect(() => {
@@ -92,8 +93,10 @@ export default function Cart() {
         setShowAlert(true);
         setCart([]);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setError(true);
+        setAlertMessage('Database connection error - please try again later!');
+        setShowAlert(true);
       });
   }
 

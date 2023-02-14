@@ -21,8 +21,9 @@ export default function Profile() {
 
   // dispatch functions from slices
   const dispatch = useDispatch();
-  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setError = (value: boolean) => dispatch(alertActions.setError(value));
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
+  const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -52,7 +53,13 @@ export default function Profile() {
           setShowAlert(true);
         })
         .catch((error) => {
-          setPasswordAlert(error.response.data.message);
+          if (error.response.status === 400) {
+            setPasswordAlert(error.response.data.message);
+          } else {
+            setError(true);
+            setAlertMessage('Database connection error - please try again later!');
+            setShowAlert(true);
+          };
         });
     };
   };
