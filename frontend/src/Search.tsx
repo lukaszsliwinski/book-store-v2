@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { ReactComponent as SearchIcon } from './assets/search.svg';
 import Btn from './Btn';
+import Loader from './Loader';
 import BookOnTheList from './BookOnTheList';
 
 export default function Search() {
@@ -14,6 +15,7 @@ export default function Search() {
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const [bookList, setBookList] = useState([]);
   const [noResults, setNoResults] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   // input ref
   const searchInput = useRef<HTMLInputElement>(null);
@@ -52,13 +54,18 @@ export default function Search() {
         }
       };
 
+      setLoader(true);
+
       axios(axiosSearchConfig)
         .then((result) => {
           const data = result.data.response;
-          if (data.length !== 0) setBookList(data);
+          data.length !== 0 ? setBookList(data) : setBookList([]);
         })
         .catch((error) => {
           error = new Error();
+        })
+        .finally(() => {
+          setLoader(false);
         });
     };
   };
@@ -82,9 +89,13 @@ export default function Search() {
         </div>
       </div>
       <div className='grid grid-cols-3 gap-6 mb-6'>
-        {bookList.length === 0 ?
-          noResults && query !== '' ? <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>NO RESULTS</div> : <></> :
-          bookList.map(book => <BookOnTheList data={book} />)
+        {loader ?
+          <Loader /> :
+          bookList.length === 0 ?
+            noResults && query !== '' ?
+              <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>NO RESULTS</div> :
+              <></> :
+            bookList.map(book => <BookOnTheList data={book} />)
         }
       </div>
     </div>
