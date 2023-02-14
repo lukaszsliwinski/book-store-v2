@@ -15,7 +15,7 @@ export default function Search() {
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const [bookList, setBookList] = useState([]);
   const [noResults, setNoResults] = useState(false);
-  const [loader, setLoader] = useState(true);
+  const [loader, setLoader] = useState(false);
 
   // input ref
   const searchInput = useRef<HTMLInputElement>(null);

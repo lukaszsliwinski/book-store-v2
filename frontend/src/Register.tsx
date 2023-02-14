@@ -100,7 +100,7 @@ export default function Register() {
               type='text'
               value={usernameInput}
               onChange={(event) => setUsernameInput(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='enter username'
             />
           </div>
@@ -116,7 +116,7 @@ export default function Register() {
               type={showPassword ? 'text' : 'password'}
               value={passwordInput}
               onChange={(event) => setPasswordInput(event.target.value)}
-              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black bg-custom-white bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
               placeholder='ender password'
             />
           </div>

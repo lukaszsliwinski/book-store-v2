@@ -38,7 +38,7 @@ export default function BookOnTheList({ data } : { data: IBookDetails }) {
         </div>
         <div className='my-4 text-xl font-bold text-custom-main'>{data.price} $</div>
         <div className='flex items-center'>
-          <div className='flex items-center border pr-2 text-custom-black dark:bg-custom-white'>
+          <div className='flex items-center pr-2 text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10'>
             <input
               type='number'
               value={counter}
