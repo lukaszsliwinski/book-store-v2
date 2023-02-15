@@ -5,9 +5,9 @@ export default function HistoryItem({ order }: { order: IOrder }) {
   return (
     <div className='m-2 p-2 rounded-sm shadow-md bg-white dark:bg-custom-gray'>
       <div className='flex justify-between items-center text-xs'>
-        <span>order {order.number}</span>
-        <span>{order.date.substring(0,10)}</span>
-        <span>{order.total} $</span>
+        <span className='font-bold'>order {order.number} - {order.date.substring(0,10)}</span>
+        <span></span>
+
         <button
           className='p-1 hover:text-custom-main'
           type='button' data-bs-toggle='collapse' data-bs-target={`#collapse${order.number}`} aria-expanded='false' aria-controls={`collapse${order.number}`}>
@@ -16,15 +16,16 @@ export default function HistoryItem({ order }: { order: IOrder }) {
       </div>
 
       <div className='collapse border-t' id={`collapse${order.number}`}>
-        <div className='p-2'>
+        <div className='p-2 pb-0'>
           {order.books.map((book, i) => {
             return (
               <div className='flex justify-between text-xs'>
                 <span>{i+1}. {book.title} </span>
-                <span>{book.amount} x {book.price} $</span>
+                <span className='text-sm'>{book.amount} x {book.price} $</span>
               </div>
             )
           })}
+          <div className='mt-2 text-sm text-right'>total: {order.total} $</div>
         </div>
       </div>
     </div>

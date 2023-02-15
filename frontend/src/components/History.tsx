@@ -40,15 +40,18 @@ export default function History() {
       });
   }, []);
 
-  return (
-    <div className='mt-6 w-[400px]'>
-      <label className='ml-4 text-xs font-semibold'>latest orders</label>
-      <div>
-        {ordersHistory.length === 0 ?
-          <div className='text-xs font-semibold'>your orders history is empty</div> :
-          ordersHistory.map(order => <HistoryItem order={order} />)
-        }
+  if (ordersHistory.length === 0) {
+    return (
+      <div className='w-full mx-8'>
+        <label className='ml-4 text-xs font-semibold'>Your orders history is empty.</label>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className='w-full mx-8'>
+        <label className='ml-4 text-xs font-semibold'>latest orders</label>
+        {ordersHistory.sort((a: IOrder, b: IOrder) => b.number - a.number).map(order => <HistoryItem order={order} />)}
+      </div>
+    );
+  };
 };
