@@ -22,7 +22,7 @@ const bookDetails = (request, response) => {
     })
     .catch(() => {
       response.json({
-        message: 'Book not found!'
+        message: 'book not found'
       });
     });
 };

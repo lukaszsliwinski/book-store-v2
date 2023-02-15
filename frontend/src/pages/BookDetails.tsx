@@ -14,7 +14,6 @@ export default function BookDetails() {
   // local state
   const [bookData, setBookData] = useState<IBookDetails>();
   const [coverUrl, setCoverUrl] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [dataToCart, setDataToCart] = useState<IBook>();
   const [counter, setCounter] = useState(1);
 
@@ -37,12 +36,7 @@ export default function BookDetails() {
 
     axios(axiosBookDetailsConfig)
       .then((result) => {
-        if (result.data.message === 'Book not found!') {
-          setError(true);
-          setAlertMessage(result.data.message);
-          setShowAlert(true);
-        } else {
-          setErrorMessage('');
+        if (result.data.message !== 'book not found') {
           setBookData(result.data);
           setCoverUrl(`${result.data.coverUrl === 'no-cover.png' ? '../no-cover.png' : result.data.coverUrl}`)
           setDataToCart({
@@ -105,7 +99,9 @@ export default function BookDetails() {
           </div>
         </div>
       </div> :
-      <div>{errorMessage}</div>}
+      <div className='flex justify-center mx-auto my-4 px-16 py-6 w-fit rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
+        Book not found - go back to&nbsp;<a href='/' className='font-bold underline underline-offset-2 hover:text-custom-main'>main page</a>
+      </div>}
     </>
   );
 };
