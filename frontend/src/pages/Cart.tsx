@@ -101,14 +101,14 @@ export default function Cart() {
   }
 
   return (
-    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:max-w-[600px]'>
+    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:w-3/4'>
       <h4 className='text-center font-bold text-custom-main'>SHOPPING CART</h4>
       {cart.map(item => {
         return (
           <div className='flex items-center justify-between my-2'>
             <div className='font-bold text-sm'>{item.title}</div>
             <div className='flex items-center'>
-              <div className='flex items-center border mx-1 px-2 text-custom-black dark:bg-custom-white'>
+              <div className='flex items-center w-10 pl-2 text-custom-black dark:text-custom-white'>
                 <div className='font-medium text-lg'>{item.amount}</div>
                 <div className='inline-flex flex-col ml-2'>
                   <button onClick={() => plusOne(item.bookId)}><ArrowUp className='w-2 hover:text-custom-main'/></button>
@@ -125,7 +125,7 @@ export default function Cart() {
         );
       })}
       {cart.length === 0 ?
-        <div className='text-xs font-semibold'>YOUR CART IS EMPTY</div> :
+        <div className='text-xs font-semibold'>Your cart is empty.</div> :
         <div className='flex flex-col justify-center items-center mt-6'>
           <div className='font-bold'>total: {total} $</div>
           <Btn onclick={() => makeOrder()} label='order' icon={undefined} />
