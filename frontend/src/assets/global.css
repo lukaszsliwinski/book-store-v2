@@ -2,19 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* https://css-tricks.com/the-trick-to-viewport-units-on-mobile/ */
 .h-screen-mobile {
   height: calc(var(--vh, 1vh) * 100)
 }
 
-/* Works for Chrome, Safari, Edge, Opera */
+
+/* scrollbar */
+html {
+  scrollbar-color: #408697 transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #408697;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #276D7E;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* input without arrows */
+/* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Works for Firefox */
+/* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
 }
