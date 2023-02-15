@@ -7,9 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-black': '#0D0D0D',
-        'custom-gray': '#212124',
-        'custom-white': '#f6f6f6',
+        'custom-black': '#1C1C1E',
+        'custom-gray': '#2C2C2E',
+        'custom-white': '#f2F7FA',
         'custom-main': '#408697',
         'custom-main-hover': '#276D7E'
       }
