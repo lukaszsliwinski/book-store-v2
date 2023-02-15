@@ -103,7 +103,7 @@ export default function Search() {
           <Loader /> :
           bookList.length === 0 ?
             noResults && query !== '' ?
-              <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>NO RESULTS</div> :
+              <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>no results</div> :
               <></> :
             bookList.map(book => <BookOnTheList data={book} />)
         }

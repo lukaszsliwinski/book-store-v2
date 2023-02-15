@@ -7,10 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-black': '#363538',
-        'custom-gray': '#49494b',
+        'custom-black': '#0D0D0D',
+        'custom-gray': '#212124',
         'custom-white': '#f6f6f6',
-        'custom-main': '#408697'
+        'custom-main': '#408697',
+        'custom-main-hover': '#276D7E'
       }
     },
   },
