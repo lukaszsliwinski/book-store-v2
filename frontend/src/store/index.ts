@@ -7,6 +7,7 @@ import alertSlice from './alertSlice';
 import badgeSlice from './badgeSlice';
 import modeSlice from './modeSlice';
 import authSlice from './authSlice';
+import asideSlice from './asideSlice';
 
 const persistConfig = {
   key: 'root',
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   alert: alertSlice.reducer,
   badge: badgeSlice.reducer,
   mode: modeSlice.reducer,
-  auth: authSlice.reducer
+  auth: authSlice.reducer,
+  aside: asideSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

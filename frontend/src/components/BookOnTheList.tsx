@@ -29,12 +29,12 @@ export default function BookOnTheList({ data } : { data: IBookDetails }) {
   }, [counter]);
 
   return (
-    <div className='flex flex-col md:flex-row md:max-w-sm h-64 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
-      <img className='w-full h-96 md:h-auto object-cover md:w-32 rounded-t-sm md:rounded-none md:rounded-l-sm' src={data.coverUrl} alt='book cover' />
-      <div className='p-4 flex flex-col justify-start'>
-        <a href={`/books/${data.bookId}`} className='text-sm font-bold hover:underline'>{data.title}</a>
-        <div className='flex text-xs'>
-          {data.authors.map((author, i) => <span>{author}{i !== data.authors.length-1 ? ',' : ''}&nbsp;</span>)}
+    <div className='flex flex-col xs:flex-row max-w-xs xs:max-w-md rounded-sm p-4 mb-6 xl:mb-0 bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
+      <img className='h-56 mx-auto xs:mx-0 object-cover xs:w-40' src={data.coverUrl} alt='book cover' />
+      <div className='xs:ml-4 xs:mt-0 mt-2 flex flex-col items-center xs:items-start'>
+        <a href={`/books/${data.bookId}`} className='text-center xs:text-left text-sm font-bold hover:underline'>{data.title}</a>
+        <div className='flex mt-2 text-xs'>
+          {data.authors.map((author, i) => <>{author}{i !== data.authors.length-1 ? ',' : ''}&nbsp;</>)}
         </div>
         <div className='my-4 text-xl font-bold text-custom-main'>{data.price} $</div>
         <div className='flex items-center'>

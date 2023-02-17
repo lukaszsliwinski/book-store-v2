@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { useWindowSize } from 'usehooks-ts';
 import axios from 'axios';
 
 import { ReactComponent as SearchIcon } from '../assets/svg/search.svg';
 import { alertActions } from '../store/alertSlice';
-import Aside from './Aside';
+import Aside from '../components/Aside';
 import Btn from '../components/Btn';
 import Loader from '../components/Loader';
 import BookOnTheList from '../components/BookOnTheList';
@@ -28,6 +29,9 @@ export default function Search() {
 
   // input ref
   const searchInput = useRef<HTMLInputElement>(null);
+
+  // get screen size
+  const { width } = useWindowSize();
 
   // call search function on render if there are search params
   useEffect(() => {
@@ -52,8 +56,10 @@ export default function Search() {
   // search book post request
   const search = () => {
     setNoResults(true);
-    if (query === '') setBookList([]);
-    if (searchInput.current && searchInput.current.value === query && query !== '') {
+    if (query === '') {
+      setBookList([]);
+      setSearchParams('');
+    } else if (searchInput.current && searchInput.current.value === query) {
       setSearchParams({ query });
       const axiosSearchConfig = {
         method: 'post',
@@ -84,24 +90,27 @@ export default function Search() {
   return (
     <>
       <Aside />
-      <div className='flex flex-col items-center bg-custom-white dark:bg-custom-gray'>
+      <div className='flex flex-col items-center ml-11 mr-1  bg-custom-white dark:bg-custom-gray'>
         <div className='flex justify-center'>
-          <div className='relative my-3 xl:w-[32rem]'>
+          <div className='relative my-3 md:max-w-[32rem]'>
             <input
               ref={searchInput}
               type='text'
               value={query}
-              className='form-control block w-full pl-6 pr-36 py-3 text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+              className='form-control block w-full p-2 pr-8 text-base xs:pl-6 xs:pr-36 xs:py-3 xs:text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out focus:ring-0 focus:border-custom-main focus:outline-none'
               onChange={(event) => handleChange(event)}
               onKeyDown={(event) => handleEnter(event)}
               placeholder='Title, authors, ...'
             />
             <div className='absolute top-[11px] right-2'>
-              <Btn onclick={() => search()} label='search' icon={<SearchIcon className='ml-2 w-3'/>} />
+              {width < 480 ?
+                <button onClick={() => search()}><SearchIcon className='text-[#9ca3af] m-1 w-4' /></button> :
+                <Btn onclick={() => search()} label='search' icon={<SearchIcon className='ml-2 w-3' />} />
+              }
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-6 mb-6'>
+        <div className='grid xl:grid-cols-2 xl:gap-6 mb-6'>
           {loader ?
             <Loader /> :
             bookList.length === 0 ?
