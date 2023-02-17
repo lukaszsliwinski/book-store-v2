@@ -101,35 +101,37 @@ export default function Cart() {
   }
 
   return (
-    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 md:w-3/4'>
-      <h4 className='text-center font-bold text-custom-main'>SHOPPING CART</h4>
-      {cart.map(item => {
-        return (
-          <div className='flex items-center justify-between my-2'>
-            <div className='font-bold text-sm'>{item.title}</div>
-            <div className='flex items-center'>
-              <div className='flex items-center w-10 pl-2 text-custom-black dark:text-custom-white'>
-                <div className='font-medium text-lg'>{item.amount}</div>
-                <div className='inline-flex flex-col ml-2'>
-                  <button onClick={() => plusOne(item.bookId)}><ArrowUp className='w-2 hover:text-custom-main'/></button>
-                  <button onClick={() => minusOne(item.bookId)}><ArrowDown className='w-2 hover:text-custom-main'/></button>
+    <div className='flex justify-center mt-4'>
+      <div className='flex flex-col max-w-4xl rounded-sm p-4 mx-4 shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white'>
+        <h4 className='text-center font-bold text-custom-main'>SHOPPING CART</h4>
+        {cart.map(item => {
+          return (
+            <div className='flex flex-col xs:flex-row xs:items-center justify-between my-2'>
+              <div className='font-bold text-sm'>{item.title}</div>
+              <div className='flex items-center justify-end'>
+                <div className='flex items-center w-10 pl-2 text-custom-black dark:text-custom-white'>
+                  <div className='font-medium text-lg'>{item.amount}</div>
+                  <div className='inline-flex flex-col ml-2'>
+                    <button onClick={() => plusOne(item.bookId)}><ArrowUp className='w-2 hover:text-custom-main'/></button>
+                    <button onClick={() => minusOne(item.bookId)}><ArrowDown className='w-2 hover:text-custom-main'/></button>
+                  </div>
                 </div>
+                <div className='mx-1 w-[6rem]'>&ensp;x&ensp;<span className='font-bold'>{item.price} $</span></div>
+                <button
+                  className='relative inline-block mx-1 p-2 bg-custom-main text-custom-white font-medium text-xs leading-tight uppercase rounded-sm shadow-md hover:text-custom-main hover:bg-custom-white/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
+                  onClick={() => removeFromCart(item.bookId)}
+                ><Bin className='w-3.5'/></button>
               </div>
-              <div className='mx-1 w-[6rem]'>&ensp;x&ensp;<span className='font-bold'>{item.price} $</span></div>
-              <button
-                className='relative inline-block mx-1 p-2 bg-custom-main text-custom-white font-medium text-xs leading-tight uppercase rounded-sm shadow-md hover:text-custom-main hover:bg-custom-white/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
-                onClick={() => removeFromCart(item.bookId)}
-              ><Bin className='w-3.5'/></button>
             </div>
-          </div>
-        );
-      })}
-      {cart.length === 0 ?
-        <div className='text-xs font-semibold'>Your cart is empty.</div> :
-        <div className='flex flex-col justify-center items-center mt-6'>
-          <div className='font-bold'>total: {total} $</div>
-          <Btn onclick={() => makeOrder()} label='order' icon={undefined} />
-        </div>}
+          );
+        })}
+        {cart.length === 0 ?
+          <div className='text-xs font-semibold'>Your cart is empty.</div> :
+          <div className='flex flex-col justify-center items-center mt-6'>
+            <div className='font-bold'>total: {total} $</div>
+            <Btn onclick={() => makeOrder()} label='order' icon={undefined} />
+          </div>}
+      </div>
     </div>
   );
 };
