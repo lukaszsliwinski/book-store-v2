@@ -12,6 +12,9 @@ module.exports = {
         'custom-white': '#f2F7FA',
         'custom-main': '#408697',
         'custom-main-hover': '#276D7E'
+      },
+      screens: {
+        'xs': '480px'
       }
     },
   },

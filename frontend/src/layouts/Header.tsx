@@ -42,16 +42,16 @@ export default function Header() {
   };
 
   return (
-    <nav className='fixed z-20 top-0 flex justify-between items-center w-full bg-custom-black px-6 py-2'>
+    <nav className='fixed z-20 top-0 flex justify-between items-center w-full bg-custom-black px-2 xs:px-6 py-2'>
       <a href='/' className='inline-flex text-custom-white font-semibold'>
         <div className='inline-flex items-center h-full'><Book className='inline-block mr-2 w-5'/></div>
-        <div className='inline-flex items-center h-full'>BOOK STORE</div>
+        <div className='hidden sm:inline-flex items-center h-full'>BOOK STORE</div>
       </a>
       <div className='flex items-center'>
         {!logged ? (
           <div>
-            <NavLink href='/login' label='login' icon={<Login className='inline-block ml-2 w-3' />} />
-            <NavLink href='/register' label='register' icon={<Register className='inline-block ml-2 w-2.5' />}/>
+            <NavLink href='/login' label='login' icon={<Login />} />
+            <NavLink href='/register' label='register' icon={<Register />}/>
           </div>
         ) : (
           <div className='flex items-center'>
@@ -60,8 +60,8 @@ export default function Header() {
               <span className='absolute top-[2px] right-[2px] inline-block py-0.5 px-1 leading-none text-center whitespace-nowrap align-baseline font-bold text-[.6rem] bg-red-600 text-custom-white rounded ml-2'>{badge}</span>
             </a>
             <DropdownMenu label={username}>
-              <DropdownItem onclick={undefined} href='/profile' label='profile' icon={<Profile className='inline-block ml-4 w-3.5'/>} />
-              <DropdownItem onclick={() => logout()} href='' label='logout' icon={<Logout className='inline-block ml-4 w-3.5'/>} />
+              <DropdownItem onclick={undefined} href='/profile' label='profile' icon={<Profile className='inline-block ml-4 w-3.5' />} />
+              <DropdownItem onclick={() => logout()} href='' label='logout' icon={<Logout className='inline-block ml-4 w-3.5' />} />
             </DropdownMenu>
           </div>
         )}
