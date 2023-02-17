@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { ReactComponent as SearchIcon } from '../assets/svg/search.svg';
 import { alertActions } from '../store/alertSlice';
+import Aside from './Aside';
 import Btn from '../components/Btn';
 import Loader from '../components/Loader';
 import BookOnTheList from '../components/BookOnTheList';
@@ -81,33 +82,36 @@ export default function Search() {
   };
 
   return (
-    <div className='flex flex-col items-center bg-custom-white dark:bg-custom-gray'>
-      <div className='flex justify-center'>
-        <div className='relative my-3 xl:w-[32rem]'>
-          <input
-            ref={searchInput}
-            type='text'
-            value={query}
-            className='form-control block w-full pl-6 pr-36 py-3 text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
-            onChange={(event) => handleChange(event)}
-            onKeyDown={(event) => handleEnter(event)}
-            placeholder='Title, authors, ...'
-          />
-          <div className='absolute top-[11px] right-2'>
-            <Btn onclick={() => search()} label='search' icon={<SearchIcon className='ml-2 w-3'/>} />
+    <>
+      <Aside />
+      <div className='flex flex-col items-center bg-custom-white dark:bg-custom-gray'>
+        <div className='flex justify-center'>
+          <div className='relative my-3 xl:w-[32rem]'>
+            <input
+              ref={searchInput}
+              type='text'
+              value={query}
+              className='form-control block w-full pl-6 pr-36 py-3 text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+              onChange={(event) => handleChange(event)}
+              onKeyDown={(event) => handleEnter(event)}
+              placeholder='Title, authors, ...'
+            />
+            <div className='absolute top-[11px] right-2'>
+              <Btn onclick={() => search()} label='search' icon={<SearchIcon className='ml-2 w-3'/>} />
+            </div>
           </div>
         </div>
+        <div className='grid grid-cols-3 gap-6 mb-6'>
+          {loader ?
+            <Loader /> :
+            bookList.length === 0 ?
+              noResults && query !== '' ?
+                <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>no results</div> :
+                <></> :
+              bookList.map(book => <BookOnTheList data={book} />)
+          }
+        </div>
       </div>
-      <div className='grid grid-cols-3 gap-6 mb-6'>
-        {loader ?
-          <Loader /> :
-          bookList.length === 0 ?
-            noResults && query !== '' ?
-              <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>no results</div> :
-              <></> :
-            bookList.map(book => <BookOnTheList data={book} />)
-        }
-      </div>
-    </div>
+    </>
   );
 };
