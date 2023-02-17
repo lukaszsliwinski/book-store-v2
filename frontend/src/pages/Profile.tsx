@@ -99,7 +99,7 @@ export default function Profile() {
 
         <div className='mt-10 text-xs'>
           <h6 className='font-semibold'>Correct password:</h6>
-          <ul>
+          <ul className='mt-1'>
             <li>should contain 8 - 100 characters</li>
             <li>should contain uppercase and lowercase letters</li>
             <li>should contain at least 1 digit</li>

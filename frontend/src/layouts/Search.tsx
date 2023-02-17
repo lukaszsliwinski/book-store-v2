@@ -90,7 +90,7 @@ export default function Search() {
   return (
     <>
       <Aside />
-      <div className='flex flex-col items-center ml-11 mr-1  bg-custom-white dark:bg-custom-gray'>
+      <div className='flex flex-col items-center ml-12 mr-2  bg-custom-white dark:bg-custom-gray'>
         <div className='flex justify-center'>
           <div className='relative my-3 md:max-w-[32rem]'>
             <input

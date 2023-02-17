@@ -97,7 +97,7 @@ export default function Register() {
   };
 
   return (
-    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white xs:mx-auto mx-1 my-4 max-w-screen-xs'>
+    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white xs:mx-auto mx-2 my-4 max-w-screen-xs'>
       <form onSubmit={(event) => handleSubmit(event)}>
         <h4 className='text-center font-bold text-custom-main'>REGISTER</h4>
         <div className='grid grid-cols-12 form-group'>
@@ -147,12 +147,12 @@ export default function Register() {
 
       <div className='mt-10 text-xs'>
         <h6 className='font-semibold'>Correct username:</h6>
-        <ul>
+        <ul className='mt-1'>
           <li>should contain 3 - 30 characters</li>
           <li>should not contain spaces</li>
         </ul>
-        <h6 className='mt-2 font-semibold'>Correct password:</h6>
-        <ul>
+        <h6 className='mt-3 font-semibold'>Correct password:</h6>
+        <ul className='mt-1'>
           <li>should contain 8 - 100 characters</li>
           <li>should contain uppercase and lowercase letters</li>
           <li>should contain at least 1 digit</li>
