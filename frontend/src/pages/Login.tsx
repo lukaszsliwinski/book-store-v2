@@ -78,7 +78,7 @@ export default function Login() {
   };
 
   return (
-    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white mx-auto my-4 sm:max-w-[400px]'>
+    <div className='block p-6 rounded-sm shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white xs:mx-auto mx-1 my-4 max-w-screen-xs'>
       <form onSubmit={(event) => handleSubmit(event)}>
         <h4 className='text-center font-bold text-custom-main'>LOGIN</h4>
         <div className='grid grid-cols-12 form-group'>
