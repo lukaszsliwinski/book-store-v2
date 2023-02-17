@@ -45,7 +45,7 @@ export default function App() {
   useEffect(() => {
     if (logged) {
       const token = getToken();
-      
+
       if (!token) {
         setLogged(false);
       } else {
@@ -76,7 +76,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className='h-screen-mobile pt-12 bg-custom-white dark:bg-custom-gray'>
+    <div className='h-screen-mobile pt-12 pb-4 bg-custom-white dark:bg-custom-gray leading-snug tracking-wider'>
       <Header />
       <Routes>
         <Route path='/' element={<Search />} />
