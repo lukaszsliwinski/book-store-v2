@@ -65,51 +65,52 @@ export default function Profile() {
   };
 
   return (
-    <div className='mx-auto my-4 md:w-3/4 p-6 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
-      <h4 className='text-center font-bold text-custom-main uppercase'>{username} - profile</h4>
-
-      <div className='flex justify-around'>
-        <form onSubmit={(event) => handleSubmit(event)}>
-          <div className='grid grid-cols-12 form-group mt-6'>
-            <div className='col-span-11'>
-              <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold '>change password</label>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                value={passwordInput}
-                onChange={(event) => setPasswordInput(event.target.value)}
-                className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
-                placeholder='ender password'
-              />
+    <div className='flex justify-center mt-4'>
+      <div className='mx-4 w-full max-w-4xl p-3 md:p-6 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
+        <h4 className='text-center font-bold text-custom-main uppercase'>{username} - profile</h4>
+        <div className='flex flex-col md:flex-row md:justify-around items-center'>
+          <form onSubmit={(event) => handleSubmit(event)}>
+            <div className='grid grid-cols-12 form-group max-w-xs mx-auto mt-6'>
+              <div className='col-span-10 xs:col-span-11'>
+                <label className='form-label inline-block mb-2 ml-2 text-xs font-semibold'>change password</label>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={passwordInput}
+                  onChange={(event) => setPasswordInput(event.target.value)}
+                  className='form-control block w-full px-3 py-1.5 text-base font-normal text-custom-black dark:text-custom-white bg-custom-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out m-0 focus:ring-0 focus:border-custom-main focus:outline-none'
+                  placeholder='ender password'
+                />
+              </div>
+              <button
+                  type='button'
+                  className='mt-8 ml-3 xs:ml-2'
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeSlash className='w-5 hover:text-custom-main'/> : <Eye className='w-5 hover:text-custom-main'/>}
+              </button>
             </div>
-            <button
-                type='button'
-                className='mt-8 ml-2'
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeSlash className='w-5 hover:text-custom-main'/> : <Eye className='w-5 hover:text-custom-main'/>}
-            </button>
-          </div>
-          <div>
-            {(passwordAlert != '' ? <div className='text-xs ml-2 text-red-600'>{passwordAlert}</div> : '')}
-          </div>
-          <div className='text-center mt-6'>
-            <Btn onclick={(event) => handleSubmit(event)} label='change' icon={undefined} />
-          </div>
-        </form>
+            <div>
+              {(passwordAlert != '' ? <div className='text-xs ml-2 text-red-600'>{passwordAlert}</div> : '')}
+            </div>
+            <div className='text-center mt-6'>
+              <Btn onclick={(event) => handleSubmit(event)} label='change' icon={undefined} />
+            </div>
+          </form>
 
-        <div className='mt-10 text-xs'>
-          <h6 className='font-semibold'>Correct password:</h6>
-          <ul className='mt-1'>
-            <li>should contain 8 - 100 characters</li>
-            <li>should contain uppercase and lowercase letters</li>
-            <li>should contain at least 1 digit</li>
-            <li>should not contain spaces</li>
-          </ul>
+          <div className='mt-10 text-xs'>
+            <h6 className='font-semibold'>Correct password:</h6>
+            <ul className='mt-1'>
+              <li>should contain 8 - 100 characters</li>
+              <li>should contain uppercase and lowercase letters</li>
+              <li>should contain at least 1 digit</li>
+              <li>should not contain spaces</li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div className='flex justify-center mt-8'>
-        <History />
+        <div className='flex justify-center mt-8'>
+          <History />
+        </div>
       </div>
     </div>
   );

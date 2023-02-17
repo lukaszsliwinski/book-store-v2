@@ -19,9 +19,9 @@ export default function HistoryItem({ order }: { order: IOrder }) {
         <div className='p-2 pb-0'>
           {order.books.map((book, i) => {
             return (
-              <div className='flex justify-between text-xs'>
-                <span>{i+1}. {book.title} </span>
-                <span className='text-sm'>{book.amount} x {book.price} $</span>
+              <div className='flex flex-col sm:flex-row justify-between text-xs mb-3 xs:mb-1'>
+                <div>{i+1}. {book.title} </div>
+                <div className='w-28 text-sm text-right ml-auto '>{book.amount}&nbsp;x&nbsp;{book.price}&nbsp;$</div>
               </div>
             )
           })}
