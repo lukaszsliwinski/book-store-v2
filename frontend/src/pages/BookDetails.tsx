@@ -68,12 +68,12 @@ export default function BookDetails() {
   }, [counter]);
 
   return (
-    <>
+    <div className='flex justify-center mt-4'>
       {bookData ?
-      <div className='flex flex-col md:flex-row mx-auto my-4 md:w-3/4 rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
-        <img className='h-96 md:ml-12 md:my-4 rounded-t-sm md:rounded-none' src={coverUrl} alt='book cover' />
-        <div className='p-8 flex flex-col justify-start'>
-          <h5 className='text-sm font-bold hover:underline'>{bookData.title}</h5>
+      <div className='flex flex-col sm:flex-row max-w-4xl rounded-sm p-4 mx-4 bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
+        <img className='sm:h-96 xs:h-80 h-64 sm:ml-12 m-auto object-cover' src={coverUrl} alt='book cover' />
+        <div className='mr-0 sm:mr-3 p-1 sm:p-8 flex flex-col items-center sm:items-start'>
+          <h5 className='text-center sm:text-left text-sm font-bold hover:underline mt-2'>{bookData.title}</h5>
           <div className='flex text-xs mb-2'>
             {bookData.authors.map((author, i) => <span>{author}{i !== bookData.authors.length-1 ? ',' : ''}&nbsp;</span>)}
           </div>
@@ -99,9 +99,9 @@ export default function BookDetails() {
           </div>
         </div>
       </div> :
-      <div className='flex justify-center mx-auto my-4 px-16 py-6 w-fit rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
+      <div className='flex justify-cente px-16 py-6 w-fit rounded-sm bg-white dark:bg-custom-black text-custom-black dark:text-custom-white shadow-md'>
         Book not found - go back to&nbsp;<a href='/' className='font-bold underline underline-offset-2 hover:text-custom-main'>main page</a>
       </div>}
-    </>
+    </div>
   );
 };
