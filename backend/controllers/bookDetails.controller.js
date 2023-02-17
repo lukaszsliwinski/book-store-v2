@@ -16,7 +16,7 @@ const bookDetails = (request, response) => {
         description: (result.data.volumeInfo.description == undefined) ? '-' : result.data.volumeInfo.description,
         publisher: (result.data.volumeInfo.publisher == undefined) ? '-' : result.data.volumeInfo.publisher,
         publishedDate: (result.data.volumeInfo.publishedDate == undefined) ? '-' : result.data.volumeInfo.publishedDate,
-        price: (result.data.saleInfo.listPrice == undefined) ? 14.99 : result.data.saleInfo.listPrice.amount,
+        price: (result.data.saleInfo.listPrice == undefined || result.data.saleInfo.listPrice.amount == 0) ? 14.99 : result.data.saleInfo.listPrice.amount.toFixed(2),
         coverUrl: (result.data.volumeInfo.imageLinks == undefined) ? 'no-cover.png' : result.data.volumeInfo.imageLinks.thumbnail
       });
     })

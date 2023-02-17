@@ -16,7 +16,7 @@ const search = (request, response) => {
             bookId: item.id,
             title: item.volumeInfo.title,
             authors: authors,
-            price: (item.saleInfo.listPrice == undefined) ? 14.99 : item.saleInfo.listPrice.amount,
+            price: (item.saleInfo.listPrice == undefined || item.saleInfo.listPrice.amount == 0) ? 14.99 : item.saleInfo.listPrice.amount.toFixed(2),
             coverUrl: (item.volumeInfo.imageLinks == undefined) ? 'no-cover.png' : item.volumeInfo.imageLinks.thumbnail
           });
         });
