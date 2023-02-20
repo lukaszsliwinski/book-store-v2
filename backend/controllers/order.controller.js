@@ -1,6 +1,7 @@
 const moment = require('moment');
 const Order = require('../models/order.model');
 
+// assign order to user and save to database
 const order = (request, response) => {
   const date = moment().utc(false).format('YYYY-MM-DD HH:mm:ss');
 

@@ -42,6 +42,7 @@ export default function App() {
     darkMode ? html.classList.add('dark') : html.classList.remove('dark');
   }, [darkMode, html.classList]);
 
+  // get authorization data
   useEffect(() => {
     if (logged) {
       const token = getToken();

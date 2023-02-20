@@ -25,6 +25,7 @@ export default function BookDetails() {
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
+  // get book details from API
   useEffect(() => {
     const axiosBookDetailsConfig = {
       method: 'post',
@@ -55,6 +56,7 @@ export default function BookDetails() {
       });
   }, []);
 
+    // update data to cart after every change of amount
   useEffect(() => {
     if (dataToCart) {
       setDataToCart({

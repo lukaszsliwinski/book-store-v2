@@ -23,6 +23,7 @@ export default function Cart() {
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
 
+  // update cart and total price
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
     setBadge(cart.length);
@@ -39,6 +40,7 @@ export default function Cart() {
     };
   }, [cart]);
 
+  // subtract one book and delete if it is the last one
   const minusOne = (bookId: string) => {
     const newCart = [...cart];
     const book: IBook = newCart.find((item: IBook) => item.bookId === bookId) as IBook;
@@ -55,6 +57,7 @@ export default function Cart() {
     setCart(newCart);
   };
 
+  // add one book if less than five
   const plusOne = (bookId: string) => {
     const newCart = [...cart];
     const book: IBook = newCart.find((item: IBook) => item.bookId === bookId) as IBook;
@@ -64,6 +67,7 @@ export default function Cart() {
     setCart(newCart);
   };
 
+  // remove book from cart
   const removeFromCart = (bookId: string) => {
     const newCart = [...cart];
     for (let i = 0; i < newCart.length; i++) {
@@ -72,6 +76,7 @@ export default function Cart() {
     setCart(newCart);
   };
 
+  // make an order and save to database
   const makeOrder = () => {
     const token = getToken();
 

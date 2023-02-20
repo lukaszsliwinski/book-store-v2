@@ -3,12 +3,14 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user.model');
 
+// username limitations
 const userSchema = new passwordValidator();
 userSchema
   .is().min(3)
   .is().max(30)
   .has().not().spaces()
 
+// password limitations
 const passwordSchema = new passwordValidator();
 passwordSchema
   .is().min(8)
@@ -18,7 +20,9 @@ passwordSchema
   .has().digits(1)
   .has().not().spaces()
 
+// register controller
 const register = (request, response) => {
+  // validate username and password
   if (!userSchema.validate(request.body.usernameInput)) {
     response.status(400).send({
       item: 'username',
@@ -38,7 +42,7 @@ const register = (request, response) => {
           username: request.body.usernameInput,
           password: hashedPassword
         });
-
+        // save new user to database
         user
           .save()
           .then((result) => {

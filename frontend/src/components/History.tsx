@@ -17,6 +17,7 @@ export default function History() {
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
+  // get orders history from database
   useEffect(() => {
     const token = getToken();
 

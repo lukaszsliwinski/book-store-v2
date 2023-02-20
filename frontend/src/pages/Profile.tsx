@@ -30,9 +30,11 @@ export default function Profile() {
 
     setPasswordAlert('');
 
+    // validate input value
     if (passwordInput === '') {
       setPasswordAlert('provide a password');
     } else {
+      // change password post request
       const token = getToken();
 
       const axiosChangePasswordConfig = {

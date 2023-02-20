@@ -39,10 +39,12 @@ export default function Login() {
     setUsernameAlert('');
     setPasswordAlert('');
 
+    // validate input values
     if (usernameInput === '' || passwordInput === '') {
       if (usernameInput === '') setUsernameAlert('provide an username');
       if (passwordInput === '') setPasswordAlert('provide a password');
     } else {
+      // login post request
       const axiosLoginConfig = {
         method: 'post',
         url: '/api/login',

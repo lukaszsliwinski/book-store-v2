@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// aside informations component state
 const asideSlice = createSlice({
   name: 'aside',
   initialState: {

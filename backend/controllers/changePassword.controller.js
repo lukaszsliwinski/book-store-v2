@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user.model');
 
+// password limitations
 const passwordSchema = new passwordValidator();
 passwordSchema
   .is().min(8)
@@ -12,6 +13,7 @@ passwordSchema
   .has().digits(1)
   .has().not().spaces()
 
+// find user in database by username, hash new password and update
 const changePassword = async (request, response) => {
   if (!passwordSchema.validate(request.body.passwordInput)) {
     response.status(400).send({

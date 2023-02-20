@@ -31,6 +31,7 @@ export default function Header() {
   const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
   const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
 
+  // logout user and clear cart
   const logout = () => {
     cookies.remove('TOKEN', { path: '/' });
     localStorage.removeItem('cart');

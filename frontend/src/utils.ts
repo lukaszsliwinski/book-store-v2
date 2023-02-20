@@ -2,12 +2,14 @@ import Cookies from 'universal-cookie';
 
 import { IBook } from './types';
 
+// get user auth token from cookies
 export const getToken = () => {
   const cookies = new Cookies();
   return cookies.get('TOKEN');
 };
 
 
+// check if user is logged in and add book to cart
 export const addToCart = ({dataToCart, setShowAlert, setAlertMessage }: {
   dataToCart: IBook,
   setShowAlert: (value: boolean) => void,
@@ -52,6 +54,7 @@ export const addToCart = ({dataToCart, setShowAlert, setAlertMessage }: {
 };
 
 
+// handle change amount of books in input field
 export const handleChangeCounter = ({ event, setCounter }: {
   event: React.ChangeEvent<HTMLInputElement>,
   setCounter: (counter: number) => void
@@ -61,6 +64,7 @@ export const handleChangeCounter = ({ event, setCounter }: {
 };
 
 
+// validate amount of books in input field (1-5)
 export const validateCounter = ({ counter, setCounter }: {
   counter: number,
   setCounter: (counter: number) => void

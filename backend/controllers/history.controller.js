@@ -1,5 +1,6 @@
 const Order = require('../models/order.model');
 
+// get all orders made by logged username
 const history = async (request, response) => {
   Order
     .find({ username: response.locals.user.username })   // requires auth middleware set in server.js

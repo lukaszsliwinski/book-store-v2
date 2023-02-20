@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user.model');
 
-
+// login controller
 const login = (request, response) => {
   User
     .findOne({ username: request.body.usernameInput })

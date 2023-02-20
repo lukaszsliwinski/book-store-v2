@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// search books by provided query
 const search = (request, response) => {
   let books = [];
   axios

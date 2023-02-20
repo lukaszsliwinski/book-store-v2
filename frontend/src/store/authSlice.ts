@@ -4,6 +4,7 @@ import { getToken } from '../utils';
 
 const token = getToken();
 
+// logged user state
 const authSlice = createSlice({
   name: 'auth',
   initialState: {

@@ -15,6 +15,7 @@ export default function Alert() {
   const setError = (value: boolean) => dispatch(alertActions.setError(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
+  // hide alert after 4 seconds
   useEffect(() => {
     if (showAlert !== false) {
       const timer = setTimeout(() => {

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+// connect to MondgoDB database
 async function dbConnect() {
   mongoose.set('strictQuery', true);
   mongoose

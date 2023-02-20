@@ -18,6 +18,7 @@ export default function BookOnTheList({ data } : { data: IBookDetails }) {
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
 
+  // update data to cart after every change of amount
   useEffect(() => {
     setDataToCart({
       bookId: data.bookId,

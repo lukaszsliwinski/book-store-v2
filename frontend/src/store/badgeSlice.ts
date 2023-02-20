@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// cart badge state
 const badgeSlice = createSlice({
   name: 'badge',
   initialState: {

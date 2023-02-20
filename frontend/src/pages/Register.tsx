@@ -39,10 +39,12 @@ export default function Register() {
     setUsernameAlert('');
     setPasswordAlert('');
 
+    // validate input values
     if (usernameInput === '' || passwordInput === '') {
       if (usernameInput === '') setUsernameAlert('provide an username');
       if (passwordInput === '') setPasswordAlert('provide a password');
     } else {
+      // register and login post requests
       const axiosRegisterConfig = {
         method: 'post',
         url: '/api/register',

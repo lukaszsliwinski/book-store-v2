@@ -13,6 +13,7 @@ function DarkModeSwitch() {
   const dispatch = useDispatch();
   const setDarkMode = (value: boolean) => dispatch(modeActions.setDarkMode(value));
 
+  // toggle mode and save in local storage
   const toggleMode = () => {
     setDarkMode(!darkMode);
     localStorage.getItem('mode') === 'dark' ? localStorage.setItem('mode', 'light') : localStorage.setItem('mode', 'dark');
