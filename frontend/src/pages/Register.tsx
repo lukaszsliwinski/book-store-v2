@@ -150,7 +150,7 @@ export default function Register() {
       <div className='mt-10 text-xs'>
         <h6 className='font-semibold'>Correct username:</h6>
         <ul className='mt-1'>
-          <li>should contain 3 - 30 characters</li>
+          <li>should contain 3 - 15 characters</li>
           <li>should not contain spaces</li>
         </ul>
         <h6 className='mt-3 font-semibold'>Correct password:</h6>

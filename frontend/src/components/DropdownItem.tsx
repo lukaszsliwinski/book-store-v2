@@ -7,7 +7,7 @@ export default function DropdownItem({ onclick, href, label, icon }: { onclick: 
         onClick={onclick}
       >
         <div className='flex items-center h-full uppercase'>{label}</div>
-        <div className='flex items-center h-full'>{icon}</div>
+        <div className='flex items-center h-full ml-auto'>{icon}</div>
       </a>
     </li>
   );

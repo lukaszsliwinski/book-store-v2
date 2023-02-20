@@ -7,7 +7,7 @@ const User = require('../models/user.model');
 const userSchema = new passwordValidator();
 userSchema
   .is().min(3)
-  .is().max(30)
+  .is().max(15)
   .has().not().spaces()
 
 // password limitations

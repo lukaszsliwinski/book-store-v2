@@ -44,13 +44,13 @@ export default function History() {
   if (ordersHistory.length === 0) {
     return (
       <div className='w-full md:mx-8'>
-        <label className='ml-4 text-xs font-semibold'>Your orders history is empty.</label>
+        <label className='ml-2 text-xs font-semibold'>Your orders history is empty.</label>
       </div>
     );
   } else {
     return (
       <div className='w-full md:mx-8'>
-        <label className='ml-4 text-xs font-semibold'>latest orders</label>
+        <label className='ml-2 text-xs font-semibold'>latest orders</label>
         {ordersHistory.sort((a: IOrder, b: IOrder) => b.number - a.number).map(order => <HistoryItem order={order} />)}
       </div>
     );
