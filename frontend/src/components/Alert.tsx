@@ -29,8 +29,8 @@ export default function Alert() {
   return (
     <div
       className={`
-      fixed bottom-0 z-10 mb-3 flex w-full justify-center
-      ${showAlert ? 'z-10' : '-z-10'}
+      fixed bottom-0 mb-3 flex w-full justify-center
+      ${showAlert ? 'z-30' : '-z-10'}
     `}
     >
       <div
