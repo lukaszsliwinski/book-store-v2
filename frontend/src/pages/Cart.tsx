@@ -30,7 +30,7 @@ export default function Cart() {
 
     if (cart.length !== 0) {
       let sum = 0;
-      cart.map((item: IBook) => {
+      cart.forEach((item: IBook) => {
         sum += item.price * item.amount;
       });
 

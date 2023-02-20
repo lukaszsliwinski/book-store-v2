@@ -98,7 +98,7 @@ export default function Profile() {
               </button>
             </div>
             <div>
-              {passwordAlert != '' ? (
+              {passwordAlert !== '' ? (
                 <div className="ml-2 text-xs text-red-600">{passwordAlert}</div>
               ) : (
                 ''

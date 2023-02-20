@@ -117,7 +117,7 @@ export default function Register() {
           </div>
         </div>
         <div className="grid grid-cols-12">
-          {usernameAlert != '' ? (
+          {usernameAlert !== '' ? (
             <div className="col-span-10 col-start-2 ml-2 text-xs text-red-600">{usernameAlert}</div>
           ) : (
             ''
@@ -150,7 +150,7 @@ export default function Register() {
           </button>
         </div>
         <div className="grid grid-cols-12">
-          {passwordAlert != '' ? (
+          {passwordAlert !== '' ? (
             <div className="col-span-10 col-start-2 ml-2 text-xs text-red-600">{passwordAlert}</div>
           ) : (
             ''
