@@ -5,10 +5,7 @@ const User = require('../models/user.model');
 
 // username limitations
 const userSchema = new passwordValidator();
-userSchema
-  .is().min(3)
-  .is().max(15)
-  .has().not().spaces()
+userSchema.is().min(3).is().max(15).has().not().spaces();
 
 // password limitations
 const passwordSchema = new passwordValidator();
@@ -18,7 +15,7 @@ passwordSchema
   .has().uppercase()
   .has().lowercase()
   .has().digits(1)
-  .has().not().spaces()
+  .has().not().spaces();
 
 // register controller
 const register = (request, response) => {
@@ -29,7 +26,7 @@ const register = (request, response) => {
       message: 'incorrect username format'
     });
   } else if (!passwordSchema.validate(request.body.passwordInput)) {
-    console.log('handle incorrect password format')
+    console.log('handle incorrect password format');
     response.status(400).send({
       item: 'password',
       message: 'incorrect password format'
@@ -63,7 +60,7 @@ const register = (request, response) => {
                 message: 'error creating account',
                 error
               });
-            };
+            }
           });
       })
       .catch((error) => {
@@ -72,7 +69,7 @@ const register = (request, response) => {
           error
         });
       });
-  };
+  }
 };
 
 module.exports = register;

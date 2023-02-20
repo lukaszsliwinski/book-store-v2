@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { alertActions } from '../store/alertSlice';
 import HistoryItem from './HistoryItem';
-import { IOrder } from '../types'
+import { IOrder } from '../types';
 import { getToken } from '../utils';
 
 export default function History() {
@@ -25,7 +25,7 @@ export default function History() {
       method: 'get',
       url: '/api/history',
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       }
     };
 
@@ -43,16 +43,20 @@ export default function History() {
 
   if (ordersHistory.length === 0) {
     return (
-      <div className='w-full md:mx-8'>
-        <label className='ml-2 text-xs font-semibold'>Your orders history is empty.</label>
+      <div className="w-full md:mx-8">
+        <label className="ml-2 text-xs font-semibold">Your orders history is empty.</label>
       </div>
     );
   } else {
     return (
-      <div className='w-full md:mx-8'>
-        <label className='ml-2 text-xs font-semibold'>latest orders</label>
-        {ordersHistory.sort((a: IOrder, b: IOrder) => b.number - a.number).map(order => <HistoryItem order={order} />)}
+      <div className="w-full md:mx-8">
+        <label className="ml-2 text-xs font-semibold">latest orders</label>
+        {ordersHistory
+          .sort((a: IOrder, b: IOrder) => b.number - a.number)
+          .map((order) => (
+            <HistoryItem order={order} />
+          ))}
       </div>
     );
-  };
-};
+  }
+}

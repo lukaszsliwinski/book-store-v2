@@ -23,18 +23,20 @@ export default function Alert() {
         setError(false);
       }, 4000);
       return () => clearTimeout(timer);
-    };
+    }
   }, [showAlert]);
 
   return (
-    <div className={`
-      fixed bottom-0 z-10 flex w-full justify-center mb-3
+    <div
+      className={`
+      fixed bottom-0 z-10 mb-3 flex w-full justify-center
       ${showAlert ? 'z-10' : '-z-10'}
-    `}>
+    `}
+    >
       <div
-        role='alert'
+        role="alert"
         className={`
-          alert rounded-sm py-5 px-6 text-base text-custom-white inline-flex items-center alert-dismissible fade
+          alert text-custom-white alert-dismissible fade inline-flex items-center rounded-sm py-5 px-6 text-base
           ${error ? 'bg-red-600' : 'bg-custom-main'}
           ${showAlert ? 'show' : ''}
         `}
@@ -43,4 +45,4 @@ export default function Alert() {
       </div>
     </div>
   );
-};
+}

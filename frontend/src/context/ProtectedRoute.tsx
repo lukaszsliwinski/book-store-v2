@@ -8,6 +8,6 @@ export default function ProtectedRoute({ component }: { component: JSX.Element }
   if (token) {
     return component;
   } else {
-    return <Navigate to='/login' replace={true} />;
-  };
-};
+    return <Navigate to="/login" replace={true} />;
+  }
+}

@@ -36,7 +36,7 @@ export default function Search() {
   // call search function on render if there are search params
   useEffect(() => {
     search();
-  }, [])
+  }, []);
 
   // handle input change and set state
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +50,7 @@ export default function Search() {
     if (event.key === 'Enter') {
       event.preventDefault();
       search();
-    };
+    }
   };
 
   // search book post request
@@ -84,43 +84,55 @@ export default function Search() {
         .finally(() => {
           setLoader(false);
         });
-    };
+    }
   };
 
   return (
     <>
       <Aside />
-      <div className='flex flex-col items-center ml-12 mr-2  bg-custom-white dark:bg-custom-gray'>
-        <div className='flex justify-center'>
-          <div className='relative my-3 md:max-w-[32rem]'>
+      <div className="bg-custom-white dark:bg-custom-gray ml-12 mr-2 flex  flex-col items-center">
+        <div className="flex justify-center">
+          <div className="relative my-3 md:max-w-[32rem]">
             <input
               ref={searchInput}
-              type='text'
+              type="text"
               value={query}
-              className='form-control block w-full p-2 pr-8 text-base xs:pl-6 xs:pr-36 xs:py-3 xs:text-lg font-normal text-custom-black dark:text-custom-white bg-white dark:bg-white/10 bg-clip-padding border-2 border-solid border-transparent rounded-sm transition ease-in-out focus:ring-0 focus:border-custom-main focus:outline-none'
+              className="form-control xs:pl-6 xs:pr-36 xs:py-3 xs:text-lg text-custom-black dark:text-custom-white focus:border-custom-main block w-full rounded-sm border-2 border-solid border-transparent bg-white bg-clip-padding p-2 pr-8 text-base font-normal transition ease-in-out focus:outline-none focus:ring-0 dark:bg-white/10"
               onChange={(event) => handleChange(event)}
               onKeyDown={(event) => handleEnter(event)}
-              placeholder='Title, authors, ...'
+              placeholder="Title, authors, ..."
             />
-            <div className='absolute top-[11px] right-2'>
-              {width < 480 ?
-                <button onClick={() => search()}><SearchIcon className='text-[#9ca3af] m-1 w-4' /></button> :
-                <Btn onclick={() => search()} label='search' icon={<SearchIcon className='ml-2 w-3' />} />
-              }
+            <div className="absolute top-[11px] right-2">
+              {width < 480 ? (
+                <button onClick={() => search()}>
+                  <SearchIcon className="m-1 w-4 text-[#9ca3af]" />
+                </button>
+              ) : (
+                <Btn
+                  onclick={() => search()}
+                  label="search"
+                  icon={<SearchIcon className="ml-2 w-3" />}
+                />
+              )}
             </div>
           </div>
         </div>
-        <div className='grid xl:grid-cols-2 xl:gap-6 mb-6'>
-          {loader ?
-            <Loader /> :
-            bookList.length === 0 ?
-              noResults && query !== '' ?
-                <div className='col-span-3 mt-4 text-center font-semibold text-custom-black dark:text-custom-white'>no results</div> :
-                <></> :
-              bookList.map(book => <BookOnTheList data={book} />)
-          }
+        <div className="mb-6 grid xl:grid-cols-2 xl:gap-6">
+          {loader ? (
+            <Loader />
+          ) : bookList.length === 0 ? (
+            noResults && query !== '' ? (
+              <div className="text-custom-black dark:text-custom-white col-span-3 mt-4 text-center font-semibold">
+                no results
+              </div>
+            ) : (
+              <></>
+            )
+          ) : (
+            bookList.map((book) => <BookOnTheList data={book} />)
+          )}
         </div>
       </div>
     </>
   );
-};
+}

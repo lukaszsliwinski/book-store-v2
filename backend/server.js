@@ -41,10 +41,7 @@ app.use((request, response, next) => {
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization'
   );
-  response.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, PATCH, OPTIONS'
-  );
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
 

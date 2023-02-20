@@ -43,26 +43,43 @@ export default function Header() {
   };
 
   return (
-    <nav className='fixed z-30 top-0 flex justify-between items-center w-full bg-custom-black px-2.5 py-2'>
-      <a href='/' className='inline-flex text-custom-white font-semibold'>
-        <div className='inline-flex items-center h-full'><Book className='inline-block mr-2 w-5'/></div>
-        <div className='hidden sm:inline-flex items-center h-full'>BOOK STORE</div>
+    <nav className="bg-custom-black fixed top-0 z-30 flex w-full items-center justify-between px-2.5 py-2">
+      <a href="/" className="text-custom-white inline-flex font-semibold">
+        <div className="inline-flex h-full items-center">
+          <Book className="mr-2 inline-block w-5" />
+        </div>
+        <div className="hidden h-full items-center sm:inline-flex">BOOK STORE</div>
       </a>
-      <div className='flex items-center'>
+      <div className="flex items-center">
         {!logged ? (
           <div>
-            <NavLink href='/login' label='login' icon={<Login />} />
-            <NavLink href='/register' label='register' icon={<Register />}/>
+            <NavLink href="/login" label="login" icon={<Login />} />
+            <NavLink href="/register" label="register" icon={<Register />} />
           </div>
         ) : (
-          <div className='flex items-center'>
-            <a href='/cart' className='relative inline-block mx-1 px-4 py-2 bg-transparent text-custom-white font-medium text-xs leading-tight uppercase rounded-sm shadow-md hover:text-custom-main hover:bg-custom-white/10 focus:bg-custom-white/10 focus:outline-none focus:ring-0 active:bg-custom-white/10 transition duration-150 ease-in-out'>
-              <Cart className='w-[21.5px]'/>
-              <span className='absolute top-[2px] right-[2px] inline-block py-0.5 px-1 leading-none text-center whitespace-nowrap align-baseline font-bold text-[.6rem] bg-red-600 text-custom-white rounded ml-2'>{badge}</span>
+          <div className="flex items-center">
+            <a
+              href="/cart"
+              className="text-custom-white hover:text-custom-main hover:bg-custom-white/10 focus:bg-custom-white/10 active:bg-custom-white/10 relative mx-1 inline-block rounded-sm bg-transparent px-4 py-2 text-xs font-medium uppercase leading-tight shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+            >
+              <Cart className="w-[21.5px]" />
+              <span className="text-custom-white absolute top-[2px] right-[2px] ml-2 inline-block whitespace-nowrap rounded bg-red-600 py-0.5 px-1 text-center align-baseline text-[.6rem] font-bold leading-none">
+                {badge}
+              </span>
             </a>
             <DropdownMenu label={username}>
-              <DropdownItem onclick={undefined} href='/profile' label='profile' icon={<Profile className='inline-block ml-4 w-3.5' />} />
-              <DropdownItem onclick={() => logout()} href='' label='logout' icon={<Logout className='inline-block ml-4 w-3.5' />} />
+              <DropdownItem
+                onclick={undefined}
+                href="/profile"
+                label="profile"
+                icon={<Profile className="ml-4 inline-block w-3.5" />}
+              />
+              <DropdownItem
+                onclick={() => logout()}
+                href=""
+                label="logout"
+                icon={<Logout className="ml-4 inline-block w-3.5" />}
+              />
             </DropdownMenu>
           </div>
         )}
@@ -70,4 +87,4 @@ export default function Header() {
       </div>
     </nav>
   );
-};
+}

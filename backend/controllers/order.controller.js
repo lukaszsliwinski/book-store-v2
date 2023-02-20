@@ -5,8 +5,9 @@ const Order = require('../models/order.model');
 const order = (request, response) => {
   const date = moment().utc(false).format('YYYY-MM-DD HH:mm:ss');
 
-  Order
-    .find().sort({ number: -1 }).limit(1)
+  Order.find()
+    .sort({ number: -1 })
+    .limit(1)
     .then((result) => {
       const lastOrderNum = result[0].number;
 
@@ -37,9 +38,8 @@ const order = (request, response) => {
               message: 'error creating order',
               error
             });
-          };
+          }
         });
-
     })
     .catch((error) => {
       response.status(500).send({

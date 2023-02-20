@@ -2,8 +2,7 @@ const Order = require('../models/order.model');
 
 // get all orders made by logged username
 const history = async (request, response) => {
-  Order
-    .find({ username: response.locals.user.username })   // requires auth middleware set in server.js
+  Order.find({ username: response.locals.user.username }) // requires auth middleware set in server.js
     .then((result) => {
       let history = [];
       for (let i = 0; i < result.length; i++) {
@@ -13,7 +12,7 @@ const history = async (request, response) => {
           books: result[i].books,
           total: result[i].total
         });
-      };
+      }
 
       response.json({
         history: history

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useWindowSize, useOnClickOutside } from 'usehooks-ts';
 
@@ -33,7 +33,7 @@ export default function Aside() {
     <div
       ref={asideRef}
       className={`
-        z-20 w-[280px] h-screen shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white fixed transition-all duration-500
+        dark:bg-custom-black text-custom-black dark:text-custom-white fixed z-20 h-screen w-[280px] bg-white shadow-md transition-all duration-500
         ${showAside ? '' : '-ml-[240px]'}`}
     >
       <div
@@ -41,26 +41,37 @@ export default function Aside() {
           flex
           ${showAside ? 'justify-center' : 'justify-end'}`}
       >
-        <button className='m-5 hover:text-custom-main' onClick={() => setShowAside(!showAside)}>
-          {showAside ? <ArrowLeft className='block w-6' /> : <ArrowRight className='block w-6 -mr-3' />}
+        <button className="hover:text-custom-main m-5" onClick={() => setShowAside(!showAside)}>
+          {showAside ? (
+            <ArrowLeft className="block w-6" />
+          ) : (
+            <ArrowRight className="-mr-3 block w-6" />
+          )}
         </button>
       </div>
       <div
         className={`
           transition-colors duration-500
-          ${showAside ? '' : 'dark:text-custom-black text-white select-none'}
+          ${showAside ? '' : 'dark:text-custom-black select-none text-white'}
         `}
       >
-        <p className='text-justify text-sm px-8'>
-          Hello! My name is Łukasz and I'm&nbsp;Frontend Developer.
-          This app is a&nbsp;part of my portfolio that I&nbsp;have made while improving my coding skills.<br />
-          The application is a&nbsp;simulation of an online book store. You can create an account, find a&nbsp;book,
-          add books to cart and make fictitious order. In your profile page you can change password
-          and see the history of your orders.
-          Read more about me and see my other web apps with source codes at:<br />
+        <p className="px-8 text-justify text-sm">
+          Hello! My name is Łukasz and I'm&nbsp;Frontend Developer. This app is a&nbsp;part of my
+          portfolio that I&nbsp;have made while improving my coding skills.
+          <br />
+          The application is a&nbsp;simulation of an online book store. You can create an account,
+          find a&nbsp;book, add books to cart and make fictitious order. In your profile page you
+          can change password and see the history of your orders. Read more about me and see my
+          other web apps with source codes at:
+          <br />
         </p>
-        <a href='https://lukaszsliwinski.pl' className='block w-100 text-center mt-4 cursor-pointer font-bold underline underline-offset-2 hover:text-custom-main'>www.lukaszsliwinski.pl</a>
+        <a
+          href="https://lukaszsliwinski.pl"
+          className="w-100 hover:text-custom-main mt-4 block cursor-pointer text-center font-bold underline underline-offset-2"
+        >
+          www.lukaszsliwinski.pl
+        </a>
       </div>
     </div>
   );
-};
+}

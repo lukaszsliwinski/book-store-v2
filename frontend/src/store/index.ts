@@ -11,7 +11,7 @@ import asideSlice from './asideSlice';
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage
 };
 
 const rootReducer = combineReducers({
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   mode: modeSlice.reducer,
   auth: authSlice.reducer,
   aside: asideSlice.reducer
-})
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

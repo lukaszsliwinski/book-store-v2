@@ -5,8 +5,7 @@ const User = require('../models/user.model');
 
 // login controller
 const login = (request, response) => {
-  User
-    .findOne({ username: request.body.usernameInput })
+  User.findOne({ username: request.body.usernameInput })
     .then((user) => {
       bcrypt
         .compare(request.body.passwordInput, user.password)
@@ -16,12 +15,12 @@ const login = (request, response) => {
               message: 'wrong password',
               error
             });
-          };
+          }
 
           const token = jwt.sign(
             {
               userId: user._id,
-              username: user.username,
+              username: user.username
             },
             'RANDOM-TOKEN',
             { expiresIn: '24h' }
@@ -30,7 +29,7 @@ const login = (request, response) => {
           response.status(200).send({
             message: 'Successfully logged in!',
             username: user.username,
-            token,
+            token
           });
         })
         .catch((error) => {

@@ -54,7 +54,7 @@ export default function App() {
           method: 'get',
           url: '/api/get-user',
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`
           }
         };
 
@@ -72,22 +72,22 @@ export default function App() {
           const cart = JSON.parse(localStorage.getItem('cart') || '[]');
           setBadge(cart.length);
         });
-      };
-    };
+      }
+    }
   }, []);
 
   return (
-    <div className='h-screen-mobile pt-12 pb-4 bg-custom-white dark:bg-custom-gray leading-snug tracking-wider'>
+    <div className="h-screen-mobile bg-custom-white dark:bg-custom-gray pt-12 pb-4 leading-snug tracking-wider">
       <Header />
       <Routes>
-        <Route path='/' element={<Search />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/profile' element={<ProtectedRoute component={<Profile />} />} />
-        <Route path='/books/:id' element={<BookDetails />} />
-        <Route path='/cart' element={<ProtectedRoute component={<Cart />} />} />
+        <Route path="/" element={<Search />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<ProtectedRoute component={<Profile />} />} />
+        <Route path="/books/:id" element={<BookDetails />} />
+        <Route path="/cart" element={<ProtectedRoute component={<Cart />} />} />
       </Routes>
       <Alert />
     </div>
   );
-};
+}

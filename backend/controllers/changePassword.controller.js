@@ -11,7 +11,7 @@ passwordSchema
   .has().uppercase()
   .has().lowercase()
   .has().digits(1)
-  .has().not().spaces()
+  .has().not().spaces();
 
 // find user in database by username, hash new password and update
 const changePassword = async (request, response) => {
@@ -23,11 +23,10 @@ const changePassword = async (request, response) => {
     bcrypt
       .hash(request.body.passwordInput, 10)
       .then((hashedPassword) => {
-        User
-          .findOneAndUpdate(
-            {username: response.locals.user.username},
-            {password: hashedPassword}
-          )
+        User.findOneAndUpdate(
+          { username: response.locals.user.username },
+          { password: hashedPassword }
+        )
           .then((result) => {
             response.status(201).send({
               message: 'Password successfully changed!',
@@ -47,7 +46,7 @@ const changePassword = async (request, response) => {
           error
         });
       });
-  };
+  }
 };
 
 module.exports = changePassword;

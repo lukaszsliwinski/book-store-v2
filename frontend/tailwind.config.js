@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}', './node_modules/tw-elements/dist/js/**/*.js'
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './node_modules/tw-elements/dist/js/**/*.js'],
   theme: {
     extend: {
       colors: {
@@ -14,12 +12,9 @@ module.exports = {
         'custom-main-hover': '#276D7E'
       },
       screens: {
-        'xs': '480px'
+        xs: '480px'
       }
-    },
+    }
   },
-  plugins: [
-    require('tw-elements/dist/plugin'),
-    require('prettier-plugin-tailwindcss')
-  ]
-}
+  plugins: [require('tw-elements/dist/plugin'), require('prettier-plugin-tailwindcss')]
+};

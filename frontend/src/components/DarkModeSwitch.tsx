@@ -16,15 +16,17 @@ function DarkModeSwitch() {
   // toggle mode and save in local storage
   const toggleMode = () => {
     setDarkMode(!darkMode);
-    localStorage.getItem('mode') === 'dark' ? localStorage.setItem('mode', 'light') : localStorage.setItem('mode', 'dark');
+    localStorage.getItem('mode') === 'dark'
+      ? localStorage.setItem('mode', 'light')
+      : localStorage.setItem('mode', 'dark');
   };
 
   return (
     <div onClick={() => toggleMode()}>
-      <div className='scale-75 xs:scale-100 relative xs:mx-2 h-6 w-11 rounded-xl p-1 cursor-pointer bg-custom-white before:absolute before:z-[2] before:block before:h-4 before:w-4 before:rounded-lg before:bg-custom-black before:transition-transform before:duration-100 before:ease-linear before:content-[""] before:dark:translate-x-5'>
-        <div className='flex h-full items-center justify-between text-custom-black'>
-          <Sun className='z-0 h-4 w-4' />
-          <Moon className='z-0 h-4 w-4' />
+      <div className="xs:scale-100 xs:mx-2 bg-custom-white before:bg-custom-black relative h-6 w-11 scale-75 cursor-pointer rounded-xl p-1 before:absolute before:z-[2] before:block before:h-4 before:w-4 before:rounded-lg before:transition-transform before:duration-100 before:ease-linear before:content-[''] before:dark:translate-x-5">
+        <div className="text-custom-black flex h-full items-center justify-between">
+          <Sun className="z-0 h-4 w-4" />
+          <Moon className="z-0 h-4 w-4" />
         </div>
       </div>
     </div>

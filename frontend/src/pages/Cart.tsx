@@ -31,13 +31,13 @@ export default function Cart() {
     if (cart.length !== 0) {
       let sum = 0;
       cart.map((item: IBook) => {
-        sum += item.price * item.amount
+        sum += item.price * item.amount;
       });
 
       // round sum to 2 decimals and set total state
       sum = Math.round(sum * 100) / 100;
       setTotal(sum);
-    };
+    }
   }, [cart]);
 
   // subtract one book and delete if it is the last one
@@ -47,13 +47,13 @@ export default function Cart() {
     if (book.amount > 1) {
       book.amount -= 1;
       newCart.map((item: IBook) => {
-        return (item.bookId === book.bookId) ? book : item;
+        return item.bookId === book.bookId ? book : item;
       });
     } else {
       for (let i = 0; i < newCart.length; i++) {
         if (newCart[i].bookId === bookId) newCart.splice(i, 1);
-      };
-    };
+      }
+    }
     setCart(newCart);
   };
 
@@ -63,7 +63,7 @@ export default function Cart() {
     const book: IBook = newCart.find((item: IBook) => item.bookId === bookId) as IBook;
     if (book.amount < 5) {
       book.amount += 1;
-    };
+    }
     setCart(newCart);
   };
 
@@ -72,7 +72,7 @@ export default function Cart() {
     const newCart = [...cart];
     for (let i = 0; i < newCart.length; i++) {
       if (newCart[i].bookId === bookId) newCart.splice(i, 1);
-    };
+    }
     setCart(newCart);
   };
 
@@ -84,7 +84,7 @@ export default function Cart() {
       method: 'post',
       url: '/api/order',
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
       data: {
         cart: cart,
@@ -103,40 +103,50 @@ export default function Cart() {
         setAlertMessage('Database connection error - please try again later!');
         setShowAlert(true);
       });
-  }
+  };
 
   return (
-    <div className='flex justify-center mt-4'>
-      <div className='flex flex-col max-w-4xl rounded-sm p-4 mx-4 shadow-md bg-white dark:bg-custom-black text-custom-black dark:text-custom-white'>
-        <h4 className='text-center font-bold text-custom-main'>SHOPPING CART</h4>
-        {cart.map(item => {
+    <div className="mt-4 flex justify-center">
+      <div className="dark:bg-custom-black text-custom-black dark:text-custom-white mx-4 flex max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md">
+        <h4 className="text-custom-main text-center font-bold">SHOPPING CART</h4>
+        {cart.map((item) => {
           return (
-            <div className='flex flex-col xs:flex-row xs:items-center justify-between my-2'>
-              <div className='font-bold text-sm'>{item.title}</div>
-              <div className='flex items-center justify-end'>
-                <div className='flex items-center w-10 pl-2 text-custom-black dark:text-custom-white'>
-                  <div className='font-medium text-lg'>{item.amount}</div>
-                  <div className='inline-flex flex-col ml-2'>
-                    <button onClick={() => plusOne(item.bookId)}><ArrowUp className='w-2 hover:text-custom-main'/></button>
-                    <button onClick={() => minusOne(item.bookId)}><ArrowDown className='w-2 hover:text-custom-main'/></button>
+            <div className="xs:flex-row xs:items-center my-2 flex flex-col justify-between">
+              <div className="text-sm font-bold">{item.title}</div>
+              <div className="flex items-center justify-end">
+                <div className="text-custom-black dark:text-custom-white flex w-10 items-center pl-2">
+                  <div className="text-lg font-medium">{item.amount}</div>
+                  <div className="ml-2 inline-flex flex-col">
+                    <button onClick={() => plusOne(item.bookId)}>
+                      <ArrowUp className="hover:text-custom-main w-2" />
+                    </button>
+                    <button onClick={() => minusOne(item.bookId)}>
+                      <ArrowDown className="hover:text-custom-main w-2" />
+                    </button>
                   </div>
                 </div>
-                <div className='mx-1 w-[6rem]'>&ensp;x&ensp;<span className='font-bold'>{item.price} $</span></div>
+                <div className="mx-1 w-[6rem]">
+                  &ensp;x&ensp;<span className="font-bold">{item.price} $</span>
+                </div>
                 <button
-                  className='relative inline-block mx-1 p-2 bg-custom-main text-custom-white font-medium text-xs leading-tight uppercase rounded-sm shadow-md hover:text-custom-main hover:bg-custom-white/10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
+                  className="bg-custom-main text-custom-white hover:text-custom-main hover:bg-custom-white/10 relative mx-1 inline-block rounded-sm p-2 text-xs font-medium uppercase leading-tight shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-0"
                   onClick={() => removeFromCart(item.bookId)}
-                ><Bin className='w-3.5'/></button>
+                >
+                  <Bin className="w-3.5" />
+                </button>
               </div>
             </div>
           );
         })}
-        {cart.length === 0 ?
-          <div className='text-xs font-semibold'>Your cart is empty.</div> :
-          <div className='flex flex-col justify-center items-center mt-6'>
-            <div className='font-bold'>total: {total} $</div>
-            <Btn onclick={() => makeOrder()} label='order' icon={undefined} />
-          </div>}
+        {cart.length === 0 ? (
+          <div className="text-xs font-semibold">Your cart is empty.</div>
+        ) : (
+          <div className="mt-6 flex flex-col items-center justify-center">
+            <div className="font-bold">total: {total} $</div>
+            <Btn onclick={() => makeOrder()} label="order" icon={undefined} />
+          </div>
+        )}
       </div>
     </div>
   );
-};
+}

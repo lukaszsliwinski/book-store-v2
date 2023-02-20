@@ -8,12 +8,15 @@ export const getToken = () => {
   return cookies.get('TOKEN');
 };
 
-
 // check if user is logged in and add book to cart
-export const addToCart = ({dataToCart, setShowAlert, setAlertMessage }: {
-  dataToCart: IBook,
-  setShowAlert: (value: boolean) => void,
-  setAlertMessage: (value: string) => void
+export const addToCart = ({
+  dataToCart,
+  setShowAlert,
+  setAlertMessage
+}: {
+  dataToCart: IBook;
+  setShowAlert: (value: boolean) => void;
+  setAlertMessage: (value: string) => void;
 }) => {
   const token = getToken();
 
@@ -28,50 +31,51 @@ export const addToCart = ({dataToCart, setShowAlert, setAlertMessage }: {
         setAlertMessage('You can add to cart only 5 of the same books!');
       } else {
         setAlertMessage('Book added to cart!');
-      };
+      }
       setShowAlert(true);
 
       cart.map((item: IBook) => {
-        return (item.bookId === book.bookId) ? book : item;
+        return item.bookId === book.bookId ? book : item;
       });
-
     } else if (book && book.amount >= 5) {
       setAlertMessage('You can add to cart only 5 of the same books!');
       setShowAlert(true);
-
     } else if (!book) {
       cart.push(dataToCart);
       setAlertMessage('Book added to cart!');
       setShowAlert(true);
-
-    };
+    }
 
     localStorage.setItem('cart', JSON.stringify(cart));
     window.dispatchEvent(new Event('storage'));
   } else {
     window.location.href = '/login';
-  };
+  }
 };
 
-
 // handle change amount of books in input field
-export const handleChangeCounter = ({ event, setCounter }: {
-  event: React.ChangeEvent<HTMLInputElement>,
-  setCounter: (counter: number) => void
+export const handleChangeCounter = ({
+  event,
+  setCounter
+}: {
+  event: React.ChangeEvent<HTMLInputElement>;
+  setCounter: (counter: number) => void;
 }) => {
   event.preventDefault();
   setCounter(event.target.valueAsNumber);
 };
 
-
 // validate amount of books in input field (1-5)
-export const validateCounter = ({ counter, setCounter }: {
-  counter: number,
-  setCounter: (counter: number) => void
+export const validateCounter = ({
+  counter,
+  setCounter
+}: {
+  counter: number;
+  setCounter: (counter: number) => void;
 }) => {
   if (counter > 5) {
     setCounter(5);
   } else if (counter < 1) {
     setCounter(1);
-  };
+  }
 };
