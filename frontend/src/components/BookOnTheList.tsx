@@ -43,12 +43,12 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
         >
           {data.title}
         </a>
-        <div className="mt-2 flex text-xs">
+        <div className="mt-2 text-xs">
           {data.authors.map((author, i) => (
-            <>
+            <span key={i}>
               {author}
               {i !== data.authors.length - 1 ? ',' : ''}&nbsp;
-            </>
+            </span>
           ))}
         </div>
         <div className="text-custom-main my-4 text-xl font-bold">{data.price} $</div>

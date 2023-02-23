@@ -129,7 +129,7 @@ export default function Search() {
               <></>
             )
           ) : (
-            bookList.map((book) => <BookOnTheList data={book} />)
+            bookList.map((book, i) => <BookOnTheList key={i} data={book} />)
           )}
         </div>
       </div>

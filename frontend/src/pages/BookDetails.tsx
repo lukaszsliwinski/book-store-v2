@@ -93,9 +93,9 @@ export default function BookDetails() {
             <h5 className="mt-2 text-center text-sm font-bold hover:underline sm:text-left">
               {bookData.title}
             </h5>
-            <div className="mb-2 flex text-xs">
+            <div className="mb-2 text-xs">
               {bookData.authors.map((author, i) => (
-                <span>
+                <span key={i}>
                   {author}
                   {i !== bookData.authors.length - 1 ? ',' : ''}&nbsp;
                 </span>

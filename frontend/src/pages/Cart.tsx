@@ -109,9 +109,9 @@ export default function Cart() {
     <div className="mt-4 flex justify-center">
       <div className="dark:bg-custom-black text-custom-black dark:text-custom-white mx-4 flex w-full max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md md:w-[768px]">
         <h4 className="text-custom-main text-center font-bold">SHOPPING CART</h4>
-        {cart.map((item) => {
+        {cart.map((item, i) => {
           return (
-            <div className="xs:flex-row xs:items-center my-2 flex flex-col justify-between">
+            <div key={i} className="xs:flex-row xs:items-center my-2 flex flex-col justify-between">
               <div className="text-sm font-bold">{item.title}</div>
               <div className="flex items-center justify-end">
                 <div className="text-custom-black dark:text-custom-white flex w-10 items-center pl-2">

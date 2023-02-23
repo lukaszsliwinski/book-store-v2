@@ -53,8 +53,8 @@ export default function History() {
         <label className="ml-2 text-xs font-semibold">latest orders</label>
         {ordersHistory
           .sort((a: IOrder, b: IOrder) => b.number - a.number)
-          .map((order) => (
-            <HistoryItem order={order} />
+          .map((order, i) => (
+            <HistoryItem key={i} order={order} />
           ))}
       </div>
     );

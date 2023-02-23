@@ -26,7 +26,10 @@ export default function HistoryItem({ order }: { order: IOrder }) {
         <div className="p-2 pb-0">
           {order.books.map((book, i) => {
             return (
-              <div className="xs:mb-1 mb-3 flex flex-col justify-between text-xs sm:flex-row">
+              <div
+                key={i}
+                className="xs:mb-1 mb-3 flex flex-col justify-between text-xs sm:flex-row"
+              >
                 <div>
                   {i + 1}. {book.title}{' '}
                 </div>
