@@ -9,6 +9,7 @@ import { IRootState } from '../store';
 import { alertActions } from '../store/alertSlice';
 import { authActions } from '../store/authSlice';
 import Btn from '../components/Btn';
+import { badgeActions } from '../store/badgeSlice';
 
 const cookies = new Cookies();
 
@@ -22,6 +23,7 @@ export default function Login() {
 
   // global state
   const logged = useSelector((state: IRootState) => state.auth.logged);
+  const badge = useSelector((state: IRootState) => state.badge.badge);
 
   // dispatch functions from slices
   const dispatch = useDispatch();
@@ -29,6 +31,7 @@ export default function Login() {
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
+  const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
 
   // redirect to profile page if user is logged in
   if (logged) window.location.href = '/profile';
@@ -59,6 +62,7 @@ export default function Login() {
           setUsernameInput('');
           setPasswordInput('');
           localStorage.removeItem('cart');
+          setBadge(0);
           cookies.set('TOKEN', result.data.token, { path: '/' });
           setLogged(true);
           setAlertMessage(result.data.message);
