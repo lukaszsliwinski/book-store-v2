@@ -104,10 +104,10 @@ export default function BookDetails() {
             <div className="mb-2 flex text-justify text-xs">
               {bookData.description.replace(/<\/?[^>]+(>|$)/g, ' ')}
             </div>
-            <div className="mb-2 flex text-xs">
+            <div className="mb-2 w-full text-xs">
               <span className="font-semibold">publisher:</span>&nbsp;{bookData.publisher}
             </div>
-            <div className="flex text-xs">
+            <div className="flex w-full text-xs">
               <span className="font-semibold">published date:</span>&nbsp;{bookData.publishedDate}
             </div>
             <div className="text-custom-main my-4 text-xl font-bold">{bookData.price} $</div>
