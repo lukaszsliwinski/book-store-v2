@@ -121,12 +121,11 @@ export default function Search() {
           {loader ? (
             <Loader />
           ) : bookList.length === 0 ? (
-            noResults && query !== '' ? (
+            noResults &&
+            query !== '' && (
               <div className="text-custom-black dark:text-custom-white col-span-3 mt-4 text-center font-semibold">
                 no results
               </div>
-            ) : (
-              <></>
             )
           ) : (
             bookList.map((book, i) => <BookOnTheList key={i} data={book} />)
