@@ -7,6 +7,7 @@ import { ReactComponent as ArrowUp } from '../assets/svg/arrowup.svg';
 import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
 import { alertActions } from '../store/alertSlice';
 import Btn from '../components/Btn';
+import Loader from '../components/Loader';
 import { IBookDetails, IBook } from '../types';
 import { addToCart, handleChangeCounter, validateCounter } from '../utils';
 
@@ -16,6 +17,7 @@ export default function BookDetails() {
   const [coverUrl, setCoverUrl] = useState('');
   const [dataToCart, setDataToCart] = useState<IBook>();
   const [counter, setCounter] = useState(1);
+  const [loader, setLoader] = useState(false);
 
   const params = useParams();
 
@@ -34,6 +36,8 @@ export default function BookDetails() {
         id: params.id
       }
     };
+
+    setLoader(true);
 
     axios(axiosBookDetailsConfig)
       .then((result) => {
@@ -55,6 +59,9 @@ export default function BookDetails() {
         setError(true);
         setAlertMessage('Database connection error - please try again later!');
         setShowAlert(true);
+      })
+      .finally(() => {
+        setLoader(false);
       });
   }, []);
 
@@ -73,7 +80,9 @@ export default function BookDetails() {
 
   return (
     <div className="mt-4 flex justify-center">
-      {bookData ? (
+      {loader ? (
+        <Loader />
+      ) : bookData ? (
         <div className="dark:bg-custom-black text-custom-black dark:text-custom-white mx-4 flex max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md sm:flex-row">
           <img
             className="xs:h-80 m-auto h-64 object-cover sm:ml-12 sm:h-96"
