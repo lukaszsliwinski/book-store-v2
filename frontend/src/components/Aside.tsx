@@ -22,7 +22,7 @@ export default function Aside() {
   });
 
   // get screen size
-  const { width } = useWindowSize();
+  const { width, height } = useWindowSize();
 
   // aside always visible on 2xl screen
   useEffect(() => {
@@ -41,11 +41,24 @@ export default function Aside() {
           flex
           ${showAside ? 'justify-center' : 'justify-end'}`}
       >
-        <button className="hover:text-custom-main m-5" onClick={() => setShowAside(!showAside)}>
+        <button
+          onClick={() => setShowAside(!showAside)}
+          className={`
+            hover:text-custom-main mx-5
+            ${height < 480 ? 'my-1' : 'my-5'}`}
+        >
           {showAside ? (
-            <ArrowLeft className="block w-6" />
+            <ArrowLeft
+              className={`
+                block
+                ${height < 480 ? 'w-4' : 'w-6'}`}
+            />
           ) : (
-            <ArrowRight className="-mr-3 block w-6" />
+            <ArrowRight
+              className={`
+                block
+                ${height < 480 ? '-mr-2 w-4' : '-mr-3 w-6'}`}
+            />
           )}
         </button>
       </div>
@@ -55,7 +68,12 @@ export default function Aside() {
           ${showAside ? '' : 'dark:text-custom-black select-none text-white'}
         `}
       >
-        <p className="px-8 text-justify text-sm">
+        <p
+          className={`
+            px-8 text-justify
+            ${height < 480 ? 'text-[10px]' : ' text-sm'}
+          `}
+        >
           Hello! My name is Łukasz and I'm&nbsp;Frontend Developer. This app is a&nbsp;part of my
           portfolio that I&nbsp;have made while improving my coding skills.
           <br />
@@ -67,7 +85,7 @@ export default function Aside() {
         </p>
         <a
           href="https://lukaszsliwinski.pl"
-          className="w-100 hover:text-custom-main mt-4 block cursor-pointer text-center font-bold underline underline-offset-2"
+          className="w-100 hover:text-custom-main mt-1 block cursor-pointer text-center text-sm font-bold underline underline-offset-2"
         >
           www.lukaszsliwinski.pl
         </a>
