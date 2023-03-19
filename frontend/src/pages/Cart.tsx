@@ -129,7 +129,7 @@ export default function Cart() {
                   &ensp;x&ensp;<span className="font-bold">{item.price} $</span>
                 </div>
                 <button
-                  className="bg-custom-main text-custom-white hover:text-custom-main hover:bg-custom-white/10 dark:shadow-dark relative mx-1 inline-block rounded-sm p-2 text-xs font-medium uppercase leading-tight shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                  className="bg-custom-main text-custom-white hover:bg-custom-main-hover relative mx-1 inline-block rounded-sm p-2 text-xs font-medium uppercase leading-tight shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-0"
                   onClick={() => removeFromCart(item.bookId)}
                 >
                   <Bin className="w-3.5" />
