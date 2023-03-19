@@ -83,7 +83,7 @@ export default function BookDetails() {
       {loader ? (
         <Loader />
       ) : bookData ? (
-        <div className="dark:bg-custom-black text-custom-black dark:text-custom-white mx-4 flex max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md sm:flex-row">
+        <div className="dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark mx-4 flex max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md sm:flex-row">
           <img
             className="xs:h-80 m-auto h-64 object-cover sm:ml-12 sm:h-96"
             src={coverUrl}
@@ -148,7 +148,7 @@ export default function BookDetails() {
           </div>
         </div>
       ) : (
-        <div className="justify-cente dark:bg-custom-black text-custom-black dark:text-custom-white flex w-fit rounded-sm bg-white px-16 py-6 shadow-md">
+        <div className="justify-cente dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark flex w-fit rounded-sm bg-white px-16 py-6 shadow-md">
           Book not found - go back to&nbsp;
           <a href="/" className="hover:text-custom-main font-bold underline underline-offset-2">
             main page

@@ -68,7 +68,7 @@ export default function Profile() {
 
   return (
     <div className="mt-4 flex justify-center">
-      <div className="dark:bg-custom-black text-custom-black dark:text-custom-white mx-4 w-full max-w-4xl rounded-sm bg-white p-3 shadow-md md:p-6">
+      <div className="dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark mx-4 w-full max-w-4xl rounded-sm bg-white p-3 shadow-md md:p-6">
         <h4 className="text-custom-main text-center font-bold uppercase">{username} - profile</h4>
         <div className="flex flex-col items-center md:flex-row md:justify-around">
           <form onSubmit={(event) => handleSubmit(event)}>

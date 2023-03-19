@@ -33,7 +33,7 @@ export default function Aside() {
     <div
       ref={asideRef}
       className={`
-        dark:bg-custom-black text-custom-black dark:text-custom-white fixed z-20 h-screen w-[280px] bg-white shadow-md transition-all duration-500
+        dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark fixed z-20 h-screen w-[280px] bg-white shadow-md transition-all duration-500
         ${showAside ? '' : '-ml-[240px]'}`}
     >
       <div

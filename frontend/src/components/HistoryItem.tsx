@@ -3,7 +3,7 @@ import { IOrder } from '../types';
 
 export default function HistoryItem({ order }: { order: IOrder }) {
   return (
-    <div className="dark:bg-custom-gray my-2 rounded-sm bg-white p-2 shadow-md">
+    <div className="dark:bg-custom-gray dark:shadow-dark my-2 rounded-sm bg-white p-2 shadow-md">
       <div className="flex items-center justify-between text-xs">
         <span className="font-bold">
           order {order.number} - {order.date.substring(0, 10)}
