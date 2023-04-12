@@ -77,7 +77,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="h-screen-mobile bg-custom-white dark:bg-custom-gray pt-12 pb-20 leading-snug tracking-wider">
+    <div className="min-h-screen-mobile bg-custom-white dark:bg-custom-gray pt-12 pb-20 leading-snug tracking-wider">
       <Header />
       <Routes>
         <Route path="/" element={<Search />} />

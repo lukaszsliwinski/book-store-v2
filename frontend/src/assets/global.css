@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* https://css-tricks.com/the-trick-to-viewport-units-on-mobile/ */
-.h-screen-mobile {
-  min-height: calc(var(--vh, 1vh) * 100);
-}
-
 /* scrollbar */
 html {
   scrollbar-color: #408697 transparent;
