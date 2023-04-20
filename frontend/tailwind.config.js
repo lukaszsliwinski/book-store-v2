@@ -5,11 +5,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-black': '#1C1C1E',
-        'custom-gray': '#2C2C2E',
-        'custom-white': '#f2F7FA',
-        'custom-main': '#408697',
-        'custom-main-hover': '#276D7E'
+        zinc: {
+          950: '#09090b'
+        },
+        neutral: {
+          50: '#fafafa'
+        }
       },
       screens: {
         xs: '480px'

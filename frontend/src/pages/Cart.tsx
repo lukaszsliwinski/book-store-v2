@@ -107,21 +107,21 @@ export default function Cart() {
 
   return (
     <div className="mt-4 flex justify-center">
-      <div className="dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark mx-4 flex w-full max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md md:w-[768px]">
-        <h4 className="text-custom-main text-center font-bold">SHOPPING CART</h4>
+      <div className="dark:bg-zinc-950 text-zinc-950 dark:shadow-dark mx-4 flex w-full max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md dark:text-neutral-50 md:w-[768px]">
+        <h4 className="text-center font-bold text-teal-700">SHOPPING CART</h4>
         {cart.map((item, i) => {
           return (
             <div key={i} className="xs:flex-row xs:items-center my-2 flex flex-col justify-between">
               <div className="text-sm font-bold">{item.title}</div>
               <div className="flex items-center justify-end">
-                <div className="text-custom-black dark:text-custom-white flex w-10 items-center pl-2">
+                <div className="text-zinc-950 flex w-10 items-center pl-2 dark:text-neutral-50">
                   <div className="text-lg font-medium">{item.amount}</div>
                   <div className="ml-2 inline-flex flex-col">
                     <button onClick={() => plusOne(item.bookId)}>
-                      <ArrowUp className="hover:text-custom-main w-2" />
+                      <ArrowUp className="w-2 hover:text-teal-700" />
                     </button>
                     <button onClick={() => minusOne(item.bookId)}>
-                      <ArrowDown className="hover:text-custom-main w-2" />
+                      <ArrowDown className="w-2 hover:text-teal-700" />
                     </button>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function Cart() {
                   &ensp;x&ensp;<span className="font-bold">{item.price} $</span>
                 </div>
                 <button
-                  className="bg-custom-main text-custom-white hover:bg-custom-main-hover relative mx-1 inline-block rounded-sm p-2 text-xs font-medium uppercase leading-tight shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+                  className="relative mx-1 inline-block rounded-sm bg-teal-700 p-2 text-xs font-medium uppercase leading-tight text-neutral-50 shadow-md transition duration-150 ease-in-out hover:bg-teal-800 focus:outline-none focus:ring-0"
                   onClick={() => removeFromCart(item.bookId)}
                 >
                   <Bin className="w-3.5" />

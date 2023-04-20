@@ -43,8 +43,8 @@ export default function Header() {
   };
 
   return (
-    <nav className="bg-custom-black fixed top-0 z-30 flex w-full items-center justify-between px-2.5 py-2">
-      <a href="/" className="text-custom-white inline-flex font-semibold">
+    <nav className="bg-zinc-950 fixed top-0 z-30 flex w-full items-center justify-between px-2.5 py-2">
+      <a href="/" className="inline-flex font-semibold text-neutral-50">
         <div className="inline-flex h-full items-center">
           <Book className="mr-2 inline-block w-5" />
         </div>
@@ -60,10 +60,10 @@ export default function Header() {
           <div className="flex items-center">
             <a
               href="/cart"
-              className="text-custom-white hover:text-custom-main hover:bg-custom-white/10 focus:bg-custom-white/10 active:bg-custom-white/10 dark:shadow-dark relative mx-1 inline-block rounded-sm bg-transparent px-4 py-2 text-xs font-medium uppercase leading-tight shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+              className="dark:shadow-dark relative mx-1 inline-block rounded-sm bg-transparent px-4 py-2 text-xs font-medium uppercase leading-tight text-neutral-50 shadow-md transition duration-150 ease-in-out hover:bg-neutral-50/10 hover:text-teal-700 focus:bg-neutral-50/10 focus:outline-none focus:ring-0 active:bg-neutral-50/10"
             >
               <Cart className="w-[21.5px]" />
-              <span className="text-custom-white absolute top-[2px] right-[2px] ml-2 inline-block whitespace-nowrap rounded bg-red-600 py-0.5 px-1 text-center align-baseline text-[.6rem] font-bold leading-none">
+              <span className="absolute top-[2px] right-[2px] ml-2 inline-block whitespace-nowrap rounded bg-red-600 py-0.5 px-1 text-center align-baseline text-[.6rem] font-bold leading-none text-neutral-50">
                 {badge}
               </span>
             </a>

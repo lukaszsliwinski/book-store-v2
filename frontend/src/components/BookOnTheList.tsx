@@ -30,7 +30,7 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
   }, [counter]);
 
   return (
-    <div className="xs:flex-row xs:max-w-md dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark mb-6 flex max-w-xs flex-col rounded-sm bg-white p-4 shadow-md xl:mb-0">
+    <div className="xs:flex-row xs:max-w-md dark:bg-zinc-950 text-zinc-950 dark:shadow-dark mb-6 flex max-w-xs flex-col rounded-sm bg-white p-4 shadow-md dark:text-neutral-50 xl:mb-0">
       <img
         className="xs:mx-0 xs:w-40 mx-auto h-56 object-cover"
         src={data.coverUrl}
@@ -51,9 +51,9 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
             </span>
           ))}
         </div>
-        <div className="text-custom-main my-4 text-xl font-bold">{data.price} $</div>
+        <div className="my-4 text-xl font-bold text-teal-700">{data.price} $</div>
         <div className="flex items-center">
-          <div className="text-custom-black dark:text-custom-white bg-custom-white flex items-center pr-2 dark:bg-white/10">
+          <div className="text-zinc-950 flex items-center bg-neutral-50 pr-2 dark:bg-white/10 dark:text-neutral-50">
             <input
               type="number"
               value={counter}
@@ -67,14 +67,14 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
                   if (counter < 5) setCounter(counter + 1);
                 }}
               >
-                <ArrowUp className="hover:text-custom-main w-2" />
+                <ArrowUp className="w-2 hover:text-teal-700" />
               </button>
               <button
                 onClick={() => {
                   if (counter > 1) setCounter(counter - 1);
                 }}
               >
-                <ArrowDown className="hover:text-custom-main w-2" />
+                <ArrowDown className="w-2 hover:text-teal-700" />
               </button>
             </div>
           </div>

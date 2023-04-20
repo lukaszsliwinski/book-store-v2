@@ -12,7 +12,7 @@ export default function DropdownItem({
   return (
     <li>
       <a
-        className="dropdown-item text-custom-white hover:text-custom-main hover:bg-custom-white/10 focus:bg-custom-white/10 active:bg-custom-white/10 inline-flex w-full whitespace-nowrap bg-transparent py-2 px-4 text-xs font-normal focus:outline-none focus:ring-0"
+        className="dropdown-item inline-flex w-full whitespace-nowrap bg-transparent py-2 px-4 text-xs font-normal text-neutral-50 hover:bg-neutral-50/10 hover:text-teal-700 focus:bg-neutral-50/10 focus:outline-none focus:ring-0 active:bg-neutral-50/10"
         href={href}
         onClick={onclick}
       >

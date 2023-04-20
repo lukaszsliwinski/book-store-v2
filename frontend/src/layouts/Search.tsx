@@ -90,14 +90,14 @@ export default function Search() {
   return (
     <>
       <Aside />
-      <div className="bg-custom-white dark:bg-custom-gray ml-12 mr-2 flex  flex-col items-center">
+      <div className="ml-12 mr-2 flex flex-col items-center  bg-neutral-50 dark:bg-zinc-900">
         <div className="flex justify-center">
           <div className="relative my-3 md:max-w-[32rem]">
             <input
               ref={searchInput}
               type="text"
               value={query}
-              className="form-control xs:pl-6 xs:pr-36 xs:py-3 xs:text-lg text-custom-black dark:text-custom-white focus:border-custom-main block w-full rounded-sm border-2 border-solid border-transparent bg-white bg-clip-padding p-2 pr-8 text-base font-normal transition ease-in-out focus:outline-none focus:ring-0 dark:bg-white/10"
+              className="form-control xs:pl-6 xs:pr-36 xs:py-3 xs:text-lg text-zinc-950 block w-full rounded-sm border-2 border-solid border-transparent bg-white bg-clip-padding p-2 pr-8 text-base font-normal transition ease-in-out focus:border-teal-700 focus:outline-none focus:ring-0 dark:bg-white/10 dark:text-neutral-50"
               onChange={(event) => handleChange(event)}
               onKeyDown={(event) => handleEnter(event)}
               placeholder="Title, authors, ..."
@@ -123,7 +123,7 @@ export default function Search() {
           ) : bookList.length === 0 ? (
             noResults &&
             query !== '' && (
-              <div className="text-custom-black dark:text-custom-white col-span-3 mt-4 text-center font-semibold">
+              <div className="text-zinc-950 col-span-3 mt-4 text-center font-semibold dark:text-neutral-50">
                 no results
               </div>
             )

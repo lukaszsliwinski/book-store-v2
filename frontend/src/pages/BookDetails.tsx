@@ -83,7 +83,7 @@ export default function BookDetails() {
       {loader ? (
         <Loader />
       ) : bookData ? (
-        <div className="dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark mx-4 flex max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md sm:flex-row">
+        <div className="dark:bg-zinc-950 text-zinc-950 dark:shadow-dark mx-4 flex max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md dark:text-neutral-50 sm:flex-row">
           <img
             className="xs:h-80 m-auto h-64 object-cover sm:ml-12 sm:h-96"
             src={coverUrl}
@@ -110,9 +110,9 @@ export default function BookDetails() {
             <div className="flex w-full text-xs">
               <span className="font-semibold">published date:</span>&nbsp;{bookData.publishedDate}
             </div>
-            <div className="text-custom-main my-4 text-xl font-bold">{bookData.price} $</div>
+            <div className="my-4 text-xl font-bold text-teal-700">{bookData.price} $</div>
             <div className="flex items-center">
-              <div className="text-custom-black dark:text-custom-white bg-custom-white flex items-center pr-2 dark:bg-white/10">
+              <div className="text-zinc-950 flex items-center bg-neutral-50 pr-2 dark:bg-white/10 dark:text-neutral-50">
                 <input
                   type="number"
                   value={counter}
@@ -126,14 +126,14 @@ export default function BookDetails() {
                       if (counter < 5) setCounter(counter + 1);
                     }}
                   >
-                    <ArrowUp className="hover:text-custom-main w-2" />
+                    <ArrowUp className="w-2 hover:text-teal-700" />
                   </button>
                   <button
                     onClick={() => {
                       if (counter > 1) setCounter(counter - 1);
                     }}
                   >
-                    <ArrowDown className="hover:text-custom-main w-2" />
+                    <ArrowDown className="w-2 hover:text-teal-700" />
                   </button>
                 </div>
               </div>
@@ -148,9 +148,9 @@ export default function BookDetails() {
           </div>
         </div>
       ) : (
-        <div className="justify-cente dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark flex w-fit rounded-sm bg-white px-16 py-6 shadow-md">
+        <div className="justify-cente dark:bg-zinc-950 text-zinc-950 dark:shadow-dark flex w-fit rounded-sm bg-white px-16 py-6 shadow-md dark:text-neutral-50">
           Book not found - go back to&nbsp;
-          <a href="/" className="hover:text-custom-main font-bold underline underline-offset-2">
+          <a href="/" className="font-bold underline underline-offset-2 hover:text-teal-700">
             main page
           </a>
         </div>

@@ -1,6 +1,6 @@
 export default function Loader() {
   return (
-    <div className="text-custom-main col-span-3 mt-4 flex justify-center">
+    <div className="col-span-3 mt-4 flex justify-center text-teal-700">
       <div
         className="spinner-grow m-1 inline-block h-4 w-4 rounded-full bg-current opacity-0"
         role="status"

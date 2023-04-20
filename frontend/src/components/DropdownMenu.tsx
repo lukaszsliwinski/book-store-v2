@@ -10,7 +10,7 @@ export default function DropdownMenu({
   return (
     <div className="dropdown relative mx-1">
       <button
-        className="dropdown-toggle text-custom-white hover:text-custom-main hover:bg-custom-white/10 focus:bg-custom-white/10 active:bg-custom-white/10 shadow-dark flex whitespace-nowrap rounded-sm bg-transparent px-6 py-2.5 text-xs font-medium uppercase leading-tight transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+        className="dropdown-toggle shadow-dark flex whitespace-nowrap rounded-sm bg-transparent px-6 py-2.5 text-xs font-medium uppercase leading-tight text-neutral-50 transition duration-150 ease-in-out hover:bg-neutral-50/10 hover:text-teal-700 focus:bg-neutral-50/10 focus:outline-none focus:ring-0 active:bg-neutral-50/10"
         data-bs-toggle="dropdown"
       >
         <div className="xs:max-w-full flex max-w-[50px] items-center">
@@ -20,7 +20,7 @@ export default function DropdownMenu({
           <ArrowDown className="ml-2 w-2" />
         </div>
       </button>
-      <ul className="dropdown-menu bg-custom-black dark:shadow-dark absolute z-50 float-left m-0 mt-1 hidden min-w-full list-none rounded-sm border-none bg-clip-padding py-2 text-left shadow-md">
+      <ul className="dropdown-menu bg-zinc-950 dark:shadow-dark absolute z-50 float-left m-0 mt-1 hidden min-w-full list-none rounded-sm border-none bg-clip-padding py-2 text-left shadow-md">
         {children}
       </ul>
     </div>

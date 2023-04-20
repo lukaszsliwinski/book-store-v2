@@ -3,7 +3,7 @@ import { IOrder } from '../types';
 
 export default function HistoryItem({ order }: { order: IOrder }) {
   return (
-    <div className="dark:bg-custom-gray dark:shadow-dark my-2 rounded-sm bg-white p-2 shadow-md">
+    <div className="dark:shadow-dark my-2 rounded-sm bg-white p-2 shadow-md dark:bg-zinc-900">
       <div className="flex items-center justify-between text-xs">
         <span className="font-bold">
           order {order.number} - {order.date.substring(0, 10)}
@@ -11,7 +11,7 @@ export default function HistoryItem({ order }: { order: IOrder }) {
         <span></span>
 
         <button
-          className="hover:text-custom-main p-1"
+          className="p-1 hover:text-teal-700"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target={`#collapse${order.number}`}

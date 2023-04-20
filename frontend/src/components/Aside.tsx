@@ -33,7 +33,7 @@ export default function Aside() {
     <div
       ref={asideRef}
       className={`
-        dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark fixed z-20 h-screen w-[280px] bg-white shadow-md transition-all duration-500
+        dark:bg-zinc-950 text-zinc-950 dark:shadow-dark fixed z-20 h-screen w-[280px] bg-white shadow-md transition-all duration-500 dark:text-neutral-50
         ${showAside ? '' : '-ml-[240px]'}`}
     >
       <div
@@ -44,7 +44,7 @@ export default function Aside() {
         <button
           onClick={() => setShowAside(!showAside)}
           className={`
-            hover:text-custom-main mx-5
+            mx-5 hover:text-teal-700
             ${height < 480 ? 'my-1' : 'my-5'}`}
         >
           {showAside ? (
@@ -65,7 +65,7 @@ export default function Aside() {
       <div
         className={`
           transition duration-150
-          ${showAside ? '' : 'dark:text-custom-black select-none text-white'}
+          ${showAside ? '' : 'dark:text-zinc-950 select-none text-white'}
         `}
       >
         <p
@@ -80,12 +80,12 @@ export default function Aside() {
           The application is a&nbsp;simulation of an online book store. You can create an account,
           find a&nbsp;book, add books to cart and make fictitious order. In your profile page you
           can change password and see the history of your orders. Read more about me and see my
-          other web apps with source codes at:
+          other apps with source codes at:
           <br />
         </p>
         <a
           href="https://lukaszsliwinski.pl"
-          className="w-100 hover:text-custom-main mt-1 block cursor-pointer text-center text-sm font-bold underline underline-offset-2"
+          className="w-100 mt-1 block cursor-pointer text-center text-sm font-bold underline underline-offset-2 hover:text-teal-700"
         >
           www.lukaszsliwinski.pl
         </a>

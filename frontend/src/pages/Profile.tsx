@@ -68,8 +68,8 @@ export default function Profile() {
 
   return (
     <div className="mt-4 flex justify-center">
-      <div className="dark:bg-custom-black text-custom-black dark:text-custom-white dark:shadow-dark mx-4 w-full max-w-4xl rounded-sm bg-white p-3 shadow-md md:p-6">
-        <h4 className="text-custom-main text-center font-bold uppercase">{username} - profile</h4>
+      <div className="dark:bg-zinc-950 text-zinc-950 dark:shadow-dark mx-4 w-full max-w-4xl rounded-sm bg-white p-3 shadow-md dark:text-neutral-50 md:p-6">
+        <h4 className="text-center font-bold uppercase text-teal-700">{username} - profile</h4>
         <div className="flex flex-col items-center md:flex-row md:justify-around">
           <form onSubmit={(event) => handleSubmit(event)}>
             <div className="form-group mx-auto mt-6 grid max-w-xs grid-cols-12">
@@ -81,7 +81,7 @@ export default function Profile() {
                   type={showPassword ? 'text' : 'password'}
                   value={passwordInput}
                   onChange={(event) => setPasswordInput(event.target.value)}
-                  className="form-control text-custom-black dark:text-custom-white bg-custom-white focus:border-custom-main m-0 block w-full rounded-sm border-2 border-solid border-transparent bg-clip-padding px-3 py-1.5 text-base font-normal transition ease-in-out focus:outline-none focus:ring-0 dark:bg-white/10"
+                  className="form-control text-zinc-950 m-0 block w-full rounded-sm border-2 border-solid border-transparent bg-neutral-50 bg-clip-padding px-3 py-1.5 text-base font-normal transition ease-in-out focus:border-teal-700 focus:outline-none focus:ring-0 dark:bg-white/10 dark:text-neutral-50"
                   placeholder="ender password"
                 />
               </div>
@@ -91,9 +91,9 @@ export default function Profile() {
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <EyeSlash className="hover:text-custom-main w-5" />
+                  <EyeSlash className="w-5 hover:text-teal-700" />
                 ) : (
-                  <Eye className="hover:text-custom-main w-5" />
+                  <Eye className="w-5 hover:text-teal-700" />
                 )}
               </button>
             </div>
