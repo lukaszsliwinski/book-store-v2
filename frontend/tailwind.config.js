@@ -17,6 +17,9 @@ module.exports = {
       },
       boxShadow: {
         dark: '0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.25)'
+      },
+      minHeight: {
+        'screen-mobile': 'calc(var(--vh, 1vh) * 100)'
       }
     }
   },
