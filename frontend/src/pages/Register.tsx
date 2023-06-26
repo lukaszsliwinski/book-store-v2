@@ -102,7 +102,9 @@ export default function Register() {
   return (
     <div className="dark:bg-zinc-950 text-zinc-950 xs:mx-auto max-w-screen-xs dark:shadow-dark mx-2 my-4 block rounded-sm bg-white p-6 shadow-md dark:text-neutral-50">
       <form onSubmit={(event) => handleSubmit(event)}>
-        <h4 className="text-center font-bold text-teal-700">REGISTER</h4>
+        <h4 role="heading" className="text-center font-bold text-teal-700">
+          REGISTER
+        </h4>
         <div className="form-group grid grid-cols-12">
           <div className="col-span-10 col-start-2">
             <label className="form-label mb-2 ml-2 inline-block text-xs font-semibold">
