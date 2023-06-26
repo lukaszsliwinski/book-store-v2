@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
@@ -23,7 +24,6 @@ export default function Login() {
 
   // global state
   const logged = useSelector((state: IRootState) => state.auth.logged);
-  const badge = useSelector((state: IRootState) => state.badge.badge);
 
   // dispatch functions from slices
   const dispatch = useDispatch();
@@ -119,7 +119,7 @@ export default function Login() {
               value={passwordInput}
               onChange={(event) => setPasswordInput(event.target.value)}
               className="form-control text-zinc-950 m-0 block w-full rounded-sm border-2 border-solid border-transparent bg-neutral-50 bg-clip-padding px-3 py-1.5 text-base font-normal transition ease-in-out focus:border-teal-700 focus:outline-none focus:ring-0 dark:bg-white/10 dark:text-neutral-50"
-              placeholder="ender password"
+              placeholder="enter password"
             />
           </div>
           <button
@@ -146,12 +146,12 @@ export default function Login() {
           <Btn onclick={(event) => handleSubmit(event)} label="login" icon={undefined} />
           <div className="mt-2 text-xs">
             Don't have an account?{' '}
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="font-bold underline underline-offset-2 hover:text-teal-700"
             >
               register
-            </a>
+            </Link>
           </div>
         </div>
       </form>

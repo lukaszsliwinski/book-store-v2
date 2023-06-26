@@ -86,6 +86,8 @@ export default function Aside() {
         <a
           href="https://lukaszsliwinski.pl"
           className="w-100 mt-1 block cursor-pointer text-center text-sm font-bold underline underline-offset-2 hover:text-teal-700"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           www.lukaszsliwinski.pl
         </a>

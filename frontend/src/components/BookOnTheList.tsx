@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as ArrowUp } from '../assets/svg/arrowup.svg';
 import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
@@ -37,12 +38,12 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
         alt="book cover"
       />
       <div className="xs:ml-4 xs:mt-0 xs:items-start mt-2 flex flex-col items-center">
-        <a
-          href={`/books/${data.bookId}`}
+        <Link
+          to={`/books/${data.bookId}`}
           className="xs:text-left text-center text-sm font-bold hover:underline"
         >
           {data.title}
-        </a>
+        </Link>
         <div className="mt-2 text-xs">
           {data.authors.map((author, i) => (
             <span key={i}>

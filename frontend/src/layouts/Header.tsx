@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 import { ReactComponent as Book } from '../assets/svg/book.svg';
@@ -44,12 +45,12 @@ export default function Header() {
 
   return (
     <nav className="bg-zinc-950 fixed top-0 z-30 flex w-full items-center justify-between px-2.5 py-2">
-      <a href="/" className="inline-flex font-semibold text-neutral-50">
+      <Link to="/" className="inline-flex font-semibold text-neutral-50">
         <div className="inline-flex h-full items-center">
           <Book className="mr-2 inline-block w-5" />
         </div>
         <div className="hidden h-full items-center sm:inline-flex">BOOK STORE</div>
-      </a>
+      </Link>
       <div className="flex items-center">
         {!logged ? (
           <div>
@@ -58,15 +59,15 @@ export default function Header() {
           </div>
         ) : (
           <div className="flex items-center">
-            <a
-              href="/cart"
+            <Link
+              to="/cart"
               className="dark:shadow-dark relative mx-1 inline-block rounded-sm bg-transparent px-4 py-2 text-xs font-medium uppercase leading-tight text-neutral-50 shadow-md transition duration-150 ease-in-out hover:bg-neutral-50/10 hover:text-teal-700 focus:bg-neutral-50/10 focus:outline-none focus:ring-0 active:bg-neutral-50/10"
             >
               <Cart className="w-[21.5px]" />
               <span className="absolute top-[2px] right-[2px] ml-2 inline-block whitespace-nowrap rounded bg-red-600 py-0.5 px-1 text-center align-baseline text-[.6rem] font-bold leading-none text-neutral-50">
                 {badge}
               </span>
-            </a>
+            </Link>
             <DropdownMenu label={username}>
               <DropdownItem
                 onclick={undefined}

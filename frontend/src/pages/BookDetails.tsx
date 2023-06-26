@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -150,9 +151,9 @@ export default function BookDetails() {
       ) : (
         <div className="justify-cente dark:bg-zinc-950 text-zinc-950 dark:shadow-dark flex w-fit rounded-sm bg-white px-16 py-6 shadow-md dark:text-neutral-50">
           Book not found - go back to&nbsp;
-          <a href="/" className="font-bold underline underline-offset-2 hover:text-teal-700">
+          <Link to="/" className="font-bold underline underline-offset-2 hover:text-teal-700">
             main page
-          </a>
+          </Link>
         </div>
       )}
     </div>
