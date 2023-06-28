@@ -1,0 +1,286 @@
+{
+  "data": {
+    "response": [
+      {
+        "bookId": "FxBHAAAAIAAJ",
+        "title": "Dostojewski--myśl a forma",
+        "authors": ["Halina Brzoza"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=FxBHAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "wxBHAAAAIAAJ",
+        "title": "Fiodor Dostojewski w twórczości Stanisława Brzozowskiego i Stefana Żeromskiego",
+        "authors": ["Ludwika Jazukiewicz-Osełkowska"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=wxBHAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "Dc4sAAAAIAAJ",
+        "title": "Fiodor Dostojewski",
+        "authors": ["Anna Raźny"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=Dc4sAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "_gPCrQEACAAJ",
+        "title": "Bracia Karamazow",
+        "authors": ["Fiodor Dostojewski"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "40iwzwEACAAJ",
+        "title": "Bracia Karamazow",
+        "authors": ["Fedor Mihajlovič Dostoevskij", "Fiodor Dostojewski"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "BS20kQEACAAJ",
+        "title": "Fiodor Dostojewski i problemy kultury",
+        "authors": ["Uniwersytet Jagielloński. Wydawnictwo"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "l_QXAQAAIAAJ",
+        "title": "\"Dziennik pisarza\" Fiodora Dostojewskiego",
+        "authors": ["Anna Kościołek"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=l_QXAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "ygdgAAAAMAAJ",
+        "title": "Osobowość Dostojewskiego",
+        "authors": ["Boris Ivanovich Bursov"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=ygdgAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "Gv3oDwAAQBAJ",
+        "title": "Bracia Karamazow",
+        "authors": ["Fiodor Dostojewski"],
+        "price": "5.24",
+        "coverUrl": "http://books.google.com/books/content?id=Gv3oDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      {
+        "bookId": "a78GAQAAIAAJ",
+        "title": "Fiodor Dostojewski w setną rocznicę śmierci",
+        "authors": ["Marian Bobran"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=a78GAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "6AdPEAAAQBAJ",
+        "title": "Zbrodnia i Kara",
+        "authors": ["Fiodor Dostojewski"],
+        "price": "21.75",
+        "coverUrl": "http://books.google.com/books/content?id=6AdPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      {
+        "bookId": "BdIQAQAAIAAJ",
+        "title": "Dostojewski i \"przeklete problemy\"",
+        "authors": ["Ryszard Przybylski"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=BdIQAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "ZvQXAQAAIAAJ",
+        "title": "Człowiek Ewangelii w \"Dzienniku pisarza\" Fiodora Dostojewskiego",
+        "authors": ["Anna Kościołek"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=ZvQXAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "0ApgAAAAMAAJ",
+        "title": "Dostojewski",
+        "authors": ["Halina Brzoza"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=0ApgAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "MBM1AAAAIAAJ",
+        "title": "Dostojewski--teatr sumienia",
+        "authors": ["Andrzej Wajda"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=MBM1AAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "QvINEAAAQBAJ",
+        "title": "Cudza żona i mąż pod łóżkiem - zbiór opowiadań",
+        "authors": ["Fiodor Dostojewski"],
+        "price": "11.20",
+        "coverUrl": "http://books.google.com/books/content?id=QvINEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      {
+        "bookId": "9rlLAAAAMAAJ",
+        "title": "Sto lat temu umarł Dostojewski",
+        "authors": ["Adolf Rudnicki"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=9rlLAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "VthfAAAAMAAJ",
+        "title": "Dostojewski a malarstwo",
+        "authors": ["Barbara Stempczyńska"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=VthfAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "UuDuAQAACAAJ",
+        "title": "Dostojewski",
+        "authors": ["André Gide"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=UuDuAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "2sfzoQEACAAJ",
+        "title": "Dostojewski, czyli rzecz o dramacie czlowieka",
+        "authors": ["Jacek Uglik"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "08bqAAAAMAAJ",
+        "title": "Dostojewski Herlinga-Grudzińskiego",
+        "authors": ["Tadeusz Sucharski"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=08bqAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "gh4ACwAAQBAJ",
+        "title": "Polifoniczność w przekładzie",
+        "authors": ["Magdalena Pytlak"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=gh4ACwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      {
+        "bookId": "FhBHAAAAIAAJ",
+        "title": "Pisarz i miłość",
+        "authors": ["Natalia Modzelewska"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=FhBHAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "AAI6BAAAQBAJ",
+        "title": "Biesy",
+        "authors": ["Fiodor Dostojewski"],
+        "price": "59.99",
+        "coverUrl": "http://books.google.com/books/content?id=AAI6BAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      {
+        "bookId": "JYvjAAAAMAAJ",
+        "title": "Dostojewski w teatrze polskim, 1958-1975",
+        "authors": ["Andrzej Krupski"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=JYvjAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "vN33tgAACAAJ",
+        "title": "Polonofil czy polakożerca?",
+        "authors": ["Marek Wedemann"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "g5n4vQEACAAJ",
+        "title": "Wieczny maz",
+        "authors": ["Fiodor Dostojewski"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "6uslzwEACAAJ",
+        "title": "Zbrodnia i kara",
+        "authors": ["Fedor Mihajlovič Dostoevskij", "Fiodor Dostojewski"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "3MAHMQAACAAJ",
+        "title": "Dostojewski i inni",
+        "authors": [],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "ILxfAAAAMAAJ",
+        "title": "Idea teatru w powieściach Dostojewskiego",
+        "authors": ["Halina Chałacińska-Wiertelak"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=ILxfAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "byybEAAAQBAJ",
+        "title": "Białe noce",
+        "authors": ["Fiodor Dostojewski"],
+        "price": "10.54",
+        "coverUrl": "http://books.google.com/books/content?id=byybEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      {
+        "bookId": "KGxgzgEACAAJ",
+        "title": "Młodzik",
+        "authors": ["Fiodor Dostojewski"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "wQsizgEACAAJ",
+        "title": "Dostojewski i laboratorium idei",
+        "authors": ["Jan Krasicki"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "TzQYAQAAIAAJ",
+        "title": "Lew i mysz",
+        "authors": ["Henryk Paprocki"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=TzQYAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "DR2UtgAACAAJ",
+        "title": "\"Zbrodnia i kara\" Fiodora Dostojewskiego",
+        "authors": ["Danuta Polańczyk"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "6QoEAAAAYAAJ",
+        "title": "Dostojewski w kre̜gu symbolistów rosyjskich",
+        "authors": ["Telesfor Poźniak"],
+        "price": 14.99,
+        "coverUrl": "http://books.google.com/books/content?id=6QoEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        "bookId": "L262xgEACAAJ",
+        "title": "Dostojewski w utworach politycznych Conrada",
+        "authors": ["Monika Majewska (nauki filologiczne)"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "dOBjHQAACAAJ",
+        "title": "Dostojewski - dramat humanizmów",
+        "authors": ["Bohdan Urbankowski"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "k05JewAACAAJ",
+        "title": "Dostojewski i Nietzsche",
+        "authors": ["Lev Šestov"],
+        "price": 14.99,
+        "coverUrl": "no-cover.png"
+      },
+      {
+        "bookId": "d2BxEAAAQBAJ",
+        "title": "Młodzik (2021)",
+        "authors": ["Fiodor Dostojewski", "Adam Pomorski"],
+        "price": "44.99",
+        "coverUrl": "http://books.google.com/books/content?id=d2BxEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      }
+    ]
+  }
+}

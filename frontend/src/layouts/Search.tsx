@@ -62,7 +62,7 @@ export default function Search() {
     } else if (searchInput.current && searchInput.current.value === query) {
       setSearchParams({ query });
       const axiosSearchConfig = {
-        method: 'post',
+        //method: 'post',
         url: '/api/search',
         data: {
           query: query
@@ -71,7 +71,8 @@ export default function Search() {
 
       setLoader(true);
 
-      axios(axiosSearchConfig)
+      axios
+        .post(axiosSearchConfig.url, axiosSearchConfig.data)
         .then((result) => {
           const data = result.data.response;
           data.length !== 0 ? setBookList(data) : setBookList([]);
@@ -96,6 +97,8 @@ export default function Search() {
             <input
               ref={searchInput}
               type="text"
+              role="input"
+              name="search"
               value={query}
               className="form-control xs:pl-6 xs:pr-36 xs:py-3 xs:text-lg text-zinc-950 block w-full rounded-sm border-2 border-solid border-transparent bg-white bg-clip-padding p-2 pr-8 text-base font-normal transition ease-in-out focus:border-teal-700 focus:outline-none focus:ring-0 dark:bg-white/10 dark:text-neutral-50"
               onChange={(event) => handleChange(event)}
