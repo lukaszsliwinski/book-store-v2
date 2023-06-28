@@ -8,7 +8,7 @@ import { IRootState } from '../store';
 import { alertActions } from '../store/alertSlice';
 import Btn from '../components/Btn';
 import History from '../components/History';
-import { getToken } from '../utils';
+import { getToken } from '../utils/appUtils';
 
 export default function Profile() {
   // local state

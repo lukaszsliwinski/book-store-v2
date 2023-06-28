@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
-import { getToken } from '../utils';
+import { getToken } from '../utils/appUtils';
 
 export default function ProtectedRoute({ component }: { component: JSX.Element }) {
   const token = getToken();

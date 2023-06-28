@@ -5,7 +5,7 @@ import axios from 'axios';
 import { alertActions } from '../store/alertSlice';
 import HistoryItem from './HistoryItem';
 import { IOrder } from '../types';
-import { getToken } from '../utils';
+import { getToken } from '../utils/appUtils';
 
 export default function History() {
   // local state

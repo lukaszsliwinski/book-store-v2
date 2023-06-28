@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getToken } from '../utils';
+import { getToken } from '../utils/appUtils';
 
 const token = getToken();
 

@@ -7,7 +7,7 @@ import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
 import { alertActions } from '../store/alertSlice';
 import Btn from './Btn';
 import { IBookDetails, IBook } from '../types';
-import { addToCart, handleChangeCounter, validateCounter } from '../utils';
+import { addToCart, handleChangeCounter, validateCounter } from '../utils/appUtils';
 
 export default function BookOnTheList({ data }: { data: IBookDetails }) {
   // local state

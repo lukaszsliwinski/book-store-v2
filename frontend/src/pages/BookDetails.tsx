@@ -10,7 +10,7 @@ import { alertActions } from '../store/alertSlice';
 import Btn from '../components/Btn';
 import Loader from '../components/Loader';
 import { IBookDetails, IBook } from '../types';
-import { addToCart, handleChangeCounter, validateCounter } from '../utils';
+import { addToCart, handleChangeCounter, validateCounter } from '../utils/appUtils';
 
 export default function BookDetails() {
   // local state

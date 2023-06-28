@@ -1,6 +1,6 @@
 import Cookies from 'universal-cookie';
 
-import { IBook } from './types';
+import { IBook } from '../types';
 
 // get user auth token from cookies
 export const getToken = () => {

@@ -1,34 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import App from './App';
-import { MemoryRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { persistor, store } from './store';
-import { PersistGate } from 'redux-persist/integration/react';
-
-function setup(route: string) {
-  render(
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <MemoryRouter initialEntries={[route]}>
-          <App />
-        </MemoryRouter>
-      </PersistGate>
-    </Provider>
-  );
-}
+import { setup } from '../utils/testUtils';
 
 const user = userEvent.setup();
-
-describe('Rendering', () => {
-  test('Render home page', async () => {
-    setup('/');
-
-    expect(await screen.findByText(/book store/)).toBeInTheDocument();
-    expect(await screen.findAllByText(/search/)).toHaveLength(2);
-  });
-});
 
 describe('Routing', () => {
   test('Header links', async () => {

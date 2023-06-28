@@ -9,7 +9,7 @@ import { alertActions } from '../store/alertSlice';
 import { badgeActions } from '../store/badgeSlice';
 import Btn from '../components/Btn';
 import { IBook } from '../types';
-import { getToken } from '../utils';
+import { getToken } from '../utils/appUtils';
 
 export default function Cart() {
   // local state

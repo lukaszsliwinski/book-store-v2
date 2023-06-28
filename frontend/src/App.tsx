@@ -18,7 +18,7 @@ import { IRootState } from './store';
 import { alertActions } from './store/alertSlice';
 import { badgeActions } from './store/badgeSlice';
 import { authActions } from './store/authSlice';
-import { getToken } from './utils';
+import { getToken } from './utils/appUtils';
 
 export default function App() {
   // global state
