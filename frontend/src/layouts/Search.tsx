@@ -62,7 +62,6 @@ export default function Search() {
     } else if (searchInput.current && searchInput.current.value === query) {
       setSearchParams({ query });
       const axiosSearchConfig = {
-        //method: 'post',
         url: '/api/search',
         data: {
           query: query

@@ -8,33 +8,26 @@ const user = userEvent.setup();
 describe('Routing', () => {
   test('Header links', async () => {
     setup('/');
-    const loginNavLink = screen.getByRole('button', { name: /login/i });
-    const registerNavLink = screen.getByRole('button', { name: /register/i });
-
-    await user.click(loginNavLink);
+    await user.click(screen.getByRole('button', { name: /login/i }));
     expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();
 
-    await user.click(registerNavLink);
+    await user.click(screen.getByRole('button', { name: /register/i }));
     expect(screen.getByRole('heading', { name: /register/i })).toBeInTheDocument();
   });
 
   test('Redirect login to register', async () => {
     setup('/login');
-    const registerNavLink = screen.getByRole('button', { name: /register/i });
-
     expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();
 
-    await user.click(registerNavLink);
+    await user.click(screen.getByRole('button', { name: /register/i }));
     expect(screen.getByRole('heading', { name: /register/i })).toBeInTheDocument();
   });
 
   test('Redirect register to login', async () => {
     setup('/register');
-    const loginNavLink = screen.getByRole('button', { name: /login/i });
-
     expect(screen.getByRole('heading', { name: /register/i })).toBeInTheDocument();
 
-    await user.click(loginNavLink);
+    await user.click(screen.getByRole('button', { name: /login/i }));
     expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();
   });
 

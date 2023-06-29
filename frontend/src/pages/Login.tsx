@@ -49,7 +49,6 @@ export default function Login() {
     } else {
       // login post request
       const axiosLoginConfig = {
-        method: 'post',
         url: '/api/login',
         data: {
           usernameInput,
@@ -57,7 +56,8 @@ export default function Login() {
         }
       };
 
-      axios(axiosLoginConfig)
+      axios
+        .post(axiosLoginConfig.url, axiosLoginConfig.data)
         .then((result) => {
           setUsernameInput('');
           setPasswordInput('');
@@ -145,7 +145,12 @@ export default function Login() {
         </div>
 
         <div className="mt-10 text-center">
-          <Btn onclick={(event) => handleSubmit(event)} label="login" icon={undefined} />
+          <Btn
+            role="submit"
+            onclick={(event) => handleSubmit(event)}
+            label="login"
+            icon={undefined}
+          />
           <div className="mt-2 text-xs">
             Don't have an account?{' '}
             <Link
