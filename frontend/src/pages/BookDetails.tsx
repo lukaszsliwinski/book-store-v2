@@ -31,7 +31,6 @@ export default function BookDetails() {
   // get book details from API
   useEffect(() => {
     const axiosBookDetailsConfig = {
-      method: 'post',
       url: '/api/book-details',
       data: {
         id: params.id
@@ -40,7 +39,8 @@ export default function BookDetails() {
 
     setLoader(true);
 
-    axios(axiosBookDetailsConfig)
+    axios
+      .post(axiosBookDetailsConfig.url, axiosBookDetailsConfig.data)
       .then((result) => {
         if (result.data.message !== 'book not found') {
           setBookData(result.data);
