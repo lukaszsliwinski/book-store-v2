@@ -12,4 +12,5 @@ This is my side-project that I made to improve my web programming skills.<br>The
 
 frontend: Typescript / React / Tailwind<br>
 backend: Javascript / Node.js / Express.js / MongoDB<br>
+tests: React Testing Library / Jest<br>
 REST API: Google Books API
