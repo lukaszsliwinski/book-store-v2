@@ -12,12 +12,16 @@ const user = userEvent.setup();
 describe('Search', () => {
   test('mock search data', async () => {
     setup('/');
+
+    // mock search axios response
     const mockedAxios = axios as jest.Mocked<typeof axios>;
     mockedAxios.post.mockResolvedValueOnce(mockedSearchResponse);
 
+    // search books by author
     await user.type(screen.getByRole('input'), 'dostojewski');
     await user.click(screen.getByRole('button', { name: /search/i }));
 
+    // check if buy buttons are in the document
     expect(screen.getAllByText(/buy/i)).toHaveLength(40);
   });
 });

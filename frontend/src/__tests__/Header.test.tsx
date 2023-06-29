@@ -6,6 +6,7 @@ import { setup } from '../utils/testUtils';
 const user = userEvent.setup();
 
 describe('Routing', () => {
+  // test links in header
   test('Header links', async () => {
     setup('/');
     await user.click(screen.getByRole('button', { name: /login/i }));
@@ -15,6 +16,7 @@ describe('Routing', () => {
     expect(screen.getByRole('heading', { name: /register/i })).toBeInTheDocument();
   });
 
+  // test routing between login and register page
   test('Redirect login to register', async () => {
     setup('/login');
     expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();
@@ -31,6 +33,7 @@ describe('Routing', () => {
     expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();
   });
 
+  // test redirect when user is unauthorized
   test('Redirect profile to login when unauthorized', () => {
     setup('/profile');
     expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();

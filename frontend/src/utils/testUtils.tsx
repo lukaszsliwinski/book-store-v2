@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { persistor, store } from '../store';
 import { PersistGate } from 'redux-persist/integration/react';
 
+// render app in testing environment
 export const setup = (route: string) => {
   render(
     <Provider store={store}>
