@@ -19,10 +19,10 @@ describe('Login', () => {
     await user.type(screen.getByPlaceholderText('enter password'), 'Test-Pass334');
 
     await user.click(screen.getByRole('submit'));
-
     expect(screen.getByRole('link', { name: /profile/i })).toBeInTheDocument();
 
-    screen.debug();
+    await user.click(screen.getByRole('link', { name: /logout/i }));
+    expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
   });
 });
 
