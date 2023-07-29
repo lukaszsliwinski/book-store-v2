@@ -34,7 +34,7 @@ const NODE_ENV = process.env.NODE_ENV;
 // middleware
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
-app.use(express.static(path.resolve(__dirname, '../frontend/build')));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.use((request, response, next) => {
   response.setHeader('Access-Control-Allow-Origin', '*');
   response.setHeader(
@@ -47,7 +47,7 @@ app.use((request, response, next) => {
 
 // render react app
 app.get(['/', '/login', '/register', '/profile', '/books/*', '/cart'], (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+  response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 // endpoints
