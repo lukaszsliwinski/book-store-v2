@@ -21,7 +21,7 @@ export default function HistoryItem({ order }: { order: IOrder }) {
       </button>
 
       <div className="collapse border-t" id={`collapse${order.number}`}>
-        <div className="p-2 pb-0">
+        <div className="p-2">
           {order.books.map((book, i) => {
             return (
               <div

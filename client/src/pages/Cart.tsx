@@ -106,14 +106,17 @@ export default function Cart() {
   };
 
   return (
-    <div className="mt-4 flex justify-center">
-      <div className="dark:bg-zinc-950 text-zinc-950 dark:shadow-dark mx-4 flex w-full max-w-4xl flex-col rounded-sm bg-white p-4 shadow-md dark:text-neutral-50 md:w-[768px]">
-        <h4 className="text-center font-bold text-teal-700">SHOPPING CART</h4>
+    <div className="mt-8 flex justify-center">
+      <div className="text-zinc-950 mx-4 flex w-full max-w-3xl flex-col dark:text-neutral-50">
+        <h4 className="mb-4 text-center font-bold text-teal-700">SHOPPING CART</h4>
         {cart.map((item, i) => {
           return (
-            <div key={i} className="xs:flex-row xs:items-center my-2 flex flex-col justify-between">
-              <div className="text-sm font-bold">{item.title}</div>
-              <div className="flex items-center justify-end">
+            <div
+              key={i}
+              className="xs:flex-row xs:items-center my-2 flex flex-col justify-between border-b border-teal-700 px-4 py-2"
+            >
+              <div className="text-sm font-semibold">{item.title}</div>
+              <div className="mt-2 flex items-center justify-end">
                 <div className="text-zinc-950 flex w-10 items-center pl-2 dark:text-neutral-50">
                   <div className="text-lg font-medium">{item.amount}</div>
                   <div className="ml-2 inline-flex flex-col">
@@ -142,7 +145,7 @@ export default function Cart() {
           <div className="text-xs font-semibold">Your cart is empty.</div>
         ) : (
           <div className="mt-6 flex flex-col items-center justify-center">
-            <div className="font-bold">total: {total} $</div>
+            <div className="font-semibold">total: {total} $</div>
             <Btn onclick={() => makeOrder()} label="order" icon={undefined} />
           </div>
         )}
