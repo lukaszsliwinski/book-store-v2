@@ -70,7 +70,7 @@ export default function Profile() {
     <div className="mt-8 flex justify-center">
       <div className="text-zinc-950  mx-4 w-full max-w-4xl dark:text-neutral-50">
         <h4 className="text-center font-bold uppercase text-teal-700">{username} - profile</h4>
-        <div className="flex flex-col items-center md:flex-row md:justify-around">
+        <div className="flex flex-col items-center">
           <form onSubmit={(event) => handleSubmit(event)}>
             <div className="form-group mx-auto mt-6 grid max-w-xs grid-cols-12">
               <div className="xs:col-span-11 col-span-10">
