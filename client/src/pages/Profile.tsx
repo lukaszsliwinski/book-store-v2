@@ -59,7 +59,7 @@ export default function Profile() {
             setPasswordAlert(error.response.data.message);
           } else {
             setError(true);
-            setAlertMessage('Database connection error - please try again later!');
+            setAlertMessage('Server connection error - please try again later!');
             setShowAlert(true);
           }
         });

@@ -36,7 +36,7 @@ export default function History() {
       })
       .catch(() => {
         setError(true);
-        setAlertMessage('Database connection error - please try again later!');
+        setAlertMessage('Server connection error - please try again later!');
         setShowAlert(true);
       });
   }, []);
