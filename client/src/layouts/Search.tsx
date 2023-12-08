@@ -90,7 +90,7 @@ export default function Search() {
   return (
     <>
       <Aside />
-      <div className="ml-12 mr-2 flex flex-col items-center  bg-neutral-50 dark:bg-zinc-900">
+      <div className="ml-12 mr-2 flex flex-col items-center">
         <div className="flex justify-center">
           <div className="relative my-3 md:max-w-[32rem]">
             <input
@@ -119,7 +119,7 @@ export default function Search() {
             </div>
           </div>
         </div>
-        <div className="mb-6 grid xl:grid-cols-2 xl:gap-6">
+        <div className="mb-6 grid">
           {loader ? (
             <Loader />
           ) : bookList.length === 0 ? (
