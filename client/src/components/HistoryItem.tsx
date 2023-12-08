@@ -3,20 +3,20 @@ import { IOrder } from '../types';
 
 export default function HistoryItem({ order }: { order: IOrder }) {
   return (
-    <div className="dark:shadow-dark my-2 rounded-sm bg-white p-2 shadow-md dark:bg-zinc-900">
+    <div className="dark:shadow-dark my-4 rounded-sm bg-white px-4 shadow-sm dark:bg-zinc-800">
       <button
-        className="flex w-full items-center justify-between text-xs hover:text-teal-700"
+        className="flex h-12 w-full items-center justify-between text-sm hover:text-teal-700"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target={`#collapse${order.number}`}
         aria-expanded="false"
         aria-controls={`collapse${order.number}`}
       >
-        <span className="font-bold">
+        <span className="font-semibold">
           order {order.number} - {order.date.substring(0, 10)}
         </span>
         <span className="p-1">
-          <ArrowDown className="ml-1 w-2" />
+          <ArrowDown className="w-3" />
         </span>
       </button>
 
@@ -37,7 +37,7 @@ export default function HistoryItem({ order }: { order: IOrder }) {
               </div>
             );
           })}
-          <div className="mt-2 text-right text-sm">total: {order.total} $</div>
+          <div className="mt-2 text-right text-sm font-semibold">total: {order.total} $</div>
         </div>
       </div>
     </div>

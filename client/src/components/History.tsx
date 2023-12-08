@@ -43,19 +43,21 @@ export default function History() {
 
   if (ordersHistory.length === 0) {
     return (
-      <div className="w-full md:mx-8">
-        <label className="ml-2 text-xs font-semibold">Your orders history is empty.</label>
+      <div className="mt-16 flex w-full justify-center text-xs font-semibold">
+        Your orders history is empty.
       </div>
     );
   } else {
     return (
-      <div className="w-full md:mx-8">
-        <label className="ml-2 text-xs font-semibold">latest orders</label>
-        {ordersHistory
-          .sort((a: IOrder, b: IOrder) => b.number - a.number)
-          .map((order, i) => (
-            <HistoryItem key={i} order={order} />
-          ))}
+      <div className="mt-16 flex w-full flex-col items-center">
+        <h5 className="text-xs font-semibold">latest orders:</h5>
+        <div className="w-full max-w-xl">
+          {ordersHistory
+            .sort((a: IOrder, b: IOrder) => b.number - a.number)
+            .map((order, i) => (
+              <HistoryItem key={i} order={order} />
+            ))}
+        </div>
       </div>
     );
   }
