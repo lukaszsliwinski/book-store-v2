@@ -35,7 +35,7 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
   }, [counter]);
 
   return (
-    <div className="xs:flex-row xs:max-w-2xl text-zinc-950 mb-4 flex max-w-xs flex-col rounded-sm border-b border-teal-700 p-4 dark:text-neutral-50">
+    <div className="xs:flex-row xs:max-w-2xl text-zinc-950 mb-4 flex max-w-xs flex-col border-b border-teal-700 p-4 dark:text-neutral-50">
       <img
         className="xs:mx-0 xs:w-40 mx-auto h-56 object-cover"
         src={data.coverUrl}
