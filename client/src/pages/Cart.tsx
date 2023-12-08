@@ -142,7 +142,7 @@ export default function Cart() {
           );
         })}
         {cart.length === 0 ? (
-          <div className="text-xs font-semibold">Your cart is empty.</div>
+          <div className="text-center text-xs font-semibold">Your cart is empty.</div>
         ) : (
           <div className="mt-6 flex flex-col items-center justify-center">
             <div className="font-semibold">total: {total} $</div>
