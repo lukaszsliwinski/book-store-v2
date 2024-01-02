@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import ProtectedRoute from './context/ProtectedRoute';
+import NotLoggedOnly from './context/NotLoggedOnly';
 import BookDetails from './pages/BookDetails';
 import Cart from './pages/Cart';
 import Alert from './components/Alert';
@@ -81,8 +82,8 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Search />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<NotLoggedOnly component={<Login />} />} />
+        <Route path="/register" element={<NotLoggedOnly component={<Register />} />} />
         <Route path="/profile" element={<ProtectedRoute component={<Profile />} />} />
         <Route path="/books/:id" element={<BookDetails />} />
         <Route path="/cart" element={<ProtectedRoute component={<Cart />} />} />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as ArrowUp } from '../assets/svg/arrowup.svg';
 import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
@@ -22,6 +23,8 @@ export default function Cart() {
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
+
+  const navigate = useNavigate();
 
   // update cart and total price
   useEffect(() => {
@@ -97,6 +100,7 @@ export default function Cart() {
         setAlertMessage(result.data.message);
         setShowAlert(true);
         setCart([]);
+        navigate('/profile');
       })
       .catch(() => {
         setError(true);

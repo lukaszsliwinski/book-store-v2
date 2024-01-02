@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
@@ -31,8 +31,7 @@ export default function Register() {
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
   const setLogged = (value: boolean) => dispatch(authActions.setLogged(value));
 
-  // redirect to profile page if user is logged in
-  if (logged) window.location.href = '/profile';
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -76,6 +75,7 @@ export default function Register() {
               setPasswordInput('');
               cookies.set('TOKEN', result.data.token, { path: '/' });
               setLogged(true);
+              navigate(-1);
             })
             .catch(() => {
               setError(true);

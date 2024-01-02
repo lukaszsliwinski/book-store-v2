@@ -37,7 +37,6 @@ export default function Header() {
     cookies.remove('TOKEN', { path: '/' });
     localStorage.removeItem('cart');
     setBadge(0);
-    window.location.href = '/';
     setLogged(false);
     setAlertMessage('Succesfully logged out!');
     setShowAlert(true);
