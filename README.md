@@ -6,7 +6,15 @@
 
 ## About project
 
-This is my side-project that I made to improve my web programming skills.<br>The application is a simulation of an online book store. You can create an account, find a book, add books to cart and make fictitious order. In your profile page you can change password and see the history of your orders.
+This is my side-project that I made to improve my web programming skills using React.<br>
+The application is a simulation of an online book store.<br><br>
+Features:
+
+- register and login module
+- searching a book form 3rd party API
+- adding books to cart and simulating an order
+- profile page
+- the history of orders stored in database
 
 ## Used technologies
 
