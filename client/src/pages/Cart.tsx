@@ -97,9 +97,12 @@ export default function Cart() {
 
     axios(axiosMakeOrderConfig)
       .then((result) => {
+        const newCart: IBook[] = [];
+        localStorage.setItem('cart', JSON.stringify(newCart));
+        
+        setBadge(0);
         setAlertMessage(result.data.message);
         setShowAlert(true);
-        setCart([]);
         navigate('/profile');
       })
       .catch(() => {

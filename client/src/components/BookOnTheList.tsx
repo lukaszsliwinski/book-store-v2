@@ -6,6 +6,7 @@ import { ReactComponent as ArrowUp } from '../assets/svg/arrowup.svg';
 import { ReactComponent as ArrowDown } from '../assets/svg/arrowdown.svg';
 import { IRootState } from '../store';
 import { alertActions } from '../store/alertSlice';
+import { badgeActions } from '../store/badgeSlice';
 import Btn from './Btn';
 import { IBookDetails, IBook } from '../types';
 import { addToCart, handleChangeCounter, validateCounter } from '../utils/appUtils';
@@ -22,6 +23,7 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
   const dispatch = useDispatch();
   const setAlertMessage = (value: string) => dispatch(alertActions.setAlertMessage(value));
   const setShowAlert = (value: boolean) => dispatch(alertActions.setShowAlert(value));
+  const setBadge = (value: number) => dispatch(badgeActions.setBadge(value));
 
   // update data to cart after every change of amount
   useEffect(() => {
@@ -32,6 +34,9 @@ export default function BookOnTheList({ data }: { data: IBookDetails }) {
       price: data.price,
       amount: counter
     });
+
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    setBadge(cart.length);
   }, [counter]);
 
   return (
